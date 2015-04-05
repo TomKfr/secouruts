@@ -1,0 +1,171 @@
+
+
+
+header h1{
+  position: absolute;
+  padding: 10px;
+  border-radius: 10px;
+  bottom: 5px;
+}
+
+header h1.deco{
+  left: 350px;
+}
+
+header h1.deco:hover{
+	background-color: #9d9c9d;
+}
+
+.left-content{
+  width: 180px;
+}
+
+.ui-sortable li{
+  cursor: ns-resize;
+}
+.ui-sortable li:hover{
+  background-color: #9d9c9d;
+  border-radius: 5px;
+}
+.list-content{
+  margin-top: 10px;
+  border-top: groove 1px;
+  padding-top: 10px;
+}
+
+.list-content input[type=button]{
+  float: right;
+  background-position: center;
+ background-repeat: no-repeat;
+ background-size: 25px 25px;
+ background-color: transparent;
+ border: none;
+ width: 25px;
+ height: 25px;
+ margin-left: 10px;
+
+}
+
+
+.list-content input[type=button].edit{
+ background-image: url(./images/edit.png);
+ 
+}
+
+.list-content input[type=button].delete{
+ background-image: url(./images/delete.png);
+}
+
+
+.list-content li span {
+  float: left;
+  max-width: 670px;
+  padding-top: 4px;
+}
+
+.list-content li{
+  padding: 6px;
+  border-bottom:  solid 2px ;
+  border-color: #FFF;
+}
+
+.list-content li:not(.enable){
+  
+  background-color: #ff6464;
+}
+
+.list-content #liste{
+  max-height: 200px;
+}
+
+#form_container h3 {
+
+margin: 10px;
+
+}
+
+#form_container #myForm > div{
+  margin: 5px;
+
+}
+
+#form_container #myForm .event-input input {
+  width: 99.5%;
+}
+
+#form_container #myForm > div label {
+  margin: 5px;
+}
+
+#form_container #myForm label{
+  display: block;
+}
+#form_container #myForm .form-title input{
+  width: 99.5%;
+}
+
+#form_container #myForm > input{
+  float: right;
+  margin-right: 5px;
+}
+
+#form_container #myForm .form-tools{
+  float: left;
+}
+#form_container #myForm .form-tools label{
+  float: left;
+  margin: 0px;
+}
+
+#myForm .tab{}
+#myForm .col-right{
+  float: right;
+
+}
+#myForm .col-right input{
+  width : 320px;
+  
+}
+
+#myForm .col-left input[type="text"], #myForm .col-left textarea{
+  width : 400px;
+  
+}
+#myForm .col-left textarea{
+  height: 140px;
+}
+
+#myForm .col-left{
+  float: left;
+}
+
+#form_container #myForm .form-statut > label{
+  margin: 0px;
+  float: left;
+}
+#myForm .form-statut{
+ float: left;
+}
+
+.form-center{
+  width : 340px;
+  margin: 5px auto;
+}
+
+.form-center input[type="text"], .form-center textarea{
+  width : 330px;
+
+}
+#myForm .form-photo div  label{
+  float: right;
+   background-color: #a80b0b;
+    color: #e8e8e8;
+    border-color: #a80b0b;
+    border-radius: 5px;
+     cursor: pointer;
+     padding: 1px 6px;
+}
+
+#myForm .form-photo div input{
+  width: 250px;
+}

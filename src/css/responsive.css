@@ -1,0 +1,33 @@
+/* High pixel density media queries */
+@media only screen and (-moz-min-device-pixel-ratio: 2), 
+       only screen and (-o-min-device-pixel-ratio: 2/1), 
+       only screen and (-webkit-min-device-pixel-ratio: 2), 
+       only screen and (min-device-pixel-ratio: 2),
+       only screen and (-moz-min-device-pixel-ratio: 1.5), 
+       only screen and (-o-min-device-pixel-ratio: 3/2), 
+       only screen and (-webkit-min-device-pixel-ratio: 1.5), 
+       only screen and (min-device-pixel-ratio: 1.5) {
+
+
+
+
+    /* `HEADER
+    ----------------------------------------------------------------------------------------------------*/
+    .header-container{
+        background-image: url(./images/header@2x.png);
+    }
+    .logo{
+            background-image:url(./images/logo@2x.png);
+    }
+
+    /* `FOOTER
+    -------------------------------------------*/
+
+    .footer-container{
+        background-image: url(./images/footer@2x.png);
+    }
+    footer .facebook{
+        background-image: url(./images/facebook@2x.png);
+    }
+
+}
