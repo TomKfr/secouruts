@@ -32,6 +32,8 @@ class DPS
 	protected $debut;
 	/** @Column(type="datetime") */
 	protected $fin;
+	/** @Column(type="string") */
+	protected $client;
 	/** @OneToMany(targetEntity="Creneau", mappedBy="poste", cascade={"persist", "remove"}) */
 	protected $creneaux;
 	/** @OneToMany(targetEntity="Inscription", mappedBy="poste", cascade={"persist", "remove"}) */
@@ -150,7 +152,14 @@ class DPS
 	{
 		$this->fin = $fn;
 	}
-
+	public function getClient()
+	{
+		return $this->client;
+	}
+	public function setClient($clt)
+	{
+		$this->client = $clt;
+	}
 	public function getCreneaux()
 	{
 		return $this->creneaux;

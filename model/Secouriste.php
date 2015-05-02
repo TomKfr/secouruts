@@ -27,6 +27,8 @@ class Secouriste
 	protected $semestre;
 	/** @Column(type="boolean") */
 	protected $isadmin;
+	/** @Column(type="boolean") */
+	protected $isPermis;
 	/** @OneToMany(targetEntity="Diplome", mappedBy="id", cascade={"persist", "remove"}) */ //OneToMany unidirectionnel vers la classe diplome
 	protected $diplomes;
 
@@ -131,6 +133,15 @@ class Secouriste
 	public function setAdmin($admin)
 	{
 		$this->isadmin = $admin;
+	}
+	
+	public function isPermis()
+	{
+		return $this->isPermis;
+	}
+	public function setPermis($permis)
+	{
+		$this->isPermis=$permis;
 	}
 
 	public function getDiplomes()
