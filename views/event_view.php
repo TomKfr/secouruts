@@ -53,7 +53,6 @@
 
 
 			<div class="right-content">
-
 				<h3>Evènements à venir :</h3>
 				<div id="accordion">
 					<h3>Evènement 1</h3>

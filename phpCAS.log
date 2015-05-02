@@ -7383,3 +7383,1675 @@ FAEA .<= ''
 7BEB .|    |    no need to authenticate [Client.php:1247]
 7BEB .|    <= true
 7BEB .<= ''
+623A .START phpCAS-1.3.3 ****************** [CAS.php:438]
+623A .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+623A .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+623A .|    |    Starting a new session 2kmc98m57pbavouojmutsjuhb6 [Client.php:906]
+623A .|    <= ''
+623A .<= ''
+623A .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+623A .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+623A .<= ''
+623A .=> phpCAS::forceAuthentication() [auth.php:12]
+623A .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+623A .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+623A .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+623A .|    |    |    |    no user found [Client.php:1592]
+623A .|    |    |    <= false
+623A .|    |    |    no ticket found [Client.php:1453]
+623A .|    |    <= false
+623A .|    |    => CAS_Client::redirectToCas(false) [Client.php:1254]
+623A .|    |    |    => CAS_Client::getServerLoginURL(false, false) [Client.php:1613]
+623A .|    |    |    |    => CAS_Client::getURL() [Client.php:342]
+623A .|    |    |    |    |    Final URI: http://localhost/secouruts/ [Client.php:3466]
+623A .|    |    |    |    <= 'http://localhost/secouruts/'
+623A .|    |    |    <= 'https://cas.utc.fr/cas/login?service=http%3A%2F%2Flocalhost%2Fsecouruts%2F'
+623A .|    |    |    Redirect to : https://cas.utc.fr/cas/login?service=http%3A%2F%2Flocalhost%2Fsecouruts%2F [Client.php:1620]
+623A .|    |    |    exit()
+623A .|    |    |    -
+623A .|    |    -
+623A .|    -
+CFBC .START phpCAS-1.3.3 ****************** [CAS.php:438]
+CFBC .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+CFBC .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+CFBC .|    |    Starting a new session 2kmc98m57pbavouojmutsjuhb6 [Client.php:906]
+CFBC .|    |    Ticket 'ST-3096151-ER7zN0SXPxAtlAWPL9AH-cas.utc.fr' found [Client.php:988]
+CFBC .|    <= ''
+CFBC .<= ''
+CFBC .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+CFBC .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+CFBC .<= ''
+CFBC .=> phpCAS::forceAuthentication() [auth.php:12]
+CFBC .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+CFBC .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+CFBC .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+CFBC .|    |    |    |    no user found [Client.php:1592]
+CFBC .|    |    |    <= false
+CFBC .|    |    |    CAS 2.0 ticket `ST-3096151-ER7zN0SXPxAtlAWPL9AH-cas.utc.fr' is present [Client.php:1406]
+CFBC .|    |    |    => CAS_Client::validateCAS20('', NULL, NULL) [Client.php:1409]
+CFBC .|    |    |    |     [Client.php:3101]
+CFBC .|    |    |    |    => CAS_Client::getServerServiceValidateURL() [Client.php:3108]
+CFBC .|    |    |    |    |    => CAS_Client::getURL() [Client.php:453]
+CFBC .|    |    |    |    |    |    Final URI: http://localhost/secouruts/ [Client.php:3466]
+CFBC .|    |    |    |    |    <= 'http://localhost/secouruts/'
+CFBC .|    |    |    |    <= 'https://cas.utc.fr/cas/serviceValidate?service=http%3A%2F%2Flocalhost%2Fsecouruts%2F'
+CFBC .|    |    |    |    => CAS_Client::_readURL('https://cas.utc.fr/cas/serviceValidate?service=http%3A%2F%2Flocalhost%2Fsecouruts%2F&ticket=ST-3096151-ER7zN0SXPxAtlAWPL9AH-cas.utc.fr', NULL, NULL, NULL) [Client.php:3118]
+CFBC .|    |    |    |    |    => CAS_Request_CurlRequest::sendRequest() [AbstractRequest.php:242]
+CFBC .|    |    |    |    |    |    Response Body: 
+CFBC .|    |    |    |    |    |    
+CFBC .|    |    |    |    |    |    
+CFBC .|    |    |    |    |    |    
+CFBC .|    |    |    |    |    |    
+CFBC .|    |    |    |    |    |    <cas:serviceResponse xmlns:cas='http://www.yale.edu/tp/cas'>
+CFBC .|    |    |    |    |    |    	<cas:authenticationSuccess>
+CFBC .|    |    |    |    |    |    		<cas:user>tkieffer</cas:user>
+CFBC .|    |    |    |    |    |    		<cas:attributes>
+CFBC .|    |    |    |    |    |    			
+CFBC .|    |    |    |    |    |    				
+CFBC .|    |    |    |    |    |    					<cas:mail>thomas.kieffer@etu.utc.fr</cas:mail>
+CFBC .|    |    |    |    |    |    				
+CFBC .|    |    |    |    |    |    					<cas:sn>Kieffer</cas:sn>
+CFBC .|    |    |    |    |    |    				
+CFBC .|    |    |    |    |    |    					<cas:ou>students</cas:ou>
+CFBC .|    |    |    |    |    |    				
+CFBC .|    |    |    |    |    |    					<cas:cn>Kieffer Thomas</cas:cn>
+CFBC .|    |    |    |    |    |    				
+CFBC .|    |    |    |    |    |    					<cas:givenName>Thomas</cas:givenName>
+CFBC .|    |    |    |    |    |    				
+CFBC .|    |    |    |    |    |    					<cas:displayName>Thomas Kieffer</cas:displayName>
+CFBC .|    |    |    |    |    |    				
+CFBC .|    |    |    |    |    |    			
+CFBC .|    |    |    |    |    |    		</cas:attributes>
+CFBC .|    |    |    |    |    |    
+CFBC .|    |    |    |    |    |    
+CFBC .|    |    |    |    |    |    	</cas:authenticationSuccess>
+CFBC .|    |    |    |    |    |    </cas:serviceResponse>
+CFBC .|    |    |    |    |    |    
+CFBC .|    |    |    |    |    |     [CurlRequest.php:84]
+CFBC .|    |    |    |    |    <= true
+CFBC .|    |    |    |    <= true
+CFBC .|    |    |    |    => CAS_Client::_readExtraAttributesCas20(DOMNodeList) [Client.php:3176]
+CFBC .|    |    |    |    |    Found nested jasig style attributes [Client.php:3263]
+CFBC .|    |    |    |    |    Attribute [mail] = thomas.kieffer@etu.utc.fr [Client.php:3270]
+CFBC .|    |    |    |    |    Attribute [sn] = Kieffer [Client.php:3270]
+CFBC .|    |    |    |    |    Attribute [ou] = students [Client.php:3270]
+CFBC .|    |    |    |    |    Attribute [cn] = Kieffer Thomas [Client.php:3270]
+CFBC .|    |    |    |    |    Attribute [givenName] = Thomas [Client.php:3270]
+CFBC .|    |    |    |    |    Attribute [displayName] = Thomas Kieffer [Client.php:3270]
+CFBC .|    |    |    |    <= ''
+CFBC .|    |    |    |    Storing Proxy List [Client.php:3185]
+CFBC .|    |    |    |    => CAS_ProxyChain_AllowedList::isProxyListAllowed(array ()) [Client.php:3188]
+CFBC .|    |    |    |    |    No proxies were found in the response [AllowedList.php:81]
+CFBC .|    |    |    |    <= true
+CFBC .|    |    |    |    => CAS_Client::_renameSession('ST-3096151-ER7zN0SXPxAtlAWPL9AH-cas.utc.fr') [Client.php:3220]
+CFBC .|    |    |    |    |    Killing session: 2kmc98m57pbavouojmutsjuhb6 [Client.php:3582]
+CFBC .|    |    |    |    |    Starting session: ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:3586]
+CFBC .|    |    |    |    |    Restoring old session vars [Client.php:3589]
+CFBC .|    |    |    |    <= ''
+CFBC .|    |    |    <= true
+CFBC .|    |    |    CAS 2.0 ticket `ST-3096151-ER7zN0SXPxAtlAWPL9AH-cas.utc.fr' was validated [Client.php:1412]
+CFBC .|    |    |    => CAS_Client::getURL() [Client.php:1472]
+CFBC .|    |    |    <= 'http://localhost/secouruts/'
+CFBC .|    |    |    Prepare redirect to : http://localhost/secouruts/ [Client.php:1472]
+CFBC .|    |    |    => CAS_Client::getURL() [Client.php:1474]
+CFBC .|    |    |    <= 'http://localhost/secouruts/'
+CFBC .|    |    |    exit()
+CFBC .|    |    |    -
+CFBC .|    |    -
+CFBC .|    -
+E3C7 .START phpCAS-1.3.3 ****************** [CAS.php:438]
+E3C7 .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+E3C7 .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+E3C7 .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+E3C7 .|    <= ''
+E3C7 .<= ''
+E3C7 .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+E3C7 .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+E3C7 .<= ''
+E3C7 .=> phpCAS::forceAuthentication() [auth.php:12]
+E3C7 .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+E3C7 .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+E3C7 .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+E3C7 .|    |    |    |    user = `tkieffer' [Client.php:1579]
+E3C7 .|    |    |    <= true
+E3C7 .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+E3C7 .|    |    <= true
+E3C7 .|    |    no need to authenticate [Client.php:1247]
+E3C7 .|    <= true
+E3C7 .<= ''
+9F0E .START phpCAS-1.3.3 ****************** [CAS.php:438]
+9F0E .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+9F0E .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+9F0E .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+9F0E .|    <= ''
+9F0E .<= ''
+9F0E .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+9F0E .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+9F0E .<= ''
+9F0E .=> phpCAS::forceAuthentication() [auth.php:12]
+9F0E .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+9F0E .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+9F0E .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+9F0E .|    |    |    |    user = `tkieffer' [Client.php:1579]
+9F0E .|    |    |    <= true
+9F0E .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+9F0E .|    |    <= true
+9F0E .|    |    no need to authenticate [Client.php:1247]
+9F0E .|    <= true
+9F0E .<= ''
+1640 .START phpCAS-1.3.3 ****************** [CAS.php:438]
+1640 .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+1640 .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+1640 .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+1640 .|    <= ''
+1640 .<= ''
+1640 .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+1640 .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+1640 .<= ''
+1640 .=> phpCAS::forceAuthentication() [auth.php:12]
+1640 .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+1640 .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+1640 .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+1640 .|    |    |    |    user = `tkieffer' [Client.php:1579]
+1640 .|    |    |    <= true
+1640 .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+1640 .|    |    <= true
+1640 .|    |    no need to authenticate [Client.php:1247]
+1640 .|    <= true
+1640 .<= ''
+6A14 .START phpCAS-1.3.3 ****************** [CAS.php:438]
+6A14 .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+6A14 .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+6A14 .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+6A14 .|    <= ''
+6A14 .<= ''
+6A14 .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+6A14 .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+6A14 .<= ''
+6A14 .=> phpCAS::forceAuthentication() [auth.php:12]
+6A14 .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+6A14 .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+6A14 .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+6A14 .|    |    |    |    user = `tkieffer' [Client.php:1579]
+6A14 .|    |    |    <= true
+6A14 .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+6A14 .|    |    <= true
+6A14 .|    |    no need to authenticate [Client.php:1247]
+6A14 .|    <= true
+6A14 .<= ''
+CF37 .START phpCAS-1.3.3 ****************** [CAS.php:438]
+CF37 .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+CF37 .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+CF37 .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+CF37 .|    <= ''
+CF37 .<= ''
+CF37 .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+CF37 .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+CF37 .<= ''
+CF37 .=> phpCAS::forceAuthentication() [auth.php:12]
+CF37 .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+CF37 .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+CF37 .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+CF37 .|    |    |    |    user = `tkieffer' [Client.php:1579]
+CF37 .|    |    |    <= true
+CF37 .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+CF37 .|    |    <= true
+CF37 .|    |    no need to authenticate [Client.php:1247]
+CF37 .|    <= true
+CF37 .<= ''
+07DE .START phpCAS-1.3.3 ****************** [CAS.php:438]
+07DE .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+07DE .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+07DE .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+07DE .|    <= ''
+07DE .<= ''
+07DE .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+07DE .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+07DE .<= ''
+07DE .=> phpCAS::forceAuthentication() [auth.php:12]
+07DE .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+07DE .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+07DE .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+07DE .|    |    |    |    user = `tkieffer' [Client.php:1579]
+07DE .|    |    |    <= true
+07DE .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+07DE .|    |    <= true
+07DE .|    |    no need to authenticate [Client.php:1247]
+07DE .|    <= true
+07DE .<= ''
+3281 .START phpCAS-1.3.3 ****************** [CAS.php:438]
+3281 .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+3281 .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+3281 .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+3281 .|    <= ''
+3281 .<= ''
+3281 .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+3281 .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+3281 .<= ''
+3281 .=> phpCAS::forceAuthentication() [auth.php:12]
+3281 .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+3281 .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+3281 .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+3281 .|    |    |    |    user = `tkieffer' [Client.php:1579]
+3281 .|    |    |    <= true
+3281 .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+3281 .|    |    <= true
+3281 .|    |    no need to authenticate [Client.php:1247]
+3281 .|    <= true
+3281 .<= ''
+6F72 .START phpCAS-1.3.3 ****************** [CAS.php:438]
+6F72 .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+6F72 .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+6F72 .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+6F72 .|    <= ''
+6F72 .<= ''
+6F72 .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+6F72 .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+6F72 .<= ''
+6F72 .=> phpCAS::forceAuthentication() [auth.php:12]
+6F72 .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+6F72 .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+6F72 .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+6F72 .|    |    |    |    user = `tkieffer' [Client.php:1579]
+6F72 .|    |    |    <= true
+6F72 .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+6F72 .|    |    <= true
+6F72 .|    |    no need to authenticate [Client.php:1247]
+6F72 .|    <= true
+6F72 .<= ''
+3CEC .START phpCAS-1.3.3 ****************** [CAS.php:438]
+3CEC .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+3CEC .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+3CEC .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+3CEC .|    <= ''
+3CEC .<= ''
+3CEC .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+3CEC .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+3CEC .<= ''
+3CEC .=> phpCAS::forceAuthentication() [auth.php:12]
+3CEC .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+3CEC .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+3CEC .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+3CEC .|    |    |    |    user = `tkieffer' [Client.php:1579]
+3CEC .|    |    |    <= true
+3CEC .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+3CEC .|    |    <= true
+3CEC .|    |    no need to authenticate [Client.php:1247]
+3CEC .|    <= true
+3CEC .<= ''
+C663 .START phpCAS-1.3.3 ****************** [CAS.php:438]
+C663 .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+C663 .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+C663 .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+C663 .|    <= ''
+C663 .<= ''
+C663 .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+C663 .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+C663 .<= ''
+C663 .=> phpCAS::forceAuthentication() [auth.php:12]
+C663 .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+C663 .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+C663 .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+C663 .|    |    |    |    user = `tkieffer' [Client.php:1579]
+C663 .|    |    |    <= true
+C663 .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+C663 .|    |    <= true
+C663 .|    |    no need to authenticate [Client.php:1247]
+C663 .|    <= true
+C663 .<= ''
+58B2 .START phpCAS-1.3.3 ****************** [CAS.php:438]
+58B2 .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+58B2 .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+58B2 .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+58B2 .|    <= ''
+58B2 .<= ''
+58B2 .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+58B2 .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+58B2 .<= ''
+58B2 .=> phpCAS::forceAuthentication() [auth.php:12]
+58B2 .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+58B2 .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+58B2 .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+58B2 .|    |    |    |    user = `tkieffer' [Client.php:1579]
+58B2 .|    |    |    <= true
+58B2 .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+58B2 .|    |    <= true
+58B2 .|    |    no need to authenticate [Client.php:1247]
+58B2 .|    <= true
+58B2 .<= ''
+FA65 .START phpCAS-1.3.3 ****************** [CAS.php:438]
+FA65 .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+FA65 .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+FA65 .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+FA65 .|    <= ''
+FA65 .<= ''
+FA65 .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+FA65 .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+FA65 .<= ''
+FA65 .=> phpCAS::forceAuthentication() [auth.php:12]
+FA65 .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+FA65 .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+FA65 .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+FA65 .|    |    |    |    user = `tkieffer' [Client.php:1579]
+FA65 .|    |    |    <= true
+FA65 .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+FA65 .|    |    <= true
+FA65 .|    |    no need to authenticate [Client.php:1247]
+FA65 .|    <= true
+FA65 .<= ''
+8E94 .START phpCAS-1.3.3 ****************** [CAS.php:438]
+8E94 .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+8E94 .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+8E94 .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+8E94 .|    <= ''
+8E94 .<= ''
+8E94 .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+8E94 .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+8E94 .<= ''
+8E94 .=> phpCAS::forceAuthentication() [auth.php:12]
+8E94 .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+8E94 .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+8E94 .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+8E94 .|    |    |    |    user = `tkieffer' [Client.php:1579]
+8E94 .|    |    |    <= true
+8E94 .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+8E94 .|    |    <= true
+8E94 .|    |    no need to authenticate [Client.php:1247]
+8E94 .|    <= true
+8E94 .<= ''
+4BAB .START phpCAS-1.3.3 ****************** [CAS.php:438]
+4BAB .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+4BAB .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+4BAB .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+4BAB .|    <= ''
+4BAB .<= ''
+4BAB .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+4BAB .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+4BAB .<= ''
+4BAB .=> phpCAS::forceAuthentication() [auth.php:12]
+4BAB .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+4BAB .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+4BAB .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+4BAB .|    |    |    |    user = `tkieffer' [Client.php:1579]
+4BAB .|    |    |    <= true
+4BAB .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+4BAB .|    |    <= true
+4BAB .|    |    no need to authenticate [Client.php:1247]
+4BAB .|    <= true
+4BAB .<= ''
+C66B .START phpCAS-1.3.3 ****************** [CAS.php:438]
+C66B .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+C66B .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+C66B .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+C66B .|    <= ''
+C66B .<= ''
+C66B .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+C66B .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+C66B .<= ''
+C66B .=> phpCAS::forceAuthentication() [auth.php:12]
+C66B .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+C66B .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+C66B .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+C66B .|    |    |    |    user = `tkieffer' [Client.php:1579]
+C66B .|    |    |    <= true
+C66B .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+C66B .|    |    <= true
+C66B .|    |    no need to authenticate [Client.php:1247]
+C66B .|    <= true
+C66B .<= ''
+A319 .START phpCAS-1.3.3 ****************** [CAS.php:438]
+A319 .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+A319 .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+A319 .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+A319 .|    <= ''
+A319 .<= ''
+A319 .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+A319 .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+A319 .<= ''
+A319 .=> phpCAS::forceAuthentication() [auth.php:12]
+A319 .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+A319 .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+A319 .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+A319 .|    |    |    |    user = `tkieffer' [Client.php:1579]
+A319 .|    |    |    <= true
+A319 .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+A319 .|    |    <= true
+A319 .|    |    no need to authenticate [Client.php:1247]
+A319 .|    <= true
+A319 .<= ''
+F9BE .START phpCAS-1.3.3 ****************** [CAS.php:438]
+F9BE .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+F9BE .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+F9BE .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+F9BE .|    <= ''
+F9BE .<= ''
+F9BE .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+F9BE .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+F9BE .<= ''
+F9BE .=> phpCAS::forceAuthentication() [auth.php:12]
+F9BE .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+F9BE .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+F9BE .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+F9BE .|    |    |    |    user = `tkieffer' [Client.php:1579]
+F9BE .|    |    |    <= true
+F9BE .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+F9BE .|    |    <= true
+F9BE .|    |    no need to authenticate [Client.php:1247]
+F9BE .|    <= true
+F9BE .<= ''
+96AC .START phpCAS-1.3.3 ****************** [CAS.php:438]
+96AC .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+96AC .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+96AC .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+96AC .|    <= ''
+96AC .<= ''
+96AC .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+96AC .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+96AC .<= ''
+96AC .=> phpCAS::forceAuthentication() [auth.php:12]
+96AC .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+96AC .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+96AC .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+96AC .|    |    |    |    user = `tkieffer' [Client.php:1579]
+96AC .|    |    |    <= true
+96AC .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+96AC .|    |    <= true
+96AC .|    |    no need to authenticate [Client.php:1247]
+96AC .|    <= true
+96AC .<= ''
+08E0 .START phpCAS-1.3.3 ****************** [CAS.php:438]
+08E0 .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+08E0 .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+08E0 .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+08E0 .|    <= ''
+08E0 .<= ''
+08E0 .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+08E0 .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+08E0 .<= ''
+08E0 .=> phpCAS::forceAuthentication() [auth.php:12]
+08E0 .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+08E0 .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+08E0 .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+08E0 .|    |    |    |    user = `tkieffer' [Client.php:1579]
+08E0 .|    |    |    <= true
+08E0 .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+08E0 .|    |    <= true
+08E0 .|    |    no need to authenticate [Client.php:1247]
+08E0 .|    <= true
+08E0 .<= ''
+1BDA .START phpCAS-1.3.3 ****************** [CAS.php:438]
+1BDA .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+1BDA .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+1BDA .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+1BDA .|    <= ''
+1BDA .<= ''
+1BDA .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+1BDA .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+1BDA .<= ''
+1BDA .=> phpCAS::forceAuthentication() [auth.php:12]
+1BDA .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+1BDA .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+1BDA .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+1BDA .|    |    |    |    user = `tkieffer' [Client.php:1579]
+1BDA .|    |    |    <= true
+1BDA .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+1BDA .|    |    <= true
+1BDA .|    |    no need to authenticate [Client.php:1247]
+1BDA .|    <= true
+1BDA .<= ''
+D202 .START phpCAS-1.3.3 ****************** [CAS.php:438]
+D202 .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+D202 .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+D202 .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+D202 .|    <= ''
+D202 .<= ''
+D202 .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+D202 .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+D202 .<= ''
+D202 .=> phpCAS::forceAuthentication() [auth.php:12]
+D202 .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+D202 .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+D202 .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+D202 .|    |    |    |    user = `tkieffer' [Client.php:1579]
+D202 .|    |    |    <= true
+D202 .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+D202 .|    |    <= true
+D202 .|    |    no need to authenticate [Client.php:1247]
+D202 .|    <= true
+D202 .<= ''
+A4E8 .START phpCAS-1.3.3 ****************** [CAS.php:438]
+A4E8 .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+A4E8 .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+A4E8 .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+A4E8 .|    <= ''
+A4E8 .<= ''
+A4E8 .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+A4E8 .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+A4E8 .<= ''
+A4E8 .=> phpCAS::forceAuthentication() [auth.php:12]
+A4E8 .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+A4E8 .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+A4E8 .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+A4E8 .|    |    |    |    user = `tkieffer' [Client.php:1579]
+A4E8 .|    |    |    <= true
+A4E8 .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+A4E8 .|    |    <= true
+A4E8 .|    |    no need to authenticate [Client.php:1247]
+A4E8 .|    <= true
+A4E8 .<= ''
+CEF9 .START phpCAS-1.3.3 ****************** [CAS.php:438]
+CEF9 .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+CEF9 .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+CEF9 .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+CEF9 .|    <= ''
+CEF9 .<= ''
+CEF9 .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+CEF9 .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+CEF9 .<= ''
+CEF9 .=> phpCAS::forceAuthentication() [auth.php:12]
+CEF9 .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+CEF9 .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+CEF9 .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+CEF9 .|    |    |    |    user = `tkieffer' [Client.php:1579]
+CEF9 .|    |    |    <= true
+CEF9 .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+CEF9 .|    |    <= true
+CEF9 .|    |    no need to authenticate [Client.php:1247]
+CEF9 .|    <= true
+CEF9 .<= ''
+2297 .START phpCAS-1.3.3 ****************** [CAS.php:438]
+2297 .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+2297 .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+2297 .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+2297 .|    <= ''
+2297 .<= ''
+2297 .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+2297 .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+2297 .<= ''
+2297 .=> phpCAS::forceAuthentication() [auth.php:12]
+2297 .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+2297 .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+2297 .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+2297 .|    |    |    |    user = `tkieffer' [Client.php:1579]
+2297 .|    |    |    <= true
+2297 .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+2297 .|    |    <= true
+2297 .|    |    no need to authenticate [Client.php:1247]
+2297 .|    <= true
+2297 .<= ''
+26FB .START phpCAS-1.3.3 ****************** [CAS.php:438]
+26FB .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+C595 .START phpCAS-1.3.3 ****************** [CAS.php:438]
+C595 .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+26FB .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+26FB .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+26FB .|    <= ''
+26FB .<= ''
+26FB .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+26FB .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+26FB .<= ''
+26FB .=> phpCAS::forceAuthentication() [auth.php:12]
+26FB .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+26FB .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+26FB .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+C595 .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+26FB .|    |    |    |    user = `tkieffer' [Client.php:1579]
+26FB .|    |    |    <= true
+26FB .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+26FB .|    |    <= true
+26FB .|    |    no need to authenticate [Client.php:1247]
+26FB .|    <= true
+26FB .<= ''
+2CC9 .START phpCAS-1.3.3 ****************** [CAS.php:438]
+2CC9 .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+2CC9 .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+C595 .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+C595 .|    <= ''
+C595 .<= ''
+C595 .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+C595 .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+C595 .<= ''
+C595 .=> phpCAS::forceAuthentication() [auth.php:12]
+C595 .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+C595 .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+C595 .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+C595 .|    |    |    |    user = `tkieffer' [Client.php:1579]
+C595 .|    |    |    <= true
+C595 .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+C595 .|    |    <= true
+C595 .|    |    no need to authenticate [Client.php:1247]
+C595 .|    <= true
+C595 .<= ''
+2CC9 .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+2CC9 .|    <= ''
+2CC9 .<= ''
+2CC9 .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+2CC9 .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+2CC9 .<= ''
+2CC9 .=> phpCAS::forceAuthentication() [auth.php:12]
+2CC9 .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+2CC9 .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+2CC9 .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+2CC9 .|    |    |    |    user = `tkieffer' [Client.php:1579]
+2CC9 .|    |    |    <= true
+2CC9 .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+2CC9 .|    |    <= true
+2CC9 .|    |    no need to authenticate [Client.php:1247]
+2CC9 .|    <= true
+2CC9 .<= ''
+BA61 .START phpCAS-1.3.3 ****************** [CAS.php:438]
+BA61 .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+BA61 .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+BA61 .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+BA61 .|    <= ''
+BA61 .<= ''
+BA61 .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+BA61 .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+BA61 .<= ''
+BA61 .=> phpCAS::forceAuthentication() [auth.php:12]
+BA61 .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+BA61 .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+BA61 .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+BA61 .|    |    |    |    user = `tkieffer' [Client.php:1579]
+BA61 .|    |    |    <= true
+BA61 .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+BA61 .|    |    <= true
+BA61 .|    |    no need to authenticate [Client.php:1247]
+BA61 .|    <= true
+BA61 .<= ''
+FE6B .START phpCAS-1.3.3 ****************** [CAS.php:438]
+FE6B .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+FE6B .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+FE6B .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+FE6B .|    <= ''
+FE6B .<= ''
+FE6B .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+FE6B .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+FE6B .<= ''
+FE6B .=> phpCAS::forceAuthentication() [auth.php:12]
+FE6B .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+FE6B .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+FE6B .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+FE6B .|    |    |    |    user = `tkieffer' [Client.php:1579]
+FE6B .|    |    |    <= true
+FE6B .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+FE6B .|    |    <= true
+FE6B .|    |    no need to authenticate [Client.php:1247]
+FE6B .|    <= true
+FE6B .<= ''
+2D2B .START phpCAS-1.3.3 ****************** [CAS.php:438]
+2D2B .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+2D2B .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+2D2B .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+2D2B .|    <= ''
+2D2B .<= ''
+2D2B .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+2D2B .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+2D2B .<= ''
+2D2B .=> phpCAS::forceAuthentication() [auth.php:12]
+2D2B .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+2D2B .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+2D2B .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+2D2B .|    |    |    |    user = `tkieffer' [Client.php:1579]
+2D2B .|    |    |    <= true
+2D2B .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+2D2B .|    |    <= true
+2D2B .|    |    no need to authenticate [Client.php:1247]
+2D2B .|    <= true
+2D2B .<= ''
+E5AC .START phpCAS-1.3.3 ****************** [CAS.php:438]
+E5AC .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+E5AC .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+E5AC .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+E5AC .|    <= ''
+E5AC .<= ''
+E5AC .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+E5AC .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+E5AC .<= ''
+E5AC .=> phpCAS::forceAuthentication() [auth.php:12]
+E5AC .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+E5AC .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+E5AC .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+E5AC .|    |    |    |    user = `tkieffer' [Client.php:1579]
+E5AC .|    |    |    <= true
+E5AC .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+E5AC .|    |    <= true
+E5AC .|    |    no need to authenticate [Client.php:1247]
+E5AC .|    <= true
+E5AC .<= ''
+00F3 .START phpCAS-1.3.3 ****************** [CAS.php:438]
+00F3 .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+00F3 .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+00F3 .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+00F3 .|    <= ''
+00F3 .<= ''
+00F3 .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+00F3 .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+00F3 .<= ''
+00F3 .=> phpCAS::forceAuthentication() [auth.php:12]
+00F3 .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+00F3 .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+00F3 .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+00F3 .|    |    |    |    user = `tkieffer' [Client.php:1579]
+00F3 .|    |    |    <= true
+00F3 .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+00F3 .|    |    <= true
+00F3 .|    |    no need to authenticate [Client.php:1247]
+00F3 .|    <= true
+00F3 .<= ''
+91AE .START phpCAS-1.3.3 ****************** [CAS.php:438]
+91AE .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+91AE .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+91AE .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+91AE .|    <= ''
+91AE .<= ''
+91AE .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+91AE .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+91AE .<= ''
+91AE .=> phpCAS::forceAuthentication() [auth.php:12]
+91AE .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+91AE .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+91AE .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+91AE .|    |    |    |    user = `tkieffer' [Client.php:1579]
+91AE .|    |    |    <= true
+91AE .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+91AE .|    |    <= true
+91AE .|    |    no need to authenticate [Client.php:1247]
+91AE .|    <= true
+91AE .<= ''
+DF18 .START phpCAS-1.3.3 ****************** [CAS.php:438]
+DF18 .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+DF18 .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+DF18 .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+DF18 .|    <= ''
+DF18 .<= ''
+DF18 .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+DF18 .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+DF18 .<= ''
+DF18 .=> phpCAS::forceAuthentication() [auth.php:12]
+DF18 .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+DF18 .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+DF18 .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+DF18 .|    |    |    |    user = `tkieffer' [Client.php:1579]
+DF18 .|    |    |    <= true
+DF18 .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+DF18 .|    |    <= true
+DF18 .|    |    no need to authenticate [Client.php:1247]
+DF18 .|    <= true
+DF18 .<= ''
+4966 .START phpCAS-1.3.3 ****************** [CAS.php:438]
+4966 .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+4966 .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+4966 .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+4966 .|    <= ''
+4966 .<= ''
+4966 .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+4966 .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+4966 .<= ''
+4966 .=> phpCAS::forceAuthentication() [auth.php:12]
+4966 .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+4966 .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+4966 .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+4966 .|    |    |    |    user = `tkieffer' [Client.php:1579]
+4966 .|    |    |    <= true
+4966 .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+4966 .|    |    <= true
+4966 .|    |    no need to authenticate [Client.php:1247]
+4966 .|    <= true
+4966 .<= ''
+95DE .START phpCAS-1.3.3 ****************** [CAS.php:438]
+95DE .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+95DE .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+95DE .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+95DE .|    <= ''
+95DE .<= ''
+95DE .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+95DE .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+95DE .<= ''
+95DE .=> phpCAS::forceAuthentication() [auth.php:12]
+95DE .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+95DE .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+95DE .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+95DE .|    |    |    |    user = `tkieffer' [Client.php:1579]
+95DE .|    |    |    <= true
+95DE .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+95DE .|    |    <= true
+95DE .|    |    no need to authenticate [Client.php:1247]
+95DE .|    <= true
+95DE .<= ''
+BB85 .START phpCAS-1.3.3 ****************** [CAS.php:438]
+BB85 .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+BB85 .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+BB85 .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+BB85 .|    <= ''
+BB85 .<= ''
+BB85 .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+BB85 .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+BB85 .<= ''
+BB85 .=> phpCAS::forceAuthentication() [auth.php:12]
+BB85 .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+BB85 .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+BB85 .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+BB85 .|    |    |    |    user = `tkieffer' [Client.php:1579]
+BB85 .|    |    |    <= true
+BB85 .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+BB85 .|    |    <= true
+BB85 .|    |    no need to authenticate [Client.php:1247]
+BB85 .|    <= true
+BB85 .<= ''
+3E8D .START phpCAS-1.3.3 ****************** [CAS.php:438]
+3E8D .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+3E8D .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+3E8D .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+3E8D .|    <= ''
+3E8D .<= ''
+3E8D .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+3E8D .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+3E8D .<= ''
+3E8D .=> phpCAS::forceAuthentication() [auth.php:12]
+3E8D .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+3E8D .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+3E8D .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+3E8D .|    |    |    |    user = `tkieffer' [Client.php:1579]
+3E8D .|    |    |    <= true
+3E8D .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+3E8D .|    |    <= true
+3E8D .|    |    no need to authenticate [Client.php:1247]
+3E8D .|    <= true
+3E8D .<= ''
+3AC8 .START phpCAS-1.3.3 ****************** [CAS.php:438]
+3AC8 .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+3AC8 .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+3AC8 .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+3AC8 .|    <= ''
+3AC8 .<= ''
+3AC8 .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+3AC8 .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+3AC8 .<= ''
+3AC8 .=> phpCAS::forceAuthentication() [auth.php:12]
+3AC8 .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+3AC8 .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+3AC8 .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+3AC8 .|    |    |    |    user = `tkieffer' [Client.php:1579]
+3AC8 .|    |    |    <= true
+3AC8 .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+3AC8 .|    |    <= true
+3AC8 .|    |    no need to authenticate [Client.php:1247]
+3AC8 .|    <= true
+3AC8 .<= ''
+DD1D .START phpCAS-1.3.3 ****************** [CAS.php:438]
+DD1D .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+DD1D .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+DD1D .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+DD1D .|    <= ''
+DD1D .<= ''
+DD1D .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+DD1D .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+DD1D .<= ''
+DD1D .=> phpCAS::forceAuthentication() [auth.php:12]
+DD1D .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+DD1D .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+DD1D .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+DD1D .|    |    |    |    user = `tkieffer' [Client.php:1579]
+DD1D .|    |    |    <= true
+DD1D .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+DD1D .|    |    <= true
+DD1D .|    |    no need to authenticate [Client.php:1247]
+DD1D .|    <= true
+DD1D .<= ''
+C76F .START phpCAS-1.3.3 ****************** [CAS.php:438]
+C76F .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+C76F .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+C76F .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+C76F .|    <= ''
+C76F .<= ''
+C76F .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+C76F .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+C76F .<= ''
+C76F .=> phpCAS::forceAuthentication() [auth.php:12]
+C76F .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+C76F .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+C76F .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+C76F .|    |    |    |    user = `tkieffer' [Client.php:1579]
+C76F .|    |    |    <= true
+C76F .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+C76F .|    |    <= true
+C76F .|    |    no need to authenticate [Client.php:1247]
+C76F .|    <= true
+C76F .<= ''
+A9A3 .START phpCAS-1.3.3 ****************** [CAS.php:438]
+A9A3 .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+A9A3 .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+A9A3 .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+A9A3 .|    <= ''
+A9A3 .<= ''
+A9A3 .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+A9A3 .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+A9A3 .<= ''
+A9A3 .=> phpCAS::forceAuthentication() [auth.php:12]
+A9A3 .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+A9A3 .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+A9A3 .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+A9A3 .|    |    |    |    user = `tkieffer' [Client.php:1579]
+A9A3 .|    |    |    <= true
+A9A3 .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+A9A3 .|    |    <= true
+A9A3 .|    |    no need to authenticate [Client.php:1247]
+A9A3 .|    <= true
+A9A3 .<= ''
+110C .START phpCAS-1.3.3 ****************** [CAS.php:438]
+110C .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+110C .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+110C .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+110C .|    <= ''
+110C .<= ''
+110C .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+110C .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+110C .<= ''
+110C .=> phpCAS::forceAuthentication() [auth.php:12]
+110C .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+110C .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+110C .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+110C .|    |    |    |    user = `tkieffer' [Client.php:1579]
+110C .|    |    |    <= true
+110C .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+110C .|    |    <= true
+110C .|    |    no need to authenticate [Client.php:1247]
+110C .|    <= true
+110C .<= ''
+F6E9 .START phpCAS-1.3.3 ****************** [CAS.php:438]
+F6E9 .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+F6E9 .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+F6E9 .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+F6E9 .|    <= ''
+F6E9 .<= ''
+F6E9 .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+F6E9 .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+F6E9 .<= ''
+F6E9 .=> phpCAS::forceAuthentication() [auth.php:12]
+F6E9 .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+F6E9 .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+F6E9 .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+F6E9 .|    |    |    |    user = `tkieffer' [Client.php:1579]
+F6E9 .|    |    |    <= true
+F6E9 .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+F6E9 .|    |    <= true
+F6E9 .|    |    no need to authenticate [Client.php:1247]
+F6E9 .|    <= true
+F6E9 .<= ''
+D16E .START phpCAS-1.3.3 ****************** [CAS.php:438]
+D16E .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+D16E .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+D16E .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+D16E .|    <= ''
+D16E .<= ''
+D16E .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+D16E .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+D16E .<= ''
+D16E .=> phpCAS::forceAuthentication() [auth.php:12]
+D16E .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+D16E .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+D16E .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+D16E .|    |    |    |    user = `tkieffer' [Client.php:1579]
+D16E .|    |    |    <= true
+D16E .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+D16E .|    |    <= true
+D16E .|    |    no need to authenticate [Client.php:1247]
+D16E .|    <= true
+D16E .<= ''
+D002 .START phpCAS-1.3.3 ****************** [CAS.php:438]
+D002 .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+D002 .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+D002 .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+D002 .|    <= ''
+D002 .<= ''
+D002 .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+D002 .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+D002 .<= ''
+D002 .=> phpCAS::forceAuthentication() [auth.php:12]
+D002 .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+D002 .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+D002 .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+D002 .|    |    |    |    user = `tkieffer' [Client.php:1579]
+D002 .|    |    |    <= true
+D002 .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+D002 .|    |    <= true
+D002 .|    |    no need to authenticate [Client.php:1247]
+D002 .|    <= true
+D002 .<= ''
+212A .START phpCAS-1.3.3 ****************** [CAS.php:438]
+212A .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+212A .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+212A .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+212A .|    <= ''
+212A .<= ''
+212A .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+212A .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+212A .<= ''
+212A .=> phpCAS::forceAuthentication() [auth.php:12]
+212A .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+212A .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+212A .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+212A .|    |    |    |    user = `tkieffer' [Client.php:1579]
+212A .|    |    |    <= true
+212A .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+212A .|    |    <= true
+212A .|    |    no need to authenticate [Client.php:1247]
+212A .|    <= true
+212A .<= ''
+2DBF .START phpCAS-1.3.3 ****************** [CAS.php:438]
+2DBF .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+2DBF .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+2DBF .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+2DBF .|    <= ''
+2DBF .<= ''
+2DBF .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+2DBF .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+2DBF .<= ''
+2DBF .=> phpCAS::forceAuthentication() [auth.php:12]
+2DBF .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+2DBF .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+2DBF .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+2DBF .|    |    |    |    user = `tkieffer' [Client.php:1579]
+2DBF .|    |    |    <= true
+2DBF .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+2DBF .|    |    <= true
+2DBF .|    |    no need to authenticate [Client.php:1247]
+2DBF .|    <= true
+2DBF .<= ''
+7BAE .START phpCAS-1.3.3 ****************** [CAS.php:438]
+7BAE .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+7BAE .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+7BAE .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+7BAE .|    <= ''
+7BAE .<= ''
+7BAE .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+7BAE .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+7BAE .<= ''
+7BAE .=> phpCAS::forceAuthentication() [auth.php:12]
+7BAE .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+7BAE .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+7BAE .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+7BAE .|    |    |    |    user = `tkieffer' [Client.php:1579]
+7BAE .|    |    |    <= true
+7BAE .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+7BAE .|    |    <= true
+7BAE .|    |    no need to authenticate [Client.php:1247]
+7BAE .|    <= true
+7BAE .<= ''
+EF63 .START phpCAS-1.3.3 ****************** [CAS.php:438]
+EF63 .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+EF63 .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+EF63 .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+EF63 .|    <= ''
+EF63 .<= ''
+EF63 .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+EF63 .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+EF63 .<= ''
+EF63 .=> phpCAS::forceAuthentication() [auth.php:12]
+EF63 .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+EF63 .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+EF63 .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+EF63 .|    |    |    |    user = `tkieffer' [Client.php:1579]
+EF63 .|    |    |    <= true
+EF63 .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+EF63 .|    |    <= true
+EF63 .|    |    no need to authenticate [Client.php:1247]
+EF63 .|    <= true
+EF63 .<= ''
+9B54 .START phpCAS-1.3.3 ****************** [CAS.php:438]
+9B54 .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+9B54 .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+9B54 .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+9B54 .|    <= ''
+9B54 .<= ''
+9B54 .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+9B54 .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+9B54 .<= ''
+9B54 .=> phpCAS::forceAuthentication() [auth.php:12]
+9B54 .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+9B54 .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+9B54 .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+9B54 .|    |    |    |    user = `tkieffer' [Client.php:1579]
+9B54 .|    |    |    <= true
+9B54 .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+9B54 .|    |    <= true
+9B54 .|    |    no need to authenticate [Client.php:1247]
+9B54 .|    <= true
+9B54 .<= ''
+FAA5 .START phpCAS-1.3.3 ****************** [CAS.php:438]
+FAA5 .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+FAA5 .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+FAA5 .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+FAA5 .|    <= ''
+FAA5 .<= ''
+FAA5 .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+FAA5 .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+FAA5 .<= ''
+FAA5 .=> phpCAS::forceAuthentication() [auth.php:12]
+FAA5 .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+FAA5 .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+FAA5 .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+FAA5 .|    |    |    |    user = `tkieffer' [Client.php:1579]
+FAA5 .|    |    |    <= true
+FAA5 .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+FAA5 .|    |    <= true
+FAA5 .|    |    no need to authenticate [Client.php:1247]
+FAA5 .|    <= true
+FAA5 .<= ''
+A02C .START phpCAS-1.3.3 ****************** [CAS.php:438]
+A02C .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+A02C .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+A02C .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+A02C .|    <= ''
+A02C .<= ''
+A02C .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+A02C .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+A02C .<= ''
+A02C .=> phpCAS::forceAuthentication() [auth.php:12]
+A02C .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+A02C .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+A02C .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+A02C .|    |    |    |    user = `tkieffer' [Client.php:1579]
+A02C .|    |    |    <= true
+A02C .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+A02C .|    |    <= true
+A02C .|    |    no need to authenticate [Client.php:1247]
+A02C .|    <= true
+A02C .<= ''
+D404 .START phpCAS-1.3.3 ****************** [CAS.php:438]
+D404 .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+D404 .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+D404 .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+D404 .|    <= ''
+D404 .<= ''
+D404 .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+D404 .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+D404 .<= ''
+D404 .=> phpCAS::forceAuthentication() [auth.php:12]
+D404 .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+D404 .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+D404 .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+D404 .|    |    |    |    user = `tkieffer' [Client.php:1579]
+D404 .|    |    |    <= true
+D404 .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+D404 .|    |    <= true
+D404 .|    |    no need to authenticate [Client.php:1247]
+D404 .|    <= true
+D404 .<= ''
+007C .START phpCAS-1.3.3 ****************** [CAS.php:438]
+007C .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+007C .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+007C .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+007C .|    <= ''
+007C .<= ''
+007C .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+007C .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+007C .<= ''
+007C .=> phpCAS::forceAuthentication() [auth.php:12]
+007C .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+007C .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+007C .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+007C .|    |    |    |    user = `tkieffer' [Client.php:1579]
+007C .|    |    |    <= true
+007C .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+007C .|    |    <= true
+007C .|    |    no need to authenticate [Client.php:1247]
+007C .|    <= true
+007C .<= ''
+CB67 .START phpCAS-1.3.3 ****************** [CAS.php:438]
+CB67 .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+CB67 .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+CB67 .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+CB67 .|    <= ''
+CB67 .<= ''
+CB67 .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+CB67 .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+CB67 .<= ''
+CB67 .=> phpCAS::forceAuthentication() [auth.php:12]
+CB67 .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+CB67 .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+CB67 .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+CB67 .|    |    |    |    user = `tkieffer' [Client.php:1579]
+CB67 .|    |    |    <= true
+CB67 .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+CB67 .|    |    <= true
+CB67 .|    |    no need to authenticate [Client.php:1247]
+CB67 .|    <= true
+CB67 .<= ''
+FC40 .START phpCAS-1.3.3 ****************** [CAS.php:438]
+FC40 .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+FC40 .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+FC40 .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+FC40 .|    <= ''
+FC40 .<= ''
+FC40 .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+FC40 .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+FC40 .<= ''
+FC40 .=> phpCAS::forceAuthentication() [auth.php:12]
+FC40 .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+FC40 .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+FC40 .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+FC40 .|    |    |    |    user = `tkieffer' [Client.php:1579]
+FC40 .|    |    |    <= true
+FC40 .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+FC40 .|    |    <= true
+FC40 .|    |    no need to authenticate [Client.php:1247]
+FC40 .|    <= true
+FC40 .<= ''
+6CED .START phpCAS-1.3.3 ****************** [CAS.php:438]
+6CED .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+6CED .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+6CED .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+6CED .|    <= ''
+6CED .<= ''
+6CED .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+6CED .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+6CED .<= ''
+6CED .=> phpCAS::forceAuthentication() [auth.php:12]
+6CED .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+6CED .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+6CED .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+6CED .|    |    |    |    user = `tkieffer' [Client.php:1579]
+6CED .|    |    |    <= true
+6CED .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+6CED .|    |    <= true
+6CED .|    |    no need to authenticate [Client.php:1247]
+6CED .|    <= true
+6CED .<= ''
+EE31 .START phpCAS-1.3.3 ****************** [CAS.php:438]
+EE31 .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+EE31 .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+EE31 .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+EE31 .|    <= ''
+EE31 .<= ''
+EE31 .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+EE31 .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+EE31 .<= ''
+EE31 .=> phpCAS::forceAuthentication() [auth.php:12]
+EE31 .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+EE31 .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+EE31 .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+EE31 .|    |    |    |    user = `tkieffer' [Client.php:1579]
+EE31 .|    |    |    <= true
+EE31 .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+EE31 .|    |    <= true
+EE31 .|    |    no need to authenticate [Client.php:1247]
+EE31 .|    <= true
+EE31 .<= ''
+AF85 .START phpCAS-1.3.3 ****************** [CAS.php:438]
+AF85 .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+AF85 .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+AF85 .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+AF85 .|    <= ''
+AF85 .<= ''
+AF85 .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+AF85 .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+AF85 .<= ''
+AF85 .=> phpCAS::forceAuthentication() [auth.php:12]
+AF85 .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+AF85 .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+AF85 .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+AF85 .|    |    |    |    user = `tkieffer' [Client.php:1579]
+AF85 .|    |    |    <= true
+AF85 .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+AF85 .|    |    <= true
+AF85 .|    |    no need to authenticate [Client.php:1247]
+AF85 .|    <= true
+AF85 .<= ''
+BA30 .START phpCAS-1.3.3 ****************** [CAS.php:438]
+BA30 .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+BA30 .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+BA30 .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+BA30 .|    <= ''
+BA30 .<= ''
+BA30 .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+BA30 .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+BA30 .<= ''
+BA30 .=> phpCAS::forceAuthentication() [auth.php:12]
+BA30 .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+BA30 .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+BA30 .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+BA30 .|    |    |    |    user = `tkieffer' [Client.php:1579]
+BA30 .|    |    |    <= true
+BA30 .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+BA30 .|    |    <= true
+BA30 .|    |    no need to authenticate [Client.php:1247]
+BA30 .|    <= true
+BA30 .<= ''
+E506 .START phpCAS-1.3.3 ****************** [CAS.php:438]
+E506 .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+E506 .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+E506 .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+E506 .|    <= ''
+E506 .<= ''
+E506 .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+E506 .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+E506 .<= ''
+E506 .=> phpCAS::forceAuthentication() [auth.php:12]
+E506 .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+E506 .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+E506 .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+E506 .|    |    |    |    user = `tkieffer' [Client.php:1579]
+E506 .|    |    |    <= true
+E506 .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+E506 .|    |    <= true
+E506 .|    |    no need to authenticate [Client.php:1247]
+E506 .|    <= true
+E506 .<= ''
+0903 .START phpCAS-1.3.3 ****************** [CAS.php:438]
+0903 .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+0903 .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+0903 .|    |    Starting a new session vl0l98ifoii3lek3acjgprkjl5 [Client.php:906]
+0903 .|    <= ''
+0903 .<= ''
+0903 .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+0903 .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+0903 .<= ''
+0903 .=> phpCAS::forceAuthentication() [auth.php:12]
+0903 .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+0903 .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+0903 .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+0903 .|    |    |    |    no user found [Client.php:1592]
+0903 .|    |    |    <= false
+0903 .|    |    |    no ticket found [Client.php:1453]
+0903 .|    |    <= false
+0903 .|    |    => CAS_Client::redirectToCas(false) [Client.php:1254]
+0903 .|    |    |    => CAS_Client::getServerLoginURL(false, false) [Client.php:1613]
+0903 .|    |    |    |    => CAS_Client::getURL() [Client.php:342]
+0903 .|    |    |    |    |    Final URI: http://localhost/secouruts/index.php/profile [Client.php:3466]
+0903 .|    |    |    |    <= 'http://localhost/secouruts/index.php/profile'
+0903 .|    |    |    <= 'https://cas.utc.fr/cas/login?service=http%3A%2F%2Flocalhost%2Fsecouruts%2Findex.php%2Fprofile'
+0903 .|    |    |    Redirect to : https://cas.utc.fr/cas/login?service=http%3A%2F%2Flocalhost%2Fsecouruts%2Findex.php%2Fprofile [Client.php:1620]
+0903 .|    |    |    exit()
+0903 .|    |    |    -
+0903 .|    |    -
+0903 .|    -
+DCCF .START phpCAS-1.3.3 ****************** [CAS.php:438]
+DCCF .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+DCCF .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+DCCF .|    |    Starting a new session vl0l98ifoii3lek3acjgprkjl5 [Client.php:906]
+DCCF .|    |    Ticket 'ST-3096706-WeYJSeryCveDMi9wQtay-cas.utc.fr' found [Client.php:988]
+DCCF .|    <= ''
+DCCF .<= ''
+DCCF .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+DCCF .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+DCCF .<= ''
+DCCF .=> phpCAS::forceAuthentication() [auth.php:12]
+DCCF .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+DCCF .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+DCCF .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+DCCF .|    |    |    |    no user found [Client.php:1592]
+DCCF .|    |    |    <= false
+DCCF .|    |    |    CAS 2.0 ticket `ST-3096706-WeYJSeryCveDMi9wQtay-cas.utc.fr' is present [Client.php:1406]
+DCCF .|    |    |    => CAS_Client::validateCAS20('', NULL, NULL) [Client.php:1409]
+DCCF .|    |    |    |     [Client.php:3101]
+DCCF .|    |    |    |    => CAS_Client::getServerServiceValidateURL() [Client.php:3108]
+DCCF .|    |    |    |    |    => CAS_Client::getURL() [Client.php:453]
+DCCF .|    |    |    |    |    |    Final URI: http://localhost/secouruts/index.php/profile [Client.php:3466]
+DCCF .|    |    |    |    |    <= 'http://localhost/secouruts/index.php/profile'
+DCCF .|    |    |    |    <= 'https://cas.utc.fr/cas/serviceValidate?service=http%3A%2F%2Flocalhost%2Fsecouruts%2Findex.php%2Fprofile'
+DCCF .|    |    |    |    => CAS_Client::_readURL('https://cas.utc.fr/cas/serviceValidate?service=http%3A%2F%2Flocalhost%2Fsecouruts%2Findex.php%2Fprofile&ticket=ST-3096706-WeYJSeryCveDMi9wQtay-cas.utc.fr', NULL, NULL, NULL) [Client.php:3118]
+DCCF .|    |    |    |    |    => CAS_Request_CurlRequest::sendRequest() [AbstractRequest.php:242]
+DCCF .|    |    |    |    |    |    Response Body: 
+DCCF .|    |    |    |    |    |    
+DCCF .|    |    |    |    |    |    
+DCCF .|    |    |    |    |    |    
+DCCF .|    |    |    |    |    |    
+DCCF .|    |    |    |    |    |    <cas:serviceResponse xmlns:cas='http://www.yale.edu/tp/cas'>
+DCCF .|    |    |    |    |    |    	<cas:authenticationSuccess>
+DCCF .|    |    |    |    |    |    		<cas:user>tkieffer</cas:user>
+DCCF .|    |    |    |    |    |    		<cas:attributes>
+DCCF .|    |    |    |    |    |    			
+DCCF .|    |    |    |    |    |    				
+DCCF .|    |    |    |    |    |    					<cas:mail>thomas.kieffer@etu.utc.fr</cas:mail>
+DCCF .|    |    |    |    |    |    				
+DCCF .|    |    |    |    |    |    					<cas:sn>Kieffer</cas:sn>
+DCCF .|    |    |    |    |    |    				
+DCCF .|    |    |    |    |    |    					<cas:ou>students</cas:ou>
+DCCF .|    |    |    |    |    |    				
+DCCF .|    |    |    |    |    |    					<cas:cn>Kieffer Thomas</cas:cn>
+DCCF .|    |    |    |    |    |    				
+DCCF .|    |    |    |    |    |    					<cas:givenName>Thomas</cas:givenName>
+DCCF .|    |    |    |    |    |    				
+DCCF .|    |    |    |    |    |    					<cas:displayName>Thomas Kieffer</cas:displayName>
+DCCF .|    |    |    |    |    |    				
+DCCF .|    |    |    |    |    |    			
+DCCF .|    |    |    |    |    |    		</cas:attributes>
+DCCF .|    |    |    |    |    |    
+DCCF .|    |    |    |    |    |    
+DCCF .|    |    |    |    |    |    	</cas:authenticationSuccess>
+DCCF .|    |    |    |    |    |    </cas:serviceResponse>
+DCCF .|    |    |    |    |    |    
+DCCF .|    |    |    |    |    |     [CurlRequest.php:84]
+DCCF .|    |    |    |    |    <= true
+DCCF .|    |    |    |    <= true
+DCCF .|    |    |    |    => CAS_Client::_readExtraAttributesCas20(DOMNodeList) [Client.php:3176]
+DCCF .|    |    |    |    |    Found nested jasig style attributes [Client.php:3263]
+DCCF .|    |    |    |    |    Attribute [mail] = thomas.kieffer@etu.utc.fr [Client.php:3270]
+DCCF .|    |    |    |    |    Attribute [sn] = Kieffer [Client.php:3270]
+DCCF .|    |    |    |    |    Attribute [ou] = students [Client.php:3270]
+DCCF .|    |    |    |    |    Attribute [cn] = Kieffer Thomas [Client.php:3270]
+DCCF .|    |    |    |    |    Attribute [givenName] = Thomas [Client.php:3270]
+DCCF .|    |    |    |    |    Attribute [displayName] = Thomas Kieffer [Client.php:3270]
+DCCF .|    |    |    |    <= ''
+DCCF .|    |    |    |    Storing Proxy List [Client.php:3185]
+DCCF .|    |    |    |    => CAS_ProxyChain_AllowedList::isProxyListAllowed(array ()) [Client.php:3188]
+DCCF .|    |    |    |    |    No proxies were found in the response [AllowedList.php:81]
+DCCF .|    |    |    |    <= true
+DCCF .|    |    |    |    => CAS_Client::_renameSession('ST-3096706-WeYJSeryCveDMi9wQtay-cas.utc.fr') [Client.php:3220]
+DCCF .|    |    |    |    |    Killing session: vl0l98ifoii3lek3acjgprkjl5 [Client.php:3582]
+DCCF .|    |    |    |    |    Starting session: ST-3096706-WeYJSeryCveDMi9wQtay-casutcfr [Client.php:3586]
+DCCF .|    |    |    |    |    Restoring old session vars [Client.php:3589]
+DCCF .|    |    |    |    <= ''
+DCCF .|    |    |    <= true
+DCCF .|    |    |    CAS 2.0 ticket `ST-3096706-WeYJSeryCveDMi9wQtay-cas.utc.fr' was validated [Client.php:1412]
+DCCF .|    |    |    => CAS_Client::getURL() [Client.php:1472]
+DCCF .|    |    |    <= 'http://localhost/secouruts/index.php/profile'
+DCCF .|    |    |    Prepare redirect to : http://localhost/secouruts/index.php/profile [Client.php:1472]
+DCCF .|    |    |    => CAS_Client::getURL() [Client.php:1474]
+DCCF .|    |    |    <= 'http://localhost/secouruts/index.php/profile'
+DCCF .|    |    |    exit()
+DCCF .|    |    |    -
+DCCF .|    |    -
+DCCF .|    -
+697D .START phpCAS-1.3.3 ****************** [CAS.php:438]
+697D .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+697D .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+697D .|    |    Starting a new session ST-3096706-WeYJSeryCveDMi9wQtay-casutcfr [Client.php:906]
+697D .|    <= ''
+697D .<= ''
+697D .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+697D .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+697D .<= ''
+697D .=> phpCAS::forceAuthentication() [auth.php:12]
+697D .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+697D .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+697D .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+697D .|    |    |    |    user = `tkieffer' [Client.php:1579]
+697D .|    |    |    <= true
+697D .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+697D .|    |    <= true
+697D .|    |    no need to authenticate [Client.php:1247]
+697D .|    <= true
+697D .<= ''
+FAB2 .START phpCAS-1.3.3 ****************** [CAS.php:438]
+FAB2 .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+FAB2 .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+FAB2 .|    |    Starting a new session ST-3096706-WeYJSeryCveDMi9wQtay-casutcfr [Client.php:906]
+FAB2 .|    <= ''
+FAB2 .<= ''
+FAB2 .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+FAB2 .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+FAB2 .<= ''
+FAB2 .=> phpCAS::forceAuthentication() [auth.php:12]
+FAB2 .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+FAB2 .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+FAB2 .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+FAB2 .|    |    |    |    user = `tkieffer' [Client.php:1579]
+FAB2 .|    |    |    <= true
+FAB2 .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+FAB2 .|    |    <= true
+FAB2 .|    |    no need to authenticate [Client.php:1247]
+FAB2 .|    <= true
+FAB2 .<= ''
+17E1 .START phpCAS-1.3.3 ****************** [CAS.php:438]
+17E1 .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+17E1 .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+17E1 .|    |    Starting a new session ST-3096706-WeYJSeryCveDMi9wQtay-casutcfr [Client.php:906]
+17E1 .|    <= ''
+17E1 .<= ''
+17E1 .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+17E1 .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+17E1 .<= ''
+17E1 .=> phpCAS::forceAuthentication() [auth.php:12]
+17E1 .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+17E1 .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+17E1 .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+17E1 .|    |    |    |    user = `tkieffer' [Client.php:1579]
+17E1 .|    |    |    <= true
+17E1 .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+17E1 .|    |    <= true
+17E1 .|    |    no need to authenticate [Client.php:1247]
+17E1 .|    <= true
+17E1 .<= ''
+80F4 .START phpCAS-1.3.3 ****************** [CAS.php:438]
+80F4 .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+80F4 .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+80F4 .|    |    Starting a new session ST-3096706-WeYJSeryCveDMi9wQtay-casutcfr [Client.php:906]
+80F4 .|    <= ''
+80F4 .<= ''
+80F4 .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+80F4 .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+80F4 .<= ''
+80F4 .=> phpCAS::forceAuthentication() [auth.php:12]
+80F4 .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+80F4 .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+80F4 .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+80F4 .|    |    |    |    user = `tkieffer' [Client.php:1579]
+80F4 .|    |    |    <= true
+80F4 .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+80F4 .|    |    <= true
+80F4 .|    |    no need to authenticate [Client.php:1247]
+80F4 .|    <= true
+80F4 .<= ''
+5049 .START phpCAS-1.3.3 ****************** [CAS.php:438]
+5049 .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+5049 .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+5049 .|    |    Starting a new session ST-3096706-WeYJSeryCveDMi9wQtay-casutcfr [Client.php:906]
+5049 .|    <= ''
+5049 .<= ''
+5049 .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+5049 .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+5049 .<= ''
+5049 .=> phpCAS::forceAuthentication() [auth.php:12]
+5049 .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+5049 .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+5049 .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+5049 .|    |    |    |    user = `tkieffer' [Client.php:1579]
+5049 .|    |    |    <= true
+5049 .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+5049 .|    |    <= true
+5049 .|    |    no need to authenticate [Client.php:1247]
+5049 .|    <= true
+5049 .<= ''
+E846 .START phpCAS-1.3.3 ****************** [CAS.php:438]
+E846 .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+E846 .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+E846 .|    |    Starting a new session ST-3096706-WeYJSeryCveDMi9wQtay-casutcfr [Client.php:906]
+E846 .|    <= ''
+E846 .<= ''
+E846 .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+E846 .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+E846 .<= ''
+E846 .=> phpCAS::forceAuthentication() [auth.php:12]
+E846 .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+E846 .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+E846 .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+E846 .|    |    |    |    user = `tkieffer' [Client.php:1579]
+E846 .|    |    |    <= true
+E846 .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+E846 .|    |    <= true
+E846 .|    |    no need to authenticate [Client.php:1247]
+E846 .|    <= true
+E846 .<= ''
+F803 .START phpCAS-1.3.3 ****************** [CAS.php:438]
+F803 .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+F803 .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+F803 .|    |    Starting a new session ST-3096706-WeYJSeryCveDMi9wQtay-casutcfr [Client.php:906]
+F803 .|    <= ''
+F803 .<= ''
+F803 .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+F803 .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+F803 .<= ''
+F803 .=> phpCAS::forceAuthentication() [auth.php:12]
+F803 .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+F803 .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+F803 .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+F803 .|    |    |    |    user = `tkieffer' [Client.php:1579]
+F803 .|    |    |    <= true
+F803 .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+F803 .|    |    <= true
+F803 .|    |    no need to authenticate [Client.php:1247]
+F803 .|    <= true
+F803 .<= ''
+FE91 .START phpCAS-1.3.3 ****************** [CAS.php:438]
+FE91 .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+FE91 .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+FE91 .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+FE91 .|    <= ''
+FE91 .<= ''
+FE91 .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+FE91 .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+FE91 .<= ''
+FE91 .=> phpCAS::forceAuthentication() [auth.php:12]
+FE91 .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+FE91 .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+FE91 .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+FE91 .|    |    |    |    user = `tkieffer' [Client.php:1579]
+FE91 .|    |    |    <= true
+FE91 .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+FE91 .|    |    <= true
+FE91 .|    |    no need to authenticate [Client.php:1247]
+FE91 .|    <= true
+FE91 .<= ''
+6326 .START phpCAS-1.3.3 ****************** [CAS.php:438]
+6326 .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+6326 .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+6326 .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+6326 .|    <= ''
+6326 .<= ''
+6326 .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+6326 .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+6326 .<= ''
+6326 .=> phpCAS::forceAuthentication() [auth.php:12]
+6326 .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+6326 .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+6326 .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+6326 .|    |    |    |    user = `tkieffer' [Client.php:1579]
+6326 .|    |    |    <= true
+6326 .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+6326 .|    |    <= true
+6326 .|    |    no need to authenticate [Client.php:1247]
+6326 .|    <= true
+6326 .<= ''
+B00B .START phpCAS-1.3.3 ****************** [CAS.php:438]
+B00B .=> phpCAS::client('2.0', 'cas.utc.fr', 443, '/cas') [auth.php:7]
+B00B .|    => CAS_Client::__construct('2.0', false, 'cas.utc.fr', 443, '/cas', true) [CAS.php:340]
+B00B .|    |    Starting a new session ST-3096151-ER7zN0SXPxAtlAWPL9AH-casutcfr [Client.php:906]
+B00B .|    <= ''
+B00B .<= ''
+B00B .=> phpCAS::setNoCasServerValidation() [auth.php:9]
+B00B .|    You have configured no validation of the legitimacy of the cas server. This is not recommended for production use. [CAS.php:1553]
+B00B .<= ''
+B00B .=> phpCAS::forceAuthentication() [auth.php:12]
+B00B .|    => CAS_Client::forceAuthentication() [CAS.php:1015]
+B00B .|    |    => CAS_Client::isAuthenticated() [Client.php:1245]
+B00B .|    |    |    => CAS_Client::_wasPreviouslyAuthenticated() [Client.php:1356]
+B00B .|    |    |    |    user = `tkieffer' [Client.php:1579]
+B00B .|    |    |    <= true
+B00B .|    |    |    user was already authenticated, no need to look for tickets [Client.php:1380]
+B00B .|    |    <= true
+B00B .|    |    no need to authenticate [Client.php:1247]
+B00B .|    <= true
+B00B .<= ''
