@@ -1,5 +1,7 @@
 <?php
 
+use Symfony\Component\HttpFoundation\Response;
+
 require_once 'auth.php';
 
 $app->get('/hello/{name}', function ($name) use ($app) {
@@ -47,9 +49,21 @@ $app->get('/users_content', function(){
 
 $app->get('/postes_content', function(){
 	ob_start();
-	require './views/postes_content.html';
+	require './views/postes_content.php';
 	$view = ob_get_clean();
 	return $view;
+});
+
+$app->get('/postes_content/{id}', function($id) use ($app){
+	$idposte = $id;
+	ob_start();
+	require './views/postes_content.php';
+	$view = ob_get_clean();
+	return $view;
+});
+
+$app->match('/admin/new_post',function(){
+	require './dps_controller';
 });
 
 $app->get('/logout', function(){

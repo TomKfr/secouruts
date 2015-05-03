@@ -10,6 +10,8 @@
 	<link rel="stylesheet" href="../src/css/reset.css" type="text/css" />
 	<link rel="stylesheet" href="../src/css/main.css" type="text/css" />
 	<link rel="stylesheet" href="../src/css/responsive.css" type="text/css" />
+	<link rel="stylesheet" href="../src/css/datepicker.css" type="text/css" />
+	<link rel="stylesheet" href="../src/css/bootstrap-datetimepicker.min.css" type="text/css" />
 	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/themes/base/jquery-ui.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
@@ -60,10 +62,6 @@
 					<li id="users"><a>Utilisateurs</a></li>
 					<!-- <li ><a>Autre ??</a></li> -->
 				</ul>
-				<br> <!-- BEURK !!! -->
-				<div>
-					DIV utilitaire : mettre le formulaire de modification ... etc ...
-				</div>
 				<br>
 				<div id="content">
 				</div>
@@ -90,12 +88,16 @@
 	<script src="https://code.jquery.com/jquery-2.1.3.min.js" type="text/javascript"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<script	src="../src/moment-with-locales.min.js"></script>
+	<script	src="../src/bootstrap-datepicker.js"></script>
+	<script	src="../src/bootstrap-datepicker.fr.min.js"></script>
+	<script	src="../src/bootstrap-datetimepicker.min.js"></script>
 	<script src="http://assos.utc.fr/secouruts/javascript/loader.js" type="text/javascript"></script>
-	<script src="http://assos.utc.fr/secouruts/bundles/fosjsrouting/js/router.js"></script> -->
+	<script src="http://assos.utc.fr/secouruts/bundles/fosjsrouting/js/router.js"></script>
 	<script src="http://assos.utc.fr/secouruts/javascript/jquery.blockUI.js" type=text/javascript></script>
 	<script type="text/javascript">
 		$(function(){
-			$('#content').load('postes_content'); //	AJAAAAAAAX !!!
+			$('#content').load('./postes_content'); //	AJAAAAAAAX !!!
 			$("#postes").click(function(){
 				if($('#postes').attr('class')!='active'){
 					$("[class='active']").attr('class','');
