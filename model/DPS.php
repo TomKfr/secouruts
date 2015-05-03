@@ -42,8 +42,11 @@ class DPS
 	public function __construct()
 	{
 		$this->creneaux = new \Doctrine\Common\Collections\ArrayCollection();
-		//Générer les créneaux dès la construction ?
+		//Générer les créneaux dès la construction ? -> pas possible. à faire une fois que les dates de deb et fin sont ok.
 		$this->inscriptions = new \Doctrine\Common\Collections\ArrayCollection();
+
+		$this->setClosed(false);
+		$this->setCancelled(false);
 	}
 
 	//Getters & setters
@@ -112,7 +115,7 @@ class DPS
 	{
 		return $this->iscancelled;
 	}
-	public function setCancelled($can)
+	public function setCancelled($can = false)
 	{
 		$this->iscancelled = $can;
 	}

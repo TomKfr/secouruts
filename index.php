@@ -4,7 +4,9 @@ require_once './vendor/autoload.php';
 
 $app = new Silex\Application();
 $app['debug'] = true;
-$GLOBALS['app'] = $app;
+
+// obtaining the entity manager
+$app['entity_manager'] = require './src/doctrine/doctrine.php';
 
 require './app/routes.php';
 

@@ -5,6 +5,9 @@
 		"doctrine/orm": "2.4.7"
 	},
 	"autoload":{
-		"psr-0":{"":"/model"}
+		"psr-0":{
+			"" : "model/",
+			"Secouruts" : "model/"
+			}
 	}
 }

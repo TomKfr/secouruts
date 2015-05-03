@@ -13,7 +13,7 @@
 		<button id="addpost" class="btn btn-success">Ajouter un nouveau poste</button>
 	</div>
 	<div id="formdiv" class="col-md-12" style="margin-top : 15px">
-		<form id="newpost" class="form-horizontal" method='post' action="./admin/new_post">
+		<form id="newpost" class="form-horizontal" method='post' action="./new_post">
 			<div class="form-group">
 				<label class="col-md-2 control-label" for="titre">Titre</label>  
 				<div class="col-md-10">
@@ -30,7 +30,7 @@
 				<div class="col-md-6 form-group">
 					<label class="col-md-3 control-label" for="datefin">Fin</label>
 					<div class="col-md-4">
-						<input id="datefin" type="text" name="datedeb" class="form-control datetimepicker">
+						<input id="datefin" type="text" name="datefin" class="form-control datetimepicker">
 					</div>
 				</div>
 			</div>
@@ -38,7 +38,10 @@
 				<label class="col-md-2 control-label" for="typpost">Type</label>
 				<div class="col-md-4">
 					<select id="typpost" name="typpost" class="form-control">
-						<option value="">Typ1</option>
+						<option value="">PAPS</option>
+						<option value="">DPS-PE</option>
+						<option value="">DPS-ME</option>
+						<option value="">DPS-GE</option>
 					</select>
 				</div>
 			</div>
@@ -72,19 +75,32 @@
 					<input id="nbpse2" type="text" name="nbpse2" class="form-control">
 				</div>
 			</div>
+			<div class="form-group">
+				<label class="col-md-2 control-label" for"desc">Description</label>
+				<div class="col-md-4">
+					<textarea id="desc" name="desc" class="form-control"/>
+				</div>
+			</div>
 			<div class="col-md-offset-4">
 				<button id="submit" class="btn btn-primary">Valider</button>
 		</form>
-
 	</div>
+</div>
+<div id="successdiv" class="col-md-offset-3 col-md-6 alert alert-success" style="margin-top : 15px">
+			<h3 align="center">Ajout réussi !</h3>
+</div>
+<div id="faildiv" class="col-md-offset-3 col-md-6 alert alert-danger" style="margin-top : 15px">
+			<h3 align="center">Echec ...</h3>
 </div>
 <script type="text/javascript">
 	$(function(){
 		$('.datetimepicker').datetimepicker({ locale: 'fr'});
+		$('#limitdate').datepicker({language: 'fr'});
 		$('#formdiv').hide();
+		$('.alert').hide();
 
 		$('#addpost').click(function(){
-			$('#formdiv').toggle();
+			$('#formdiv').toggle('slow');
 		});
 
 		$('#submit').click(function(event){
@@ -93,13 +109,22 @@
 			//Si valide alors : 
 
 			$this = $(newpost);
-			//Envoi en ajax :
+			// //Envoi en ajax :
 			$.ajax({
                 url: $this.attr('action'), // Le nom du fichier indiqué dans le formulaire
                 type: $this.attr('method'), // La méthode indiquée dans le formulaire (get ou post)
                 data: $this.serialize(), // Je sérialise les données (j'envoie toutes les valeurs présentes dans le formulaire)
                 success: function(html) {
-                    alert(html);
+                    if(html == "OK"){
+                    	$('#formdiv').hide('slow');
+                    	$(':input','#formdiv')
+								 .not(':button, :submit, :reset, :hidden')
+								 .val('')
+								 .removeAttr('checked')
+								 .removeAttr('selected');
+						$('#successdiv').show('slow');
+                    }
+                    else { $('#faildiv').show(); }
                 }
            });
 		});
