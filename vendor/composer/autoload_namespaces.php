@@ -13,6 +13,7 @@ return array(
     'Symfony\\Component\\Debug\\' => array($vendorDir . '/symfony/debug'),
     'Symfony\\Component\\Console\\' => array($vendorDir . '/symfony/console'),
     'Silex' => array($vendorDir . '/silex/silex/src'),
+    'Secouruts' => array($baseDir . '/model'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log'),
     'Pimple' => array($vendorDir . '/pimple/pimple/lib'),
     'Doctrine\\ORM\\' => array($vendorDir . '/doctrine/orm/lib'),
@@ -23,5 +24,5 @@ return array(
     'Doctrine\\Common\\Cache\\' => array($vendorDir . '/doctrine/cache/lib'),
     'Doctrine\\Common\\Annotations\\' => array($vendorDir . '/doctrine/annotations/lib'),
     'Doctrine\\Common\\' => array($vendorDir . '/doctrine/common/lib'),
-    '' => array('/model'),
+    '' => array($baseDir . '/model'),
 );
