@@ -2,10 +2,6 @@
 
 require_once 'require.php';
 
-// require_once 'auth.php';
-// require_once 'dps_controller.php';
-// require_once 'AdminController.php';
-// require_once 'AjaxController.php';
 
 $app->get('/hello/{name}', function ($name) use ($app) {
     return 'Hello ' . $app->escape($name);
