@@ -37,6 +37,14 @@ $app->get('/postes_content/{id}', function($id) use ($app){
 	return $view;
 });
 
+$app->get('/users_content/{id}', function($login) use ($app){
+	$iduser = $login;
+	ob_start();
+	require './views/users_content.php';
+	$view = ob_get_clean();
+	return $view;
+});
+
 $app->get('/logout', function(){
 	$GLOBALS['user'] = null;
 	require_once './vendor/jasig/phpcas/config.php';
