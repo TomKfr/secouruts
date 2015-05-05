@@ -29,14 +29,6 @@ $app->get('/profile', function(){
 	return $view;
 });
 
-$app->get('/postes_content/{id}', function($id) use ($app){
-	$idposte = $id;
-	ob_start();
-	require './views/postes_content.php';
-	$view = ob_get_clean();
-	return $view;
-});
-
 $app->get('/logout', function(){
 	$GLOBALS['user'] = null;
 	require_once './vendor/jasig/phpcas/config.php';

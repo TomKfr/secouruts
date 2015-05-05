@@ -1,10 +1,5 @@
 <?php
 
-// require __DIR__.'/../model/DPS.php';
-// require __DIR__.'/../model/Creneau.php';
-// require __DIR__.'/../model/Inscription.php';
-// require __DIR__.'/../model/Secouriste.php';
-
 use Silex\Application;
 use Silex\ControllerProviderInterface;
 use Secouruts\DPS;

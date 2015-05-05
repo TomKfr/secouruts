@@ -1,10 +1,5 @@
 <?php
 
-// require_once __DIR__.'/../model/DPS.php';
-// require_once __DIR__.'/../model/Creneau.php';
-// require_once __DIR__.'/../model/Inscription.php';
-// require_once __DIR__.'/../model/Secouriste.php';
-
 use Silex\Application;
 use Silex\ControllerProviderInterface;
 use Secouruts\DPS;
@@ -16,6 +11,7 @@ class DPSController implements ControllerProviderInterface
 		$controllers = $app['controllers_factory'];
 
 		$controllers->post('/new_post',function() use ($app){
+			$id = $_POST['id'];
 			$titre = $_POST['titre'] ;
 			$type = $_POST['typpost'] ;
 			$desc = $_POST['desc'] ;
@@ -27,23 +23,28 @@ class DPSController implements ControllerProviderInterface
 			$fin = $_POST['datefin'] ;
 			$client = $_POST['client'] ;
 
-			$newdps = new DPS();
+			if($id == null){
+				$newdps = new DPS();
+			}
+			else{
+				$newdps = $app['entity_manager']->find('Secouruts\DPS', $id);
+			}
 
 			$newdps->setTitre($titre);
 			$newdps->setType($type);
 			$newdps->setDesc($desc);
 			$newdps->setLieu($lieu);
-			$newdps->setLimitDate(new \DateTime(trim($limdate)));
+			$newdps->setLimitDate(\DateTime::createFromFormat('d/m/Y', $limdate));
 			$newdps->setPSE1($nbpse1);
 			$newdps->setPSE2($nbpse2);
-			$newdps->setDebut(new \DateTime(trim($debut)));
-			$newdps->setFin(new \DateTime(trim($fin)));
+			$newdps->setDebut(\DateTime::createFromFormat('d/m/Y H:i', $debut));
+			$newdps->setFin(\DateTime::createFromFormat('d/m/Y H:i', $fin));
 			$newdps->setClient($client);
 
 			$app['entity_manager']->persist($newdps);
 			$app['entity_manager']->flush();
 
-			return "OK";
+			return $newdps->getId();
 		});
 
 		$controllers->get('/get/{id}', function($id) use ($app)
@@ -53,12 +54,25 @@ class DPSController implements ControllerProviderInterface
 				return $postes;
 			}
 			else {
-
+				$dps = $app['entity_manager']->getRepository('Secouruts\DPS')->find($id);
+				ob_start();
+				require './views/dps_info.php';
+				$view = ob_get_clean();
+				return $view;
 			}
 		});
 
+		$controllers->get('/delete/{id}', function($id) use ($app){
+			if($id != null){
+				$dps = $app['entity_manager']->getRepository('Secouruts\DPS')->find($id);
+				$app['entity_manager']->remove($dps);
+				$app['entity_manager']->flush();
+				return "ok";
+			}
+			else return "err";
+		});
 
-		return $controllers;
+	return $controllers;
 	}
 }
 
