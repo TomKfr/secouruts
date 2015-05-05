@@ -97,19 +97,19 @@
 	<script src="http://assos.utc.fr/secouruts/javascript/jquery.blockUI.js" type=text/javascript></script>
 	<script type="text/javascript">
 		$(function(){
-			$('#content').load('./postes_content'); //	AJAAAAAAAX !!!
+			$('#content').load('../ajax/postes_content'); //	AJAAAAAAAX !!!
 			$("#postes").click(function(){
 				if($('#postes').attr('class')!='active'){
 					$("[class='active']").attr('class','');
 					$('#postes').attr('class','active');
-					$('#content').load('postes_content');
+					$('#content').load('../ajax/postes_content');
 				}
 			});
 			$("#users").click(function(){
 				if(!$('#users').attr('class')!='active'){
 					$("[class='active']").attr('class','');
 					$('#users').attr('class','active');
-					$('#content').load('users_content');
+					$('#content').load('../ajax/users_content');
 				}
 			});
 		});

@@ -13,7 +13,7 @@
 		<button id="addpost" class="btn btn-success">Ajouter un nouveau poste</button>
 	</div>
 	<div id="formdiv" class="col-md-12" style="margin-top : 15px">
-		<form id="newpost" class="form-horizontal" method='post' action="./new_post">
+		<form id="newpost" class="form-horizontal" method='post' action="../dps/new_post">
 			<div class="form-group">
 				<label class="col-md-2 control-label" for="titre">Titre</label>  
 				<div class="col-md-10">
@@ -93,40 +93,41 @@
 			<h3 align="center">Echec ...</h3>
 </div>
 <script type="text/javascript">
-	$(function(){
-		$('.datetimepicker').datetimepicker({ locale: 'fr'});
-		$('#limitdate').datepicker({language: 'fr'});
-		$('#formdiv').hide();
-		$('.alert').hide();
+$(function(){
+	$('.datetimepicker').datetimepicker({ locale: 'fr'});
+	$('#limitdate').datepicker({language: 'fr'});
+	$('#formdiv').hide();
+	$('.alert').hide();
 
-		$('#addpost').click(function(){
-			$('#formdiv').toggle('slow');
-		});
+	$('#addpost').click(function(){
+		$('#formdiv').toggle('slow');
+	});
 
-		$('#submit').click(function(event){
-			event.preventDefault();
+	$('#submit').click(function(event){
+		event.preventDefault();
 			//Valider le conformité du formulaire et l'envoyer si OK, alerter sinon.
 			//Si valide alors : 
 
-			$this = $(newpost);
+			$this = $('#newpost');
 			// //Envoi en ajax :
 			$.ajax({
                 url: $this.attr('action'), // Le nom du fichier indiqué dans le formulaire
                 type: $this.attr('method'), // La méthode indiquée dans le formulaire (get ou post)
                 data: $this.serialize(), // Je sérialise les données (j'envoie toutes les valeurs présentes dans le formulaire)
                 success: function(html) {
-                    if(html == "OK"){
-                    	$('#formdiv').hide('slow');
-                    	$(':input','#formdiv')
-								 .not(':button, :submit, :reset, :hidden')
-								 .val('')
-								 .removeAttr('checked')
-								 .removeAttr('selected');
-						$('#successdiv').show('slow');
-                    }
-                    else { $('#faildiv').show(); }
+                	$('#formdiv').hide('slow');
+                	$(':input','#formdiv')
+                	.not(':button, :submit, :reset, :hidden')
+                	.val('')
+                	.removeAttr('checked')
+                	.removeAttr('selected');
+                	$('#successdiv').show('slow');
+                },
+                statusCode: {
+                	500: function() { $('#faildiv').show(); }
                 }
-           });
+            });
+
 		});
-	});
+});
 </script>

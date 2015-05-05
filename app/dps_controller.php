@@ -1,9 +1,9 @@
 <?php
 
-require __DIR__.'/../model/DPS.php';
-require __DIR__.'/../model/Creneau.php';
-require __DIR__.'/../model/Inscription.php';
-require __DIR__.'/../model/Secouriste.php';
+// require_once __DIR__.'/../model/DPS.php';
+// require_once __DIR__.'/../model/Creneau.php';
+// require_once __DIR__.'/../model/Inscription.php';
+// require_once __DIR__.'/../model/Secouriste.php';
 
 use Silex\Application;
 use Silex\ControllerProviderInterface;
@@ -14,28 +14,6 @@ class DPSController implements ControllerProviderInterface
 	public function connect(Application $app)
 	{
 		$controllers = $app['controllers_factory'];
-
-		$controllers->get('/', function() {
-			$user = $GLOBALS['user'];
-			ob_start();
-			require './views/admin_view.php';
-			$view = ob_get_clean();
-			return $view;
-		});
-
-		$controllers->get('/users_content', function(){
-			ob_start();
-			require './views/users_content.html';
-			$view = ob_get_clean();
-			return $view;
-		});
-
-		$controllers->get('/postes_content', function(){
-			ob_start();
-			require './views/postes_content.php';
-			$view = ob_get_clean();
-			return $view;
-		});
 
 		$controllers->post('/new_post',function() use ($app){
 			$titre = $_POST['titre'] ;
@@ -55,17 +33,28 @@ class DPSController implements ControllerProviderInterface
 			$newdps->setType($type);
 			$newdps->setDesc($desc);
 			$newdps->setLieu($lieu);
-			$newdps->setLimitDate(new \DateTime($limdate));
+			$newdps->setLimitDate(new \DateTime(trim($limdate)));
 			$newdps->setPSE1($nbpse1);
 			$newdps->setPSE2($nbpse2);
-			$newdps->setDebut(new \DateTime($debut));
-			$newdps->setFin(new \DateTime($fin));
+			$newdps->setDebut(new \DateTime(trim($debut)));
+			$newdps->setFin(new \DateTime(trim($fin)));
 			$newdps->setClient($client);
 
 			$app['entity_manager']->persist($newdps);
 			$app['entity_manager']->flush();
 
 			return "OK";
+		});
+
+		$controllers->get('/get/{id}', function($id) use ($app)
+		{
+			if($id == "all"){
+				$postes = $app['entity_manager']->getRepository('Secouruts\DPS')->findAll();
+				return $postes;
+			}
+			else {
+
+			}
 		});
 
 
