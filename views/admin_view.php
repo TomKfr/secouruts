@@ -15,6 +15,7 @@
 	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/themes/base/jquery-ui.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
 
 </head>
 
@@ -92,9 +93,10 @@
 	<script	src="../../src/bootstrap-datepicker.js"></script>
 	<script	src="../../src/bootstrap-datepicker.fr.min.js"></script>
 	<script	src="../../src/bootstrap-datetimepicker.min.js"></script>
-	<script src="http://assos.utc.fr/secouruts/javascript/loader.js" type="text/javascript"></script>
+	<!-- <script src="http://assos.utc.fr/secouruts/javascript/loader.js" type="text/javascript"></script>
 	<script src="http://assos.utc.fr/secouruts/bundles/fosjsrouting/js/router.js"></script>
-	<script src="http://assos.utc.fr/secouruts/javascript/jquery.blockUI.js" type=text/javascript></script>
+	<script src="http://assos.utc.fr/secouruts/javascript/jquery.blockUI.js" type=text/javascript></script> -->
+	<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.js"></script>
 	<script type="text/javascript">
 		$(function(){
 			$('#content').load('../ajax/postes_content'); //	AJAAAAAAAX !!!

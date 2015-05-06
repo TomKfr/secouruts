@@ -30,7 +30,7 @@ function dps_action(action){
 			url: '../dps/'+action+'/'+dps_id,
 			type: 'get',
 			success: function(data){
-				alert(data);
+				//alert(data);
 			},
 			error: function(data){
 				alert(data);
@@ -62,10 +62,12 @@ $(function(){
 
 	$('#close').click(function(){
 		dps_action('close');
+		toastr.info('Le poste '+$('#selectbasic').text()+' a été clos.');
 	});
 
 	$('#cancel').click(function(){
 		dps_action('cancel');
+		toastr.warning('Le poste a été annulé.');
 	});
 
 	$('#delete').click(function(){
@@ -73,11 +75,13 @@ $(function(){
 		$('#selectbasic option[value='+'"'+dps_id+'"]').remove();
 		$('#control_buttons').hide('fast');
 		$('#info').empty();
+		toastr.danger('Le poste a été supprimé.');
 	});
 
 	$('#modify').click(function(){
 		var dps_id = $('#selectbasic').val();
 		$('#content').load('../ajax/dps_form/'+dps_id);
+		toastr.info('Modification du poste.');
 	});
 });
 </script>

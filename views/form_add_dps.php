@@ -76,12 +76,12 @@
 
 	</form>
 </div>
-<div id="successdiv" class="col-md-offset-1 col-md-10 alert alert-success" style="margin-top : 15px">
+<!-- <div id="successdiv" class="col-md-offset-1 col-md-10 alert alert-success" style="margin-top : 15px">
 			<h4 align="center">Enregistrement réussi !</h4>
 </div>
 <div id="faildiv" class="col-md-offset-3 col-md-6 alert alert-danger" style="margin-top : 15px">
 			<h3 align="center">Echec ...</h3>
-</div>
+</div> -->
 
 <script>
 
@@ -102,12 +102,13 @@ $(function(){
                 type: $this.attr('method'), // La méthode indiquée dans le formulaire (get ou post)
                 data: $this.serialize(), // Je sérialise les données (j'envoie toutes les valeurs présentes dans le formulaire)
                 success: function(html) {
-                	$('#successdiv').show('slow');
+                	toastr.clear();
+                	toastr.success('Enregistrement réussi !');
                 	$('#submit').text("Modifier");
                 	$('#hidden').attr('value', html);
                 },
-                statusCode: {
-                	500: function() { $('#faildiv').show('slow'); }
+                error: {
+                	//toastr.error('Il y a eu un problème...');
                 }
             });
 
