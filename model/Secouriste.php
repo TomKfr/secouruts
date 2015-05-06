@@ -15,7 +15,7 @@ class Secouriste
 	protected $prenom;
 	/** @Column(type="datetime") */
 	protected $ddn;
-	/** @Column(type="datetime") */
+	/** @Column(type="string") */
 	protected $ldn;
 	/** @Column(type="string") */
 	protected $adresse;

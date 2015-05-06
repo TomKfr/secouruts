@@ -1,5 +1,5 @@
 <div id="formdiv" class="col-md-12" style="margin-top : 15px">
-	<form id="newuser" class="form-horizontal" method='post' action="..secouriste/new_user">
+	<form id="newuser" class="form-horizontal" method='post' action="../secouriste/new_user">
 		<div class="form-group">
 			<label class="col-md-2 control-label" for="login">Login</label>  
 			<div class="col-md-10">
@@ -7,15 +7,15 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label class="col-md-2 control-label" for="name">Nom</label>
+			<label class="col-md-2 control-label" for="nom">Nom</label>
 			<div class="col-md-10">
 				<input id="nom" type="text" name="nom" class="form-control">
 			</div>
 		</div>
 		<div class="form-group">
-			<label class="col-md-2 control-label" for="firstname">Prénom</label>
+			<label class="col-md-2 control-label" for="prenom">Prénom</label>
 			<div class="col-md-10">
-				<input id="firstname" type="text" name="firstname" class="form-control">
+				<input id="prenom" type="text" name="prenom" class="form-control">
 			</div>
 		</div>
 		<div class="form-group">
@@ -28,7 +28,7 @@
 			<button id="submit" class="btn btn-primary">Valider</button>
 			<button id="back" class="btn btn-info">Retour</button>
 		</div>
-		<input id="hidden" type="hidden" name="login" >
+		<!-- <input id="hidden" type="hidden" name="login" > Pas deux éléments avec le même nom !--> 
 
 	</form>
 </div>
@@ -45,26 +45,26 @@ $(function(){
 	$('.alert').hide();
 
 	$('#submit').click(function(event){
-		event.preventDefault();
+		//event.preventDefault();
 			//Valider le conformité du formulaire et l'envoyer si OK, alerter sinon.
 			//Si valide alors : 
 
 			$this = $('#newuser');
 			//Envoi en ajax :
-			$.ajax({
-                url: $this.attr('action'), // Le nom du fichier indiqué dans le formulaire
-                type: $this.attr('method'), // La méthode indiquée dans le formulaire (get ou post)
-                data: $this.serialize(), // Je sérialise les données (j'envoie toutes les valeurs présentes dans le formulaire)
-                success: function(html) {
-                	$('#successdiv').show('slow');
-                	$('#submit').text("Modifier");
-                	alert("login du user : "+html);
-                	$('#hidden').attr('value', html);
-                },
-                statusCode: {
-                	500: function() { $('#faildiv').show('slow'); }
-                }
-            });
+			// $.ajax({
+   //              url: $this.attr('action'), // Le nom du fichier indiqué dans le formulaire
+   //              type: $this.attr('method'), // La méthode indiquée dans le formulaire (get ou post)
+   //              data: $this.serialize(), // Je sérialise les données (j'envoie toutes les valeurs présentes dans le formulaire)
+   //              success: function(html) {
+   //              	$('#successdiv').show('slow');
+   //              	$('#submit').text("Modifier");
+   //              	alert("login du user : "+html);
+   //              	$('#hidden').attr('value', html);
+   //              },
+   //              statusCode: {
+   //              	500: function() { $('#faildiv').show('slow'); }
+   //              }
+   //          });
 
 		});
 	

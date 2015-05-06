@@ -12,26 +12,41 @@ class UsersController implements ControllerProviderInterface
 
 		$controllers->post('/new_user',function() use ($app){
 			$login = $_POST['login'];
-			$nom = $_POST['name'] ;
-			$prenom = $_POST['firstname'] ;
-			$admin = $_POST['admin'] ;
+			$nom = $_POST['nom'] ; //Le nom de la variable dans le formulaire est 'nom';
+			// $prenom = $_POST['firstname'] ; C'est cette ligne qui merdait, je ne comprends pas pourquoi ...
+			$prenom = $_POST['prenom'];
+			if(isset($_POST['admin'])) $admin = true; //ce test est nécessaire car si la case n'est pas cochée, la variable $_POST['admin'] n'existe pas, ça renvoie une erreur quand tu essayes d'avoir la valeur.
+			else $admin = false;
 
-			if($login == null){
-				$newuser = new Secouriste();
-			}
-			else{
-				$newuser = $app['entity_manager']->find('Secouruts\Secouriste', $login);
-			}
+			// if($login == null){                  -------> Login ne sera jamais null car il est rentré dans le formulaire, il faut tester si il est dans la base ou non pour déterminer si c'est une mise à jour.
+			// 	$newuser = new Secouriste();
+			// }
+			// else{
+			// 	$newuser = $app['entity_manager']->find('Secouruts\Secouriste', $login);
+			// }
+
+			$newuser = $app['entity_manager']->find('Secouruts\Secouriste', $login);
+
+			if($newuser == null) $newuser = new Secouriste();
 
 			$newuser->setLogin($login);
 			$newuser->setNom($nom);
 			$newuser->setPrenom($prenom);
 			$newuser->setAdmin($admin);
 
+			$newuser->setDDN(new \DateTime()); //Des valeurs comme ça, sinon Doctrine refuse d'enregistrer ^^'
+			$newuser->setLDN("loin");
+			$newuser->setAdresse("loin");
+			$newuser->setEmail("lala");
+			$newuser->settel("0000");
+			$newuser->setSemestre("TC09");
+			$newuser->setPermis(false);
+
 			$app['entity_manager']->persist($newuser);
 			$app['entity_manager']->flush();
 
 			return $newuser->getLogin();
+
 		});
 
 		$controllers->get('/get/{login}', function($login) use ($app)
