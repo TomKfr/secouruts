@@ -1,13 +1,8 @@
 <?php
 
-// require_once __DIR__.'/../model/DPS.php';
-// require_once __DIR__.'/../model/Creneau.php';
-// require_once __DIR__.'/../model/Inscription.php';
-// require_once __DIR__.'/../model/Secouriste.php';
-
 use Silex\Application;
 use Silex\ControllerProviderInterface;
-use Secouruts\DPS;
+use Secouruts\Secouriste;
 
 class UsersController implements ControllerProviderInterface
 {
@@ -16,37 +11,55 @@ class UsersController implements ControllerProviderInterface
 		$controllers = $app['controllers_factory'];
 
 		$controllers->post('/new_user',function() use ($app){
-			$login = $_POST['login'] ;
-			$name = $_POST['name'] ;
-			$firstname = $_POST['firstname'] ;
-			$isAdmin = $_POST['admin'] ;
+			$login = $_POST['login'];
+			$nom = $_POST['name'] ;
+			$prenom = $_POST['firstname'] ;
+			$admin = $_POST['admin'] ;
 
-			$newuser = new DPS();
+			if($login == null){
+				$newuser = new Secouriste();
+			}
+			else{
+				$newuser = $app['entity_manager']->find('Secouruts\Secouriste', $login);
+			}
 
 			$newuser->setLogin($login);
-			$newuser->setNom($name);
-			$newuser->setPrenom($firstname);
-			$newuser->setAdmin($isAdmin);
+			$newuser->setNom($nom);
+			$newuser->setPrenom($prenom);
+			$newuser->setAdmin($admin);
 
 			$app['entity_manager']->persist($newuser);
 			$app['entity_manager']->flush();
 
-			return "OK";
+			return $newuser->getLogin();
 		});
 
-		$controllers->get('/get/{id}', function($id) use ($app)
+		$controllers->get('/get/{login}', function($login) use ($app)
 		{
-			if($id == "all"){
+			if($login == "all"){
 				$users = $app['entity_manager']->getRepository('Secouruts\Secouriste')->findAll();
 				return $users;
 			}
 			else {
-
+				$user = $app['entity_manager']->getRepository('Secouruts\Secouriste')->find($login);
+				ob_start();
+				require './views/user_info.php';
+				$view = ob_get_clean();
+				return $view;
 			}
 		});
 
+		$controllers->get('/delete/{login}', function($login) use ($app){
+			if($login != null){
+				$user = $app['entity_manager']->getRepository('Secouruts\Secouriste')->find($login);
+				$app['entity_manager']->remove($user);
+				$app['entity_manager']->flush();
+				return "ok";
+			}
+			else return "err";
+		});
 
-		return $controllers;
+	return $controllers;
 	}
 }
 
