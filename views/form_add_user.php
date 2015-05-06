@@ -45,26 +45,26 @@ $(function(){
 	$('.alert').hide();
 
 	$('#submit').click(function(event){
-		//event.preventDefault();
+		event.preventDefault();
 			//Valider le conformité du formulaire et l'envoyer si OK, alerter sinon.
 			//Si valide alors : 
 
 			$this = $('#newuser');
 			//Envoi en ajax :
-			// $.ajax({
-   //              url: $this.attr('action'), // Le nom du fichier indiqué dans le formulaire
-   //              type: $this.attr('method'), // La méthode indiquée dans le formulaire (get ou post)
-   //              data: $this.serialize(), // Je sérialise les données (j'envoie toutes les valeurs présentes dans le formulaire)
-   //              success: function(html) {
-   //              	$('#successdiv').show('slow');
-   //              	$('#submit').text("Modifier");
-   //              	alert("login du user : "+html);
-   //              	$('#hidden').attr('value', html);
-   //              },
-   //              statusCode: {
-   //              	500: function() { $('#faildiv').show('slow'); }
-   //              }
-   //          });
+			$.ajax({
+                url: $this.attr('action'), // Le nom du fichier indiqué dans le formulaire
+                type: $this.attr('method'), // La méthode indiquée dans le formulaire (get ou post)
+                data: $this.serialize(), // Je sérialise les données (j'envoie toutes les valeurs présentes dans le formulaire)
+                success: function(html) {
+                	$('#successdiv').show('slow');
+                	$('#submit').text("Modifier");
+                	alert("login du user : "+html);
+                	$('#hidden').attr('value', html);
+                },
+                statusCode: {
+                	500: function() { $('#faildiv').show('slow'); }
+                }
+            });
 
 		});
 	
