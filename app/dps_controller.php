@@ -72,6 +72,26 @@ class DPSController implements ControllerProviderInterface
 			else return "err";
 		});
 
+		$controllers->get('/close/{id}', function($id) use ($app){
+			if($id != null){
+				$dps = $app['entity_manager']->getRepository('Secouruts\DPS')->find($id);
+				$dps->setClosed(true);
+				$app['entity_manager']->flush();
+				return "ok";	
+			}
+			else return "err";
+		});
+
+		$controllers->get('/cancel/{id}', function($id) use ($app){
+			if($id != null){
+				$dps = $app['entity_manager']->getRepository('Secouruts\DPS')->find($id);
+				$dps->setCancelled(true);
+				$app['entity_manager']->flush();
+				return "ok";	
+			}
+			else return "err";
+		});
+
 	return $controllers;
 	}
 }

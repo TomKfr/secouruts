@@ -27,15 +27,15 @@ class AjaxController implements ControllerProviderInterface
 			return $view;
 		});
 
-		$controllers->get('/dps_form', function(){
+		$controllers->get('/dps_form/{id}', function($id) use ($app) {
+
+			$dps = $app['entity_manager']->getRepository('Secouruts\DPS')->find($id);
+
 			ob_start();
 			require './views/form_add_dps.php';
 			$view = ob_get_clean();
 			return $view;
 		});
-
-		
-
 
 		return $controllers;
 	}

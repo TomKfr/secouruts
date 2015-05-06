@@ -17,12 +17,29 @@
 		<button id="cancel" class="btn btn-danger">Annuler</button>
 		<button id="delete" class="btn btn-danger">Supprimer</button>
 	</div>
-	<div id='info' class="well col-md-12" style="height: 150px; margin-top: 15px;"></div>
+	<div id='info' class="well col-md-12" style="height: 200px; margin-top: 15px;"></div>
 	<div class="col-md-offset-4 col-md-2" style="margin-top : 20px">
 		<button id="addpost" class="btn btn-success">Ajouter un nouveau poste</button>
 	</div>
 </div>
 <script type="text/javascript">
+
+function dps_action(action){
+	var dps_id = $('#selectbasic').val();
+		$.ajax({
+			url: '../dps/'+action+'/'+dps_id,
+			type: 'get',
+			success: function(data){
+				alert(data);
+			},
+			error: function(data){
+				alert(data);
+			}
+		});
+
+		return dps_id;
+};
+
 $(function(){
 	$('#control_buttons').hide();
 	$('#selectbasic').change(function(event){
@@ -40,26 +57,27 @@ $(function(){
 	});
 
 	$('#addpost').click(function(){
-		$('#content').load('../ajax/dps_form');
+		$('#content').load('../ajax/dps_form/null');
 	});
 
 	$('#close').click(function(){
-		alert("hello!");
+		dps_action('close');
 	});
-	$('#delete').click(function(){
-		var dps_id = $('#selectbasic').val();
-		$.ajax({
-			url: '../dps/delete/'+dps_id,
-			type: 'get',
-			success: function(data){
-				alert(data);
-			},
-			error: function(data){
-				alert(data);
-			}
-		});
 
-		//$('option [value='+"'"+dps_id+"'"+']').remove();  TROUVER UNE SOLUTION !!
+	$('#cancel').click(function(){
+		dps_action('cancel');
+	});
+
+	$('#delete').click(function(){
+		dps_id = dps_action('delete');
+		$('#selectbasic option[value='+'"'+dps_id+'"]').remove();
+		$('#control_buttons').hide('fast');
+		$('#info').empty();
+	});
+
+	$('#modify').click(function(){
+		var dps_id = $('#selectbasic').val();
+		$('#content').load('../ajax/dps_form/'+dps_id);
 	});
 });
 </script>

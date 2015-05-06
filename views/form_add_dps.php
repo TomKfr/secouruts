@@ -1,82 +1,83 @@
 <div id="formdiv" class="col-md-12" style="margin-top : 15px">
 	<form id="newpost" class="form-horizontal" method='post' action="../dps/new_post">
-		<div class="form-group">
-			<label class="col-md-2 control-label" for="titre">Titre</label>  
-			<div class="col-md-10">
-				<input id="titre" name="titre" type="text" class="form-control">
+		<div class="form-group col-md-12">
+			<label class="col-md-4 control-label" for="titre">Titre</label>  
+			<div class="col-md-8">
+				<input id="titre" name="titre" type="text" class="form-control" value=<?php if(isset($dps)) echo("'".$dps->getTitre()."'"); ?> >
 			</div>
 		</div>
 		<div class="col-md-12">
 			<div class="col-md-6 form-group">
-				<label class="col-md-3 control-label" for="datedeb">Début</label>
-				<div class="col-md-4">
-					<input id="datedeb" type="text" name="datedeb" class="form-control datetimepicker">
+				<label class="col-md-4 control-label" for="datedeb">Début</label>
+				<div class="col-md-8">
+					<input id="datedeb" type="text" name="datedeb" class="form-control datetimepicker" value=<?php if(isset($dps)) echo("'".$dps->getDebut()->format('d/m/Y H:i')."'"); ?> >
 				</div>
 			</div>
 			<div class="col-md-6 form-group">
-				<label class="col-md-3 control-label" for="datefin">Fin</label>
-				<div class="col-md-4">
-					<input id="datefin" type="text" name="datefin" class="form-control datetimepicker">
+				<label class="col-md-4 control-label" for="datefin">Fin</label>
+				<div class="col-md-8">
+					<input id="datefin" type="text" name="datefin" class="form-control datetimepicker" value=<?php if(isset($dps)) echo("'".$dps->getFin()->format('d/m/Y H:i')."'"); ?> >
 				</div>
 			</div>
 		</div>
-		<div class="form-group">
-			<label class="col-md-2 control-label" for="typpost">Type</label>
-			<div class="col-md-4">
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label" for="typpost">Type</label>
+			<div class="col-md-8">
 				<select id="typpost" name="typpost" class="form-control">
-					<option value="">PAPS</option>
-					<option value="">DPS-PE</option>
-					<option value="">DPS-ME</option>
-					<option value="">DPS-GE</option>
+					<option value="" <?php if(isset($dps)) {if($dps->getType() == "") echo("selected");} ?> ></option>
+					<option value="PAPS" <?php if(isset($dps)) {if($dps->getType() == "PAPS") echo("selected");} ?> >PAPS</option>
+					<option value="DPS-PE" <?php if(isset($dps)) {if($dps->getType() == "DPS-PE") echo("selected");} ?> >DPS-PE</option>
+					<option value="DPS-ME" <?php if(isset($dps)) {if($dps->getType() == "DPS-ME") echo("selected");} ?> >DPS-ME</option>
+					<option value="DPS-GE" <?php if(isset($dps)) {if($dps->getType() == "DPS-GE") echo("selected");} ?> >DPS-GE</option>
 				</select>
 			</div>
 		</div>
-		<div class="form-group">
-			<label class="col-md-2 control-label" for="lieu">Lieu</label>
-			<div class="col-md-4">
-				<input id="lieu" type="text" name="lieu" class="form-control">
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label" for="lieu">Lieu</label>
+			<div class="col-md-8">
+				<input id="lieu" type="text" name="lieu" class="form-control" value=<?php if(isset($dps)) echo("'".$dps->getLieu()."'"); ?> >
 			</div>
 		</div>
-		<div class="form-group">
+		<div class="form-group col-md-12">
 			<label class="col-md-4 control-label" for="limitdate">Date limite d'inscription</label>
 			<div class="col-md-4">
-				<input id="limitdate" type="text" name="limitdate" class="form-control">
+				<input id="limitdate" type="text" name="limitdate" class="form-control" value=<?php if(isset($dps)) echo("'".$dps->getLimitDate()->format('d/m/Y')."'"); ?> >
 			</div>
 		</div>
-		<div class="form-group">
-			<label class="col-md-2 control-label" for="client">Client</label>
-			<div class="col-md-4">
-				<input id="client" type="text" name="client" class="form-control">
+		<div class="form-group col-md-12">
+			<label class="col-md-4 control-label" for="client">Client</label>
+			<div class="col-md-8">
+				<input id="client" type="text" name="client" class="form-control" value=<?php if(isset($dps)) echo("'".$dps->getClient()."'"); ?> >
 			</div>
 		</div>
-		<div class="form-group">
-			<label class="col-md-3 control-label" for="nbpse1">PSE1 requis</label>
-			<div class="col-md-4">
-				<input id="nbpse1" type="text" name="nbpse1" class="form-control">
+		<div class="form-group col-md-6">
+			<label class="col-md-5 control-label" for="nbpse1">PSE1 requis</label>
+			<div class="col-md-7">
+				<input id="nbpse1" type="text" name="nbpse1" class="form-control" value=<?php if(isset($dps)) echo("'".$dps->getPSE1()."'"); ?> >
 			</div>
 		</div>
-		<div class="form-group">
-			<label class="col-md-3 control-label" for="nbpse2">PSE2 requis</label>
-			<div class="col-md-4">
-				<input id="nbpse2" type="text" name="nbpse2" class="form-control">
+		<div class="form-group col-md-6">
+			<label class="col-md-5 control-label" for="nbpse2">PSE2 requis</label>
+			<div class="col-md-7">
+				<input id="nbpse2" type="text" name="nbpse2" class="form-control" value=<?php if(isset($dps)) echo("'".$dps->getPSE2()."'"); ?> >
 			</div>
 		</div>
-		<div class="form-group">
-			<label class="col-md-2 control-label" for"desc">Description</label>
-			<div class="col-md-4">
-				<textarea id="desc" name="desc" class="form-control"/>
+		<div class="form-group col-md-12">
+			<label class="col-md-4 control-label" for"desc">Description</label>
+			<div class="col-md-8">
+				<textarea id="desc" name="desc" class="form-control"><?php if(isset($dps)) echo($dps->getDesc()); ?></textarea>
 			</div>
 		</div>
-		<div class="col-md-offset-3">
+		<div class="col-md-offset-5">
 			<button id="submit" class="btn btn-primary">Valider</button>
 			<button id="back" class="btn btn-info">Retour</button>
 		</div>
-		<input id="hidden" type="hidden" name="id" >
+		<input id="hidden" type="hidden" name="id" value=<?php if(isset($dps)) echo("'".$dps->getId()."'"); ?> >
 
 	</form>
 </div>
 <div id="successdiv" class="col-md-offset-1 col-md-10 alert alert-success" style="margin-top : 15px">
-			<h4 align="center">Enregistrement réussi ! Cliquer pour revenir à la liste.</h4>
+			<h4 align="center">Enregistrement réussi !</h4>
 </div>
 <div id="faildiv" class="col-md-offset-3 col-md-6 alert alert-danger" style="margin-top : 15px">
 			<h3 align="center">Echec ...</h3>
@@ -103,7 +104,6 @@ $(function(){
                 success: function(html) {
                 	$('#successdiv').show('slow');
                 	$('#submit').text("Modifier");
-                	alert("id du poste : "+html);
                 	$('#hidden').attr('value', html);
                 },
                 statusCode: {

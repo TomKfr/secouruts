@@ -55,9 +55,9 @@
 
 			<div class="right-content">
 
-				<h3>Administration :</h3>
+				<h3 class="col-md-8">Administration :</h3>
 
-				<ul class="nav nav-pills">
+				<ul class="nav nav-pills col-md-4">
 					<li class="active" id="postes"><a>Postes</a></li>
 					<li id="users"><a>Utilisateurs</a></li>
 					<!-- <li ><a>Autre ??</a></li> -->
