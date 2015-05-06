@@ -149,14 +149,14 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-md-4 control-label" for="phone">Télépone</label>  
+							<label class="col-md-4 control-label" for="phone">Téléphone</label>  
 							<div class="col-md-4">
 								<input id="phone" name="phone" type="text" placeholder="" class="form-control input-md" required="">
 
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-md-4 control-label" for="semestre">Semestre actuel</label>
+							<label class="col-md-4 control-label" for="semestre">Semestre actuel </label>
 							<div class="col-md-3">
 								<select id="semestre" name="semestre" class="form-control">
 									<option value="TC01">TC01</option>
@@ -164,6 +164,7 @@
 									<option value="TC03">TC03</option>
 									<option value="TC04">TC04</option>
 									<option value="TC05">TC05</option>
+									<option value="TC05">TC06</option>
 									<option value="GX01">GX01</option>
 									<option value="GX02">GX02</option>
 									<option value="GX03">GX03</option>
@@ -171,8 +172,10 @@
 									<option value="GX05">GX05</option>
 									<option value="GX06">GX06</option>
 									<option value="GX07">GX07</option>
+									<option value="Master">Master</option>
 								</select>
 							</div>
+								<input id="other" name="other" type="text" placeholder=" Autre (préciser)" class="form-control input-md" >
 						</div>
 						<div class="form-group">
 							<div class="col-md-2 col-md-offset-4">
