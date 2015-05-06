@@ -37,5 +37,6 @@ $app->get('/logout', function(){
 $app->mount('/dps', new DPSController());
 $app->mount('/admin', new AdminController());
 $app->mount('/ajax', new AjaxController());
+$app->mount('/secouriste', new UsersController());
 
 ?>
