@@ -24,6 +24,8 @@ class Secouriste
 	/** @Column(type="string") */
 	protected $tel;
 	/** @Column(type="string") */
+	protected $taille;
+	/** @Column(type="string") */
 	protected $semestre;
 	/** @Column(type="boolean") */
 	protected $isadmin;
@@ -115,6 +117,14 @@ class Secouriste
 	public function setTel($t)
 	{
 		$this->tel = $t;
+	}
+	public function getTaille()
+	{
+		return $this->taille;
+	}
+	public function setTaille($size)
+	{
+		$this->taille=$size;
 	}
 
 	public function getSemestre()

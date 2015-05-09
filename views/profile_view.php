@@ -178,6 +178,20 @@
 								<input id="other" name="other" type="text" placeholder=" Autre (préciser)" class="form-control input-md" >
 						</div>
 						<div class="form-group">
+							<label class="col-md-4 control-label" for="taille">Taille de vêtements: </label>
+							<div class="col-md-3">
+								<select id="taille" name="taille" class="form-control">
+									<option value="XS">XS / 34</option>
+									<option value="S">S / 36</option>
+									<option value="M">M / 38</option>
+									<option value="L">L / 40</option>
+									<option value="XL">XL / 42</option>
+									<option value="XXL">XXL / 44</option>
+									<option value="XXXL">XXXL / 46</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
 							<div class="col-md-2 col-md-offset-4">
 								<button id="validate" class="btn btn-primary">Valider</button>
 							</div>
