@@ -35,11 +35,12 @@ class UsersController implements ControllerProviderInterface
 			$newuser->setAdmin($admin);
 
 			$newuser->setDDN(new \DateTime()); //Des valeurs comme ça, sinon Doctrine refuse d'enregistrer ^^'
-			$newuser->setLDN("loin");
-			$newuser->setAdresse("loin");
-			$newuser->setEmail("lala");
-			$newuser->settel("0000");
-			$newuser->setSemestre("TC09");
+			$newuser->setLDN("0");
+			$newuser->setAdresse("0");
+			$newuser->setEmail("0");
+			$newuser->settel("0");
+			$newuser->setTaille("0");
+			$newuser->setSemestre("0");
 			$newuser->setPermis(false);
 
 			$app['entity_manager']->persist($newuser);
