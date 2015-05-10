@@ -13,4 +13,6 @@ phpCAS::forceAuthentication();
 $GLOBALS['user'] = phpCAS::getUser();
 $user = $GLOBALS['user'];
 
+
+
 ?>

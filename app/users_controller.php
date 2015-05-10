@@ -12,18 +12,10 @@ class UsersController implements ControllerProviderInterface
 
 		$controllers->post('/new_user',function() use ($app){
 			$login = $_POST['login'];
-			$nom = $_POST['nom'] ; //Le nom de la variable dans le formulaire est 'nom';
-			// $prenom = $_POST['firstname'] ; C'est cette ligne qui merdait, je ne comprends pas pourquoi ...
+			$nom = $_POST['nom'] ; 
 			$prenom = $_POST['prenom'];
-			if(isset($_POST['admin'])) $admin = true; //ce test est nécessaire car si la case n'est pas cochée, la variable $_POST['admin'] n'existe pas, ça renvoie une erreur quand tu essayes d'avoir la valeur.
+			if(isset($_POST['admin'])) $admin = true; 
 			else $admin = false;
-
-			// if($login == null){                  -------> Login ne sera jamais null car il est rentré dans le formulaire, il faut tester si il est dans la base ou non pour déterminer si c'est une mise à jour.
-			// 	$newuser = new Secouriste();
-			// }
-			// else{
-			// 	$newuser = $app['entity_manager']->find('Secouruts\Secouriste', $login);
-			// }
 
 			$newuser = $app['entity_manager']->find('Secouruts\Secouriste', $login);
 
@@ -34,7 +26,7 @@ class UsersController implements ControllerProviderInterface
 			$newuser->setPrenom($prenom);
 			$newuser->setAdmin($admin);
 
-			$newuser->setDDN(new \DateTime()); //Des valeurs comme ça, sinon Doctrine refuse d'enregistrer ^^'
+			$newuser->setDDN(new \DateTime()); 
 			$newuser->setLDN("0");
 			$newuser->setAdresse("0");
 			$newuser->setEmail("0");
@@ -50,14 +42,44 @@ class UsersController implements ControllerProviderInterface
 
 		});
 
+		$controllers->post('/modify_user',function() use ($app){
+			$login = $_POST['login'];
+			$nom = $_POST['nom'] ; 
+			$prenom = $_POST['prenom'];
+			if(isset($_POST['admin'])) $admin = true; 
+			else $admin = false;
+
+			$modifuser = $app['entity_manager']->find('Secouruts\Secouriste', $login);
+
+			$modifuser->setLogin($login);
+			$modifuser->setNom($nom);
+			$modifuser->setPrenom($prenom);
+			$modifuser->setAdmin($admin);
+
+			$modifuserr->setDDN($_POST['ddn']); 
+			$modifuser->setLDN($_POST['ldn']);
+			$modifuser->setAdresse($_POST['adresse']);
+			$modifuser->setEmail($_POST['email']);
+			$modifuser->settel($_POST['tel']);
+			$modifuser->setTaille($_POST['taille']);
+			$modifuser->setSemestre($_POST['semestre']);
+			$modifuser->setPermis($_POST['permis']);
+
+			$app['entity_manager']->persist($modifuser);
+			$app['entity_manager']->flush();
+
+			return $modifuser->getLogin();
+
+		});
+
 		$controllers->get('/get/{login}', function($login) use ($app)
 		{
 			if($login == "all"){
-				$users = $app['entity_manager']->getRepository('Secouruts\Secouriste')->findAll();
-				return $users;
+				$secouriste = $app['entity_manager']->getRepository('Secouruts\Secouriste')->findAll();
+				return $secouriste;
 			}
 			else {
-				$user = $app['entity_manager']->getRepository('Secouruts\Secouriste')->find($login);
+				$secouriste = $app['entity_manager']->getRepository('Secouruts\Secouriste')->find($login);
 				ob_start();
 				require './views/user_info.php';
 				$view = ob_get_clean();
