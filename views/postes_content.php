@@ -25,19 +25,20 @@
 <script type="text/javascript">
 
 function dps_action(action){
+	var retrn = "";
 	var dps_id = $('#selectbasic').val();
 		$.ajax({
 			url: '../dps/'+action+'/'+dps_id,
 			type: 'get',
 			success: function(data){
-				//alert(data);
+				retrn = data;
 			},
 			error: function(data){
 				alert(data);
 			}
 		});
 
-		return dps_id;
+		return retrn;
 };
 
 $(function(){
@@ -45,7 +46,6 @@ $(function(){
 	$('#selectbasic').change(function(event){
 		//demander les détail du poste sélectionné en ajax...
 		var dps_id = $('#selectbasic').val();
-		// $('form').submit();
 		if(dps_id != 0){
 			$('#info').load('../dps/get/'+dps_id);
 			$('#control_buttons').show('fast');
@@ -61,8 +61,9 @@ $(function(){
 	});
 
 	$('#close').click(function(){
-		dps_action('close');
-		toastr.info('Le poste '+$('#selectbasic').text()+' a été clos.');
+		var status = dps_action('close');
+		if(status == "already_closed") { toastr.error('Le poste est déjà clos !'); }
+		else  { toastr.info('Le poste a été clos.'); }
 	});
 
 	$('#cancel').click(function(){
@@ -75,7 +76,7 @@ $(function(){
 		$('#selectbasic option[value='+'"'+dps_id+'"]').remove();
 		$('#control_buttons').hide('fast');
 		$('#info').empty();
-		toastr.danger('Le poste a été supprimé.');
+		toastr.error('Le poste a été supprimé.');
 	});
 
 	$('#modify').click(function(){

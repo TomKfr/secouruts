@@ -42,7 +42,10 @@ class DPSController implements ControllerProviderInterface
 			$newdps->setClient($client);
 
 			$app['entity_manager']->persist($newdps);
-			$app['entity_manager']->flush();
+
+			$newdps->genererCreneaux(); //On génère les créneaux associés à ce poste.
+
+			$app['entity_manager']->flush(); //On flush le poste, les créneaux sont sauvegardés en cascade
 
 			return $newdps->getId();
 		});
@@ -75,9 +78,15 @@ class DPSController implements ControllerProviderInterface
 		$controllers->get('/close/{id}', function($id) use ($app){
 			if($id != null){
 				$dps = $app['entity_manager']->getRepository('Secouruts\DPS')->find($id);
-				$dps->setClosed(true);
-				$app['entity_manager']->flush();
-				return "ok";	
+
+				if($dps->isClosed()){
+					return "already_closed";
+				}
+				else{
+					$dps->setClosed(true);
+					$app['entity_manager']->flush();
+					return 	"ok";
+				}
 			}
 			else return "err";
 		});

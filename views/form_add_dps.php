@@ -91,16 +91,15 @@ $(function(){
 	$('.alert').hide();
 
 	$('#submit').click(function(event){
-		event.preventDefault();
-			//Valider le conformité du formulaire et l'envoyer si OK, alerter sinon.
+			event.preventDefault();
+			//Valider la conformité du formulaire et l'envoyer si OK, alerter sinon.
 			//Si valide alors : 
 
-			$this = $('#newpost');
 			//Envoi en ajax :
 			$.ajax({
-                url: $this.attr('action'), // Le nom du fichier indiqué dans le formulaire
-                type: $this.attr('method'), // La méthode indiquée dans le formulaire (get ou post)
-                data: $this.serialize(), // Je sérialise les données (j'envoie toutes les valeurs présentes dans le formulaire)
+                url: $('#newpost').attr('action'), // Le nom du fichier indiqué dans le formulaire
+                type: $('#newpost').attr('method'), // La méthode indiquée dans le formulaire (get ou post)
+                data: $('#newpost').serialize(), // Je sérialise les données (j'envoie toutes les valeurs présentes dans le formulaire)
                 success: function(html) {
                 	toastr.clear();
                 	toastr.success('Enregistrement réussi !');
@@ -113,10 +112,6 @@ $(function(){
             });
 
 		});
-	
-	$('#successdiv').click(function(){
-		$('#content').load('../ajax/postes_content');
-	});
 
 	$('#back').click(function(event){
 		event.preventDefault();

@@ -169,6 +169,7 @@ class DPS
 	}
 	public function addCreneau($cre)
 	{
+		$cre->setPoste($this);
 		$this->creneaux[] = $cre;
 	}
 
@@ -178,11 +179,65 @@ class DPS
 	}
 	public function addInscription($inscr)
 	{
+		$inscr->setPoste($this);
 		$this->inscriptions[] = $inscr;
 	}
 
 	//Other methods
 
+	public function genererCreneaux(){ //Création et ajout des créneaux en fonction des dates ...
+
+		if($this->debut !== null && $this->fin !== null){ //On vérifie que les dates sont en place sinon, on ne fait rien !
+
+			$base_interval = new \DateInterval('PT2H');
+
+			$start_date = $this->debut; //new DateTime('05/23/2015 12:15');
+			$end_date = $this->fin; //new DateTime('05/22/2015 22:22');
+
+			$current_date = $start_date;
+			$current_diff = $current_date->diff($end_date);
+
+			$diff_d = 0;
+			$diff_h = 0;
+			$diff_m = 0;
+
+			if($current_diff->invert == 0) {
+				$diff_d = $current_diff->format('%d');
+				$diff_h = $current_diff->format('%h');
+
+				while($diff_d >= 1 || $diff_h >= 2){
+					//echo "Nouvel intervalle\n";
+					$cre = new Creneau();
+
+					//echo "Date de debut :".$current_date->format('d M Y H:i')."\n";
+					$cre->setDateDeb(clone $current_date);
+
+					$current_date->add($base_interval);
+					//echo "Date de fin : ".$current_date->format('d M Y H:i')."\n\n";
+					$cre->setDateFin(clone $current_date);
+
+					$this->addCreneau($cre);
+
+					$current_diff = $current_date->diff($end_date, true);
+					$diff_d = $current_diff->format('%d');
+					$diff_h = $current_diff->format('%h');
+				}
+
+				$diff_m = $current_diff->format('%m');
+
+				if($diff_h >= 1 || $diff_m >= 1){
+					// echo "Intervalle final :\n";
+					// echo "Date de debut :".$current_date->format('d M Y H:i')."\n";
+					// echo "Date de fin : ".$end_date->format('d M Y H:i')."\n\n";
+
+					$cre = new Creneau();
+					$cre->setDateDeb(clone $current_date);
+					$cre->setDateFin(clone $end_date);
+					$this->addCreneau($cre);
+				}
+			}
+		}
+	}
 }
 
 ?>

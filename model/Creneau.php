@@ -8,7 +8,7 @@ namespace Secouruts;
 /** @Entity @Table(name="creneau") */
 class Creneau
 {
-	/** @Id @Column(type="integer") */
+	/** @Id @Column(type="integer") @GeneratedValue */
 	protected $id;
 	/** @ManyToOne(targetEntity="DPS", inversedBy="creneau") */
 	protected $poste;
