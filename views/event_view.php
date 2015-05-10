@@ -12,6 +12,12 @@
 	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/themes/base/jquery-ui.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
+	<style type="text/css">
+		th:hover{
+			background-color: #e8e8e8;
+		}
+	</style>
 
 </head>
 
@@ -57,8 +63,20 @@
 					<?php
 					if(isset($postes)){
 						foreach ($postes as $dps) {
-							echo "<h3>".$dps->getTitre()."</h3>";
-							echo "<div><p>".$dps->getDesc()."</p></div>";
+							echo "<h3>".$dps->getTitre()." - ".$dps->getDebut()->format('d M Y')."</h3>";
+							echo "<div><p>".$dps->getDesc()."</p><p><table class='table'><tr>";
+							foreach ($dps->getCreneaux() as $creneau) {
+								echo "<th cre=".$creneau->getId().">".$creneau->getDateDeb()->format('H:i')." - ".$creneau->getDateFin()->format('H:i')."</th>";
+							}
+							echo "</tr><tr>";
+							foreach ($dps->getCreneaux() as $creneau) {
+								echo "<td cre=".$creneau->getId().">";
+								foreach ($creneau->getSecouristes() as $secouriste) {
+									echo $secouriste."<br>";
+								}
+								echo "</td>";
+							}
+							echo "</tr></table></p></div>";
 						}
 					}
 					?>
@@ -83,12 +101,18 @@
 		<script src="https://code.jquery.com/jquery-2.1.3.min.js" type="text/javascript"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 		<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.js"></script>
 	/*<!-- <script src="http://assos.utc.fr/secouruts/javascript/jquery.blockUI.js" type=text/javascript></script>
 	<script src="http://assos.utc.fr/secouruts/javascript/loader.js" type="text/javascript"></script>
 	<script src="http://assos.utc.fr/secouruts/bundles/fosjsrouting/js/router.js"></script> -->*/
 	<script type="text/javascript">
 	$(function(){
 		$('#accordion').accordion();
+
+		$('td').click(function(event){
+			$.post('../ajax/inscr_sec/<?php echo $user?>/'+$(event.target).attr('cre'));
+			toastr.info("Inscription de l'utilisateur <?php echo $user?> au créneau "+$(event.target).attr('cre'));
+		})
 	});
 	</script>
 
