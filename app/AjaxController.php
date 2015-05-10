@@ -45,6 +45,15 @@ class AjaxController implements ControllerProviderInterface
 			return $view;
 		});
 
+		$controllers->post('/inscr_sec/{login}/{id}', function($login, $id) use ($app) { 
+			// Vérifier l'homogénéité des données entre le créneau, le poste et l'utilisateur. Corriger les manques.
+			$user = $app['entity_manager']->getRepository('Secouruts\Secouriste')->find($login);
+			$creneau = $app['entity_manager']->getRepository('Secouruts\Creneau')->find($id);
+			if(isset($creneau)) $poste = $creneau->getPoste();
+
+			$creneau->addSecouriste($user);
+		});
+
 		return $controllers;
 	}
 }

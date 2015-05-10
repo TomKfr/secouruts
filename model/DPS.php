@@ -191,8 +191,8 @@ class DPS
 
 			$base_interval = new \DateInterval('PT2H');
 
-			$start_date = $this->debut; //new DateTime('05/23/2015 12:15');
-			$end_date = $this->fin; //new DateTime('05/22/2015 22:22');
+			$start_date = clone $this->debut; //new DateTime('05/23/2015 12:15');
+			$end_date = clone $this->fin; //new DateTime('05/22/2015 22:22');
 
 			$current_date = $start_date;
 			$current_diff = $current_date->diff($end_date);
