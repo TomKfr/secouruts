@@ -132,7 +132,81 @@
 							<div id="alert" class="col-md-10 alert alert-danger" style="display:none">
 								<p align="center">Au moins un des deux diplômes est requis !</p>
 							</div>
-						</div>
+							<div class="row">
+								<div class="col-md-5">
+									<div class="form-group">
+										<label class="col-md-4 control-label" for="lat">LAT</label>  
+										<div class="col-md-4">
+											<input id="lat" name="lat" type="checkbox" placeholder="" class="form-control input-md">
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="col-md-4 control-label" for="date_dip">Date d'obtention</label>  
+										<div class="col-md-4">
+											<input id="date_lat" name="date_lat" type="text" placeholder="" class="form-control input-md">
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-5">
+									<div class="form-group">
+										<label class="col-md-4 control-label" for="cod1">COD1</label>  
+										<div class="col-md-4">
+											<input id="cod1" name="cod1" type="checkbox" placeholder="" class="form-control input-md">
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="col-md-4 control-label" for="date_dip">Date d'obtention</label>  
+										<div class="col-md-4">
+											<input id="date_cod1" name="date_cod1" type="text" placeholder="" class="form-control input-md">
+
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-5">
+									<div class="form-group">
+										<label class="col-md-4 control-label" for="cod2">COD2</label>  
+										<div class="col-md-4">
+											<input id="cod2" name="cod2" type="checkbox" placeholder="" class="form-control input-md">
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="col-md-4 control-label" for="date_dip">Date d'obtention</label>  
+										<div class="col-md-4">
+											<input id="date_cod2" name="date_cod2" type="text" placeholder="" class="form-control input-md">
+
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-5">
+									<div class="form-group">
+										<label class="col-md-4 control-label" for="vpsp">VPSP</label>  
+										<div class="col-md-4">
+											<input id="vpsp" name="vpsp" type="checkbox" placeholder="" class="form-control input-md">
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="col-md-4 control-label" for="date_dip">Date d'obtention</label>  
+										<div class="col-md-4">
+											<input id="date_vpsp" name="date_vpsp" type="text" placeholder="" class="form-control input-md">
+
+										</div>
+									</div>
+								</div>
+							</div>
 						<br>
 						<div class="form-group">
 							<label class="col-md-4 control-label" for="permis">Permis B</label>  

@@ -54,6 +54,54 @@
 					<input id="date_pse2" name="date_pse2" type="text" placeholder="" class="form-control input-md">
 				</div>
 		</div>
+		<div class="form-group col-md-5">
+			<label class="col-md-4 control-label" for="lat">LAT</label>  
+			<div class="col-md-4">
+				<input id="lat" name="lat" type="checkbox" placeholder="" class="form-control input-md">
+			</div>
+		</div>
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label" for="date_dip">Date d'obtention</label>  
+				<div class="col-md-4">
+					<input id="date_lat" name="date_lat" type="text" placeholder="" class="form-control input-md">
+				</div>
+		</div>
+		<div class="form-group col-md-5">
+			<label class="col-md-4 control-label" for="cod1">COD1</label>  
+			<div class="col-md-4">
+				<input id="cod1" name="cod1" type="checkbox" placeholder="" class="form-control input-md">
+			</div>
+		</div>
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label" for="date_dip">Date d'obtention</label>  
+				<div class="col-md-4">
+					<input id="date_cod1" name="date_cod1" type="text" placeholder="" class="form-control input-md">
+				</div>
+		</div>
+		<div class="form-group col-md-5">
+			<label class="col-md-4 control-label" for="cod2">COD2</label>  
+			<div class="col-md-4">
+				<input id="cod2" name="cod2" type="checkbox" placeholder="" class="form-control input-md">
+			</div>
+		</div>
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label" for="date_dip">Date d'obtention</label>  
+				<div class="col-md-4">
+					<input id="date_cod2" name="date_cod2" type="text" placeholder="" class="form-control input-md">
+				</div>
+		</div>
+		<div class="form-group col-md-5">
+			<label class="col-md-4 control-label" for="vpsp">VPSP</label>  
+			<div class="col-md-4">
+				<input id="vpsp" name="vpsp" type="checkbox" placeholder="" class="form-control input-md">
+			</div>
+		</div>
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label" for="date_dip">Date d'obtention</label>  
+				<div class="col-md-4">
+					<input id="date_vpsp" name="date_vpsp" type="text" placeholder="" class="form-control input-md">
+				</div>
+		</div>
 		<div class="form-group">
 			<label class="col-md-3 control-label" for="admin">Administrateur</label>
 			<div class="col-md-3">
