@@ -1,6 +1,3 @@
-<?php
-	use Secouruts\Secouriste;
-?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
 <head>
@@ -51,7 +48,7 @@
 			</div>
 			<div class="right-content">
 				<h3>Profil utilisateur</h3>
-				<form id="form" class="form-horizontal" method="get" action="#">
+				<form id="form" class="form-horizontal" method="get" action="../secouriste/profil_user">
 					<fieldset id="target">
 						<div class="row">
 							<div class="col-md-5">

@@ -18,13 +18,13 @@
 		<div class="form-group col-md-5">
 			<label class="col-md-4 control-label" for="ddn">Date de naissance</label>  
 			<div class="col-md-4">
-				<input id="ddn" name="ddn" type="text" placeholder="" class="form-control input-md" required="" value=<?php if(isset($secouriste)) echo("'".$secouriste->getDDN()."'"); ?> >
+				<input id="ddn" name="ddn" type="text" placeholder="" class="form-control input-md" required="" value=<?php if(isset($user)) echo("'".$user->getDDN()->format('d/m/Y')."'"); ?> >
 			</div>
 		</div>
 		<div class="form-group col-md-6">
 			<label class="col-md-4 control-label" for="ldn">Lieu de naissance</label>  
 			<div class="col-md-4">
-				<input id="ldn" name="ldn" type="text" placeholder="" class="form-control input-md"  required="" value=<?php if(isset($secouriste)) echo("'".$secouriste->getLDN()."'"); ?>>
+				<input id="ldn" name="ldn" type="text" placeholder="" class="form-control input-md"  required="" value=<?php if(isset($user)) echo("'".$user->getLDN()."'"); ?>>
 			</div>
 		</div>
 		<div class="right-content">
@@ -117,19 +117,19 @@
 		<div class="form-group">
 			<label class="col-md-3 control-label" for="address">Adresse</label>  
 			<div class="col-md-3">
-				<textarea id="address" name="address" class="form-control" required="" value=<?php if(isset($secouriste)) echo("'".$secouriste->getAdresse()."'"); ?> ></textarea>
+				<textarea id="address" name="address" class="form-control" required="" value=<?php if(isset($user)) echo("'".$user->getAdresse()."'"); ?> ></textarea>
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-md-3 control-label" for="mail">Email</label>  
 			<div class="col-md-3">
-				<input id="mail" name="mail" type="text" placeholder="" class="form-control input-md" required="" value=<?php if(isset($secouriste)) echo("'".$secouriste->getEmail()."'"); ?> >
+				<input id="mail" name="mail" type="text" placeholder="" class="form-control input-md" required="" value=<?php if(isset($user)) echo("'".$user->getEmail()."'"); ?> >
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-md-3 control-label" for="phone">Téléphone</label>  
 			<div class="col-md-3">
-				<input id="phone" name="phone" type="text" placeholder="" class="form-control input-md" required="" value=<?php if(isset($secouriste)) echo("'".$secouriste->getTel()."'"); ?> >
+				<input id="phone" name="phone" type="text" placeholder="" class="form-control input-md" required="" value=<?php if(isset($user)) echo("'".$user->getTel()."'"); ?> >
 			</div>
 		</div>
 		<div class="form-group">
@@ -172,7 +172,7 @@
 			<button id="submit" class="btn btn-primary">Enregistrer</button>
 			<button id="back" class="btn btn-info">Retour</button>
 		</div>
-		<input id="hidden" type="hidden" name="id" value=<?php if(isset($secouriste)) echo("'".$secouriste->getLogin()."'"); ?> >
+		<input id="hidden" type="hidden" name="id" value=<?php if(isset($user)) echo("'".$user->getLogin()."'"); ?> >
 
 	</form>
 </div>
@@ -186,8 +186,13 @@
 <script>
 
 $(function(){
-	$('.datetimepicker').datetimepicker({ locale: 'fr'});
-	$('#limitdate').datepicker({language: 'fr'});
+	$('#ddn').datepicker();
+	$("#date_pse1").datepicker();
+	$("#date_pse2").datepicker();
+	$("#date_lat").datepicker();
+	$("#date_cod1").datepicker();
+	$("#date_cod2").datepicker();
+	$("#date_vpsp").datepicker();
 	$('.alert').hide();
 
 	$('#submit').click(function(event){
