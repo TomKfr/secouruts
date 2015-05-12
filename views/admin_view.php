@@ -42,10 +42,10 @@
 							<li ><a href="../">Evènements</a></li>
 							<li ><a href="../profile">Mon profil</a></li>
 							<li class="dropdown active">
-								<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Administration <span class="caret"></span></a>
+								<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Administration <span class="caret"></span></a>
 								<ul class="dropdown-menu" role="menu">
-									<li><a href="../admin">Postes</a></li>
-									<li><a href="../admin">Utilisateurs</a></li>
+									<li id="dpstoggle"><a >Postes</a></li>
+									<li id="userstoggle"><a >Utilisateurs</a></li>
 								</ul>
 							</li>
 						</ul>
@@ -53,7 +53,7 @@
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo $user?> <span class="caret"></span></a>
 								<ul class="dropdown-menu" role="menu">
-									<li><a href="./index.php/logout">Déconnexion</a></li>
+									<li><a href="./logout">Déconnexion</a></li>
 								</ul>
 							</li>
 						</ul>
@@ -61,7 +61,7 @@
 				</div><!-- /.container-fluid -->
 			</nav>
 
-				<div class="col-lg-12" id="content">
+				<div class="col-lg-12" id="content" target="<?php echo $target ?>">
 				</div>
 
 		</div>
@@ -81,7 +81,7 @@
 	</div>
 
 
-	<script src="https://code.jquery.com/jquery-2.1.3.min.js" type="text/javascript"></script>
+	<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 	<script	src="../../src/moment-with-locales.min.js"></script>
@@ -93,23 +93,18 @@
 	<script src="http://assos.utc.fr/secouruts/javascript/jquery.blockUI.js" type=text/javascript></script> -->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.js"></script>
 	<script type="text/javascript">
-		$(function(){
-			$('#content').load('../ajax/postes_content'); //	AJAAAAAAAX !!!
-			$("#postes").click(function(){
-				if($('#postes').attr('class')!='active'){
-					$("[class='active']").attr('class','');
-					$('#postes').attr('class','active');
-					$('#content').load('../ajax/postes_content');
-				}
-			});
-			$("#users").click(function(){
-				if(!$('#users').attr('class')!='active'){
-					$("[class='active']").attr('class','');
-					$('#users').attr('class','active');
-					$('#content').load('../ajax/users_content');
-				}
-			});
+	$(function(){
+		if($('#content').attr('target') == 'dps') $('#content').load('../ajax/postes_content');
+		if($('#content').attr('target') == 'users') $('#content').load('../ajax/users_content');
+
+		$('#dpstoggle').click(function(){
+			$('#content').load('../ajax/postes_content');
 		});
+
+		$('#userstoggle').click(function(){
+			$('#content').load('../ajax/users_content');
+		});
+	});
 	</script>
 
 </body>

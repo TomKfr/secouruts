@@ -22,6 +22,7 @@
 		<button id="addpost" class="btn btn-success">Ajouter un nouveau poste</button>
 	</div>
 </div>
+<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 <script type="text/javascript">
 
 function dps_action(action){
@@ -44,7 +45,7 @@ function dps_action(action){
 $(function(){
 	$('#control_buttons').hide();
 	$('#selectbasic').change(function(event){
-		//demander les détail du poste sélectionné en ajax...
+		//demander les détails du poste sélectionné en ajax...
 		var dps_id = $('#selectbasic').val();
 		if(dps_id != 0){
 			$('#info').load('../dps/get/'+dps_id);

@@ -58,8 +58,8 @@
 							<li class="dropdown">
 								<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Administration <span class="caret"></span></a>
 								<ul class="dropdown-menu" role="menu">
-									<li><a href="./admin">Postes</a></li>
-									<li><a href="./admin">Utilisateurs</a></li>
+									<li><a href="./admin/dps">Postes</a></li>
+									<li><a href="./admin/users">Utilisateurs</a></li>
 								</ul>
 							</li>
 						</ul>
@@ -67,7 +67,7 @@
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo $user?> <span class="caret"></span></a>
 								<ul class="dropdown-menu" role="menu">
-									<li><a href="./index.php/logout">Déconnexion</a></li>
+									<li><a href="./logout">Déconnexion</a></li>
 								</ul>
 							</li>
 						</ul>

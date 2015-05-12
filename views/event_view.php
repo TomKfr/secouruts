@@ -18,6 +18,9 @@
 	li{
 		font-color: black;
 	}
+	.dropdown:hover .dropdown-menu {
+		display: block;
+	}
 	</style>
 
 </head>
@@ -45,10 +48,10 @@
 						<li class="active"><a href="#">Evènements</a></li>
 						<li ><a href="./profile">Mon profil</a></li>
 						<li class="dropdown">
-							<a href="./admin" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Administration <span class="caret"></span></a>
-							<ul class="dropdown-menu" role="menu">
-								<li><a href="./admin">Postes</a></li>
-								<li><a href="./admin">Utilisateurs</a></li>
+							<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Administration <span class="caret"></span></a>
+							<ul id="test" class="dropdown-menu" role="menu">
+								<li><a href="./admin/dps">Postes</a></li>
+								<li><a href="./admin/users">Utilisateurs</a></li>
 							</ul>
 						</li>
 					</ul>
@@ -56,22 +59,13 @@
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo $user?> <span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
-								<li><a href="./index.php/logout">Déconnexion</a></li>
+								<li><a href="./logout">Déconnexion</a></li>
 							</ul>
 						</li>
 					</ul>
 				</div><!-- /.navbar-collapse -->
 			</div><!-- /.container-fluid -->
 		</nav>
-
-			<!-- <div class="left-content">
-				<div class="left-menu light-grey-bg">
-					<li class="selected"><a href="#">Evènements</a></li>
-					<li ><a href="./profile">Mon profil</a></li>
-					<li ><a href="./admin">Administration</a></li>
-				</div>
-			</div> -->
-
 
 			<div class="col-lg-12">
 				<h3>Evènements à venir :</h3>
@@ -153,6 +147,7 @@
 		$('#accordion').one('mouseover', function() {
 			toastr.info("Cliquer sur une tranche horaire pour s'y inscrire/désincrire");
 		});
+
 	});
 	</script>
 
