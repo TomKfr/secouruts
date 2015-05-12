@@ -123,8 +123,7 @@
 					}
 					else {
 						toastr.warning("Désinscription de l'utilisateur <?php echo $user?> du créneau "+$(event.target).text());
-					}
-					
+					}	
 					var $target = $(event.target);
 					var cellIndex = $target.index();
 					$target.closest('tr').next().children().eq(cellIndex).html(result);
@@ -132,11 +131,8 @@
 			});
 		});
 
-		$('h3').one('click', function() {
-			if(!triggered) {
-				toastr.info("Cliquer sur une tranche horaire pour s'y inscrire/désincrire");
-				triggered = true;
-			}
+		$('#accordion').one('mouseover', function() {
+			toastr.info("Cliquer sur une tranche horaire pour s'y inscrire/désincrire");
 		});
 	});
 	</script>

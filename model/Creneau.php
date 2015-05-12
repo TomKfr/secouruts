@@ -97,7 +97,8 @@ class Creneau
 	}
 	public function removeSecVal($login)
 	{
-		return $this->sec_val->remove($login);
+		if(isset($this->sec_val)) return $this->sec_val->remove($login);
+		else return false;
 	}
 }
 

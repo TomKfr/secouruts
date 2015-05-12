@@ -70,7 +70,7 @@ class DPSController implements ControllerProviderInterface
 				$dps = $app['entity_manager']->getRepository('Secouruts\DPS')->find($id);
 				$app['entity_manager']->remove($dps);
 				$app['entity_manager']->flush();
-				return "ok";
+				return $id;
 			}
 			else return "err";
 		});

@@ -5,7 +5,7 @@
 			<?php
 			if(isset($postes)){
 				foreach ($postes as $dps) {
-					echo "<option value=".$dps->getId().">".$dps->getTitre()."  -  ".$dps->getDebut()->format("d F Y")."</option>";
+					echo "<option id=".$dps->getId()." value=".$dps->getId().">".$dps->getTitre()."  -  ".$dps->getDebut()->format("d F Y")."</option>";
 				}
 			}
 			?>
@@ -73,7 +73,7 @@ $(function(){
 
 	$('#delete').click(function(){
 		dps_id = dps_action('delete');
-		$('#selectbasic option[value='+'"'+dps_id+'"]').remove();
+		$("#selectbasic").find('option:selected').remove()
 		$('#control_buttons').hide('fast');
 		$('#info').empty();
 		toastr.error('Le poste a été supprimé.');
@@ -82,7 +82,7 @@ $(function(){
 	$('#modify').click(function(){
 		var dps_id = $('#selectbasic').val();
 		$('#content').load('../ajax/dps_form/'+dps_id);
-		//toastr.info('Modification du poste.');
+		toastr.info('Modification du poste.');
 	});
 });
 </script>
