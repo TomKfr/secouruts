@@ -22,7 +22,7 @@
 			<a class="logo" href="/secouruts/" ></a>
 			<div class="title red">Secourut's<br/>Sensibiliser, Alerter, Agir</div>	
 		</header>
-		<div class="col-lg-offset-9 col-lg-2">
+		<!-- <div class="col-lg-offset-9 col-lg-2">
 			<ul class="nav nav-pills">
 				<li class="dropdown">
 					<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false"><?php echo $user?>
@@ -33,20 +33,49 @@
 					</ul>
 				</li>
 			</ul>
-		</div>
+		</div> -->
 	</div>
 
 	<div class="main-container">
 		<div class="main">
 
-			<div class="left-content">
+			<!-- <div class="left-content">
 				<div class="left-menu light-grey-bg">
 					<li ><a href="./">Evènements</a></li>
 					<li class="selected"><a href="#">Mon profil</a></li>
 					<li ><a href="./admin">Administration</a></li>
 				</div>
-			</div>
-			<div class="right-content">
+			</div> -->
+
+			<nav class="navbar navbar-default">
+				<div class="container-fluid">
+
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav">
+							<li ><a href="./">Evènements</a></li>
+							<li class="active"><a href="#">Mon profil</a></li>
+							<li class="dropdown">
+								<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Administration <span class="caret"></span></a>
+								<ul class="dropdown-menu" role="menu">
+									<li><a href="./admin">Postes</a></li>
+									<li><a href="./admin">Utilisateurs</a></li>
+								</ul>
+							</li>
+						</ul>
+						<ul class="nav navbar-nav navbar-right">
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo $user?> <span class="caret"></span></a>
+								<ul class="dropdown-menu" role="menu">
+									<li><a href="./index.php/logout">Déconnexion</a></li>
+								</ul>
+							</li>
+						</ul>
+					</div><!-- /.navbar-collapse -->
+				</div><!-- /.container-fluid -->
+			</nav>
+
+			<div class="col-md-12">
 				<h3>Profil utilisateur</h3>
 				<form id="form" class="form-horizontal" method="get" action="../secouriste/profil_user">
 					<fieldset id="target">

@@ -31,45 +31,10 @@
 			<div class="title red">Secourut's<br/>Sensibiliser, Alerter, Agir</div>	
 
 		</header>
-		
-		<!-- <div class="col-lg-2">
-			<ul class="nav nav-pills">
-				<li class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false"><?php echo $user?>
-						<span class="caret"></span>
-					</a>
-					<ul class="dropdown-menu" role="menu">
-						<li><a href="./index.php/logout">Déconnexion</a></li>
-					</ul>
-				</li>
-			</ul>
-		</div> -->
 	</div>
 
 	<div class="main-container">
 		<div class="main">
-
-			<!-- <div class="col-lg-12">
-			<div class="container-fluid">
-				<div class="nav navbar-default">
-					<ul class="nav navbar-nav">
-						<li class="active"><a href="#">Evènements</a></li>
-						<li ><a href="./profile">Mon profil</a></li>
-						<li ><a href="./admin">Administration</a></li>
-					</ul>
-					<ul class="nav navbar navbar-right">
-						<li class="dropdown">
-							<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false"><?php echo $user?>
-								<span class="caret"></span>
-							</a>
-							<ul class="dropdown-menu" role="menu">
-								<li><a href="./index.php/logout">Déconnexion</a></li>
-							</ul>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div> -->
 
 		<nav class="navbar navbar-default">
 			<div class="container-fluid">
@@ -79,11 +44,17 @@
 					<ul class="nav navbar-nav">
 						<li class="active"><a href="#">Evènements</a></li>
 						<li ><a href="./profile">Mon profil</a></li>
-						<li class="dropdown"><a href="./admin" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Administration</a></li>
+						<li class="dropdown">
+							<a href="./admin" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Administration <span class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="./admin">Postes</a></li>
+								<li><a href="./admin">Utilisateurs</a></li>
+							</ul>
+						</li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo $user?><span class="caret"></span></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo $user?> <span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="./index.php/logout">Déconnexion</a></li>
 							</ul>

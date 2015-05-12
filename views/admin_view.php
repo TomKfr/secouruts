@@ -28,46 +28,41 @@
 			<a class="logo" href="/secouruts/" ></a>
 			<div class="title red">Secourut's<br/>Sensibiliser, Alerter, Agir</div>	
 		</header>
-		<div class="col-lg-offset-9 col-lg-2">
-			<ul class="nav nav-pills">
-				<li class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false"><?php echo $user?>
-						<span class="caret"></span>
-					</a>
-					<ul class="dropdown-menu" role="menu">
-						<li><a href="./index.php/logout">Déconnexion</a></li>
-					</ul>
-				</li>
-			</ul>
-		</div>
 	</div>
 
 	<div class="main-container">
 		<div class="main">
 
-			<div class="left-content">
-				<div class="left-menu light-grey-bg">
-					<li ><a href="../">Evènements</a></li>
-					<li ><a href="../profile">Mon profil</a></li>
-					<li class="selected"><a href="#">Administration</a></li>
+			<nav class="navbar navbar-default">
+				<div class="container-fluid">
+
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav">
+							<li ><a href="../">Evènements</a></li>
+							<li ><a href="../profile">Mon profil</a></li>
+							<li class="dropdown active">
+								<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Administration <span class="caret"></span></a>
+								<ul class="dropdown-menu" role="menu">
+									<li><a href="../admin">Postes</a></li>
+									<li><a href="../admin">Utilisateurs</a></li>
+								</ul>
+							</li>
+						</ul>
+						<ul class="nav navbar-nav navbar-right">
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo $user?> <span class="caret"></span></a>
+								<ul class="dropdown-menu" role="menu">
+									<li><a href="./index.php/logout">Déconnexion</a></li>
+								</ul>
+							</li>
+						</ul>
+					</div><!-- /.navbar-collapse -->
+				</div><!-- /.container-fluid -->
+			</nav>
+
+				<div class="col-lg-12" id="content">
 				</div>
-			</div>
-
-
-			<div class="right-content">
-
-				<h3 class="col-md-8">Administration :</h3>
-
-				<ul class="nav nav-pills col-md-4">
-					<li class="active" id="postes"><a>Postes</a></li>
-					<li id="users"><a>Utilisateurs</a></li>
-					<!-- <li ><a>Autre ??</a></li> -->
-				</ul>
-				<br>
-				<div id="content">
-				</div>
-
-			</div>
 
 		</div>
 

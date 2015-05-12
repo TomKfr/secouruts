@@ -11,14 +11,14 @@
 			?>
 		</select>
 	</div>
-	<div id="control_buttons" class="col-md-6">
+	<div id="control_buttons" class="col-md-offset-1 col-md-5">
 		<button id="close" class="btn btn-info">Clore</button>
 		<button id="modify" class="btn btn-warning">Modifier</button>
 		<button id="cancel" class="btn btn-danger">Annuler</button>
 		<button id="delete" class="btn btn-danger">Supprimer</button>
 	</div>
 	<div id='info' class="well col-md-12" style="height: 200px; margin-top: 15px;"></div>
-	<div class="col-md-offset-4 col-md-2" style="margin-top : 20px">
+	<div class="col-md-offset-5 col-md-2" style="margin-top : 20px">
 		<button id="addpost" class="btn btn-success">Ajouter un nouveau poste</button>
 	</div>
 </div>
