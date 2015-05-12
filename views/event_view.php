@@ -79,7 +79,7 @@
 					<ul class="nav navbar-nav">
 						<li class="active"><a href="#">Evènements</a></li>
 						<li ><a href="./profile">Mon profil</a></li>
-						<li ><a href="./admin">Administration</a></li>
+						<li class="dropdown"><a href="./admin" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Administration</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown">
