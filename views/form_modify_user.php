@@ -2,7 +2,7 @@
 	<h3>Modification du Profil utilisateur</h3>
 </div>
 <div id="formdiv" class="col-md-12" style="margin-top : 15px">
-	<form id="modifuser" class="form-horizontal" method='post' action="../secouriste/modify_user">
+	<form id="modifuser" class="form-horizontal" method='post' action="../secouriste/modify_user/<?php echo $user->getLogin() ?>">
 		<div class="form-group col-md-5">
 			<label class="col-md-4 control-label" for="titre">Nom</label>  
 			<div class="col-md-4">
@@ -196,24 +196,24 @@ $(function(){
 	$('.alert').hide();
 
 	$('#submit').click(function(event){
-			event.preventDefault();
+			//event.preventDefault();
 			//Valider la conformité du formulaire et l'envoyer si OK, alerter sinon.
 			//Si valide alors : 
 
 			//Envoi en ajax :
-			$.ajax({
-                url: $('#modifuser').attr('action'), // Le nom du fichier indiqué dans le formulaire
-                type: $('#modifuser').attr('method'), // La méthode indiquée dans le formulaire (get ou post)
-                data: $('#modifuser').serialize(), // Je sérialise les données (j'envoie toutes les valeurs présentes dans le formulaire)
-                success: function(html) {
-                	toastr.clear();
-                	toastr.success('Modification réussie !');
-                	$('#hidden').attr('value', html);
-                },
-                error: {
-                	//toastr.error('Il y a eu un problème...');
-                }
-            });
+			// $.ajax({
+   //              url: $('#modifuser').attr('action'), // Le nom du fichier indiqué dans le formulaire
+   //              type: $('#modifuser').attr('method'), // La méthode indiquée dans le formulaire (get ou post)
+   //              data: $('#modifuser').serialize(), // Je sérialise les données (j'envoie toutes les valeurs présentes dans le formulaire)
+   //              success: function(html) {
+   //              	toastr.clear();
+   //              	toastr.success('Modification réussie !');
+   //              	$('#hidden').attr('value', html);
+   //              },
+   //              error: {
+   //              	//toastr.error('Il y a eu un problème...');
+   //              }
+   //          });
 
 		});
 

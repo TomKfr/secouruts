@@ -33,16 +33,13 @@ class Secouriste
 	protected $isPermis;
 	/** @OneToMany(targetEntity="Diplome", mappedBy="id", cascade={"persist", "remove"}) */ //OneToMany unidirectionnel vers la classe diplome
 	protected $diplomes;
-
-	//protected $creneaux; Pas de récupération des créneaux depuis le secouriste -> pour avoir les postes, passer par les inscriptions !!
-
-	/** @OneToMany(targetEntity="Inscription", mappedBy="secouriste", cascade={"persist", "remove"}) */ //ManyToOne bidirectionnel vers la classe inscription.
-	protected $inscriptions;
+	/** @ManyToMany(targetEntity="Creneau", mappedBy="secouristes")	 */ //ManyToOne bidirectionnel vers la classe créneau.
+	protected $creneaux;
 
 	public function __construct()
 	{
 		$this->diplomes = new \Doctrine\Common\Collections\ArrayCollection();
-		$this->inscriptions = new \Doctrine\Common\Collections\ArrayCollection();
+		//$this->inscriptions = new \Doctrine\Common\Collections\ArrayCollection();
 	}
 
 	//Gettesr & setters

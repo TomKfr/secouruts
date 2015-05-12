@@ -17,7 +17,7 @@ $dbParams = array(
     'driver'   => 'pdo_mysql',
     'user'     => 'root',
     'password' => '',
-    'dbname'   => 'test',
+    'dbname'   => 'secouruts',
 );
 
 // obtaining the entity manager

@@ -52,7 +52,7 @@ class UsersController implements ControllerProviderInterface
 
 			$modifuser = $app['entity_manager']->find('Secouruts\Secouriste', $login);
 
-			$modifuser->setLogin($login);
+			// $modifuser->setLogin($login);
 			$modifuser->setNom($nom);
 			$modifuser->setPrenom($prenom);
 			$modifuser->setAdmin($admin);
@@ -93,7 +93,7 @@ class UsersController implements ControllerProviderInterface
 				$modifuser->addDiplome($dip);
 			}
 
-			$modifuser->setDDN($_POST['ddn']); 
+			$modifuser->setDDN(new DateTime($_POST['ddn'])); 
 			$modifuser->setLDN($_POST['ldn']);
 			$modifuser->setAdresse($_POST['adresse']);
 			$modifuser->setEmail($_POST['email']);

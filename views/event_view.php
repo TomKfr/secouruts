@@ -3,9 +3,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="robots" content="INDEX,FOLLOW">
-	<title>	Accueil -     Secourut's
-
-	</title>
+	<title>	Accueil -     Secourut's</title>
 	<link rel="stylesheet" href="../src/css/reset.css" type="text/css" />
 	<link rel="stylesheet" href="../src/css/main.css" type="text/css" />
 	<link rel="stylesheet" href="../src/css/responsive.css" type="text/css" />
@@ -14,9 +12,12 @@
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 	<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
 	<style type="text/css">
-		th:hover{
-			background-color: #e8e8e8;
-		}
+	th:hover{
+		background-color: #e8e8e8;
+	}
+	li{
+		font-color: black;
+	}
 	</style>
 
 </head>
@@ -24,40 +25,55 @@
 <body>
 	<!-- Ici, placer les éléments communs à toutes les pages -->
 
-
 	<div class="header-container">
 		<header>
 			<a class="logo" href="/secouruts/" ></a>
 			<div class="title red">Secourut's<br/>Sensibiliser, Alerter, Agir</div>	
 
 		</header>
-		<div class="col-lg-offset-9 col-lg-2">
-			<ul class="nav nav-pills">
-				<li class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false"><?php echo $user?>
-						<span class="caret"></span>
-					</a>
-					<ul class="dropdown-menu" role="menu">
-						<li><a href="./index.php/logout">Déconnexion</a></li>
-					</ul>
-				</li>
-			</ul>
-		</div>
 	</div>
 
 	<div class="main-container">
 		<div class="main">
 
-			<div class="left-content">
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="#">Evènements</a></li>
+						<li ><a href="./profile">Mon profil</a></li>
+						<li class="dropdown">
+							<a href="./admin" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Administration <span class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="./admin">Postes</a></li>
+								<li><a href="./admin">Utilisateurs</a></li>
+							</ul>
+						</li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo $user?> <span class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="./index.php/logout">Déconnexion</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div><!-- /.navbar-collapse -->
+			</div><!-- /.container-fluid -->
+		</nav>
+
+			<!-- <div class="left-content">
 				<div class="left-menu light-grey-bg">
 					<li class="selected"><a href="#">Evènements</a></li>
 					<li ><a href="./profile">Mon profil</a></li>
 					<li ><a href="./admin">Administration</a></li>
 				</div>
-			</div>
+			</div> -->
 
 
-			<div class="right-content">
+			<div class="col-lg-12">
 				<h3>Evènements à venir :</h3>
 				<div id="accordion">
 					<?php
@@ -121,13 +137,12 @@
 					for(var i=1; i<data.length; i++){
 						result += data[i]+"<br>";
 					}
-				  	if(data[0] == "add"){
+					if(data[0] == "add"){
 						toastr.success("Inscription de l'utilisateur <?php echo $user?> au créneau "+$(event.target).text());
 					}
 					else {
 						toastr.warning("Désinscription de l'utilisateur <?php echo $user?> du créneau "+$(event.target).text());
-					}
-					
+					}	
 					var $target = $(event.target);
 					var cellIndex = $target.index();
 					$target.closest('tr').next().children().eq(cellIndex).html(result);
@@ -135,11 +150,8 @@
 			});
 		});
 
-		$('h3').one('click', function() {
-			if(!triggered) {
-				toastr.info("Cliquer sur une tranche horaire pour s'y inscrire/désincrire");
-				triggered = true;
-			}
+		$('#accordion').one('mouseover', function() {
+			toastr.info("Cliquer sur une tranche horaire pour s'y inscrire/désincrire");
 		});
 	});
 	</script>

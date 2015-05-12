@@ -5,20 +5,20 @@
 			<?php
 			if(isset($postes)){
 				foreach ($postes as $dps) {
-					echo "<option value=".$dps->getId().">".$dps->getTitre()."  -  ".$dps->getDebut()->format("d F Y")."</option>";
+					echo "<option id=".$dps->getId()." value=".$dps->getId().">".$dps->getTitre()."  -  ".$dps->getDebut()->format("d F Y")."</option>";
 				}
 			}
 			?>
 		</select>
 	</div>
-	<div id="control_buttons" class="col-md-6">
+	<div id="control_buttons" class="col-md-offset-1 col-md-5">
 		<button id="close" class="btn btn-info">Clore</button>
 		<button id="modify" class="btn btn-warning">Modifier</button>
 		<button id="cancel" class="btn btn-danger">Annuler</button>
 		<button id="delete" class="btn btn-danger">Supprimer</button>
 	</div>
 	<div id='info' class="well col-md-12" style="height: 200px; margin-top: 15px;"></div>
-	<div class="col-md-offset-4 col-md-2" style="margin-top : 20px">
+	<div class="col-md-offset-5 col-md-2" style="margin-top : 20px">
 		<button id="addpost" class="btn btn-success">Ajouter un nouveau poste</button>
 	</div>
 </div>
@@ -73,7 +73,7 @@ $(function(){
 
 	$('#delete').click(function(){
 		dps_id = dps_action('delete');
-		$('#selectbasic option[value='+'"'+dps_id+'"]').remove();
+		$("#selectbasic").find('option:selected').remove()
 		$('#control_buttons').hide('fast');
 		$('#info').empty();
 		toastr.error('Le poste a été supprimé.');
@@ -82,7 +82,7 @@ $(function(){
 	$('#modify').click(function(){
 		var dps_id = $('#selectbasic').val();
 		$('#content').load('../ajax/dps_form/'+dps_id);
-		//toastr.info('Modification du poste.');
+		toastr.info('Modification du poste.');
 	});
 });
 </script>
