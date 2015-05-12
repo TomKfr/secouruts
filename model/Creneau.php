@@ -51,6 +51,18 @@ class Creneau
 	{
 		$this->secouristes[] = $sec;
 	}
+	public function removeSecouriste($sec)
+	{
+		$this->secouristes->removeElement($sec);
+	}
+	public function secouristeInscrit($sec)
+	{
+		return $this->secouristes->contains($sec);
+	}
+	public function nbSecInscrits()
+	{
+		return $this->secouristes->count();
+	}
 
 	public function getDateDeb()
 	{

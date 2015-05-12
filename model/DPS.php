@@ -238,6 +238,15 @@ class DPS
 			}
 		}
 	}
+
+	public function checkSecIncsr($sec) //Vérifie si le secouriste est dans les créneaux du poste
+	{
+		foreach ($this->creneaux as $creneau) {
+			if($creneau->secouristeInscrit($sec)) return true;
+		}
+
+		return false;
+	}
 }
 
 ?>

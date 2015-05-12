@@ -17,6 +17,10 @@ class Inscription
 	/** @Column(type="boolean") */
 	protected $estvalidee;
 
+	public function __construct(){
+		$this->setValidee(false);
+	}
+
 	public function getId()
 	{
 		return $this->id;
