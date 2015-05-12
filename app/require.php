@@ -8,7 +8,7 @@ require_once 'users_controller.php';
 
 require_once __DIR__.'/../model/DPS.php';
 require_once __DIR__.'/../model/Creneau.php';
-require_once __DIR__.'/../model/Inscription.php';
+// require_once __DIR__.'/../model/Inscription.php';
 require_once __DIR__.'/../model/Secouriste.php';
 require_once __DIR__.'/../model/Diplome.php';
 

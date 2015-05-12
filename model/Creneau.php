@@ -10,19 +10,20 @@ class Creneau
 {
 	/** @Id @Column(type="integer") @GeneratedValue */
 	protected $id;
-	/** @ManyToOne(targetEntity="DPS", inversedBy="creneau") */
+	/** @ManyToOne(targetEntity="DPS", inversedBy="creneaux") */
 	protected $poste;
-	/** @ManyToMany(targetEntity="Secouriste")
-	*	@JoinTable(name="secouristes_creneaux",
-	*	joinColumns={@JoinColumn(name="creneau_id", referencedColumnName="id", nullable=false)},
-	*	inverseJoinColumns={@JoinColumn(name="secouriste_login", referencedColumnName="login", nullable=false)}
-	*	)
-	*/
+	/** @ManyToMany(targetEntity="Secouriste", inversedBy="creneaux")
+		 *	@JoinTable(name="secouristes_creneaux",
+     *      joinColumns={@JoinColumn(name="creneau_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@JoinColumn(name="secouriste_login", referencedColumnName="login")}
+     *      )	*/
 	protected $secouristes;
 	/** @Column(type="datetime") */
 	protected $datedeb;
 	/** @Column(type="datetime") */
 	protected $datefin;
+	/** @Column(type="array") */
+	protected $sec_val;				// Tableau des logins validés pour ce créneau.
 
 	public function __construct()
 	{
@@ -80,6 +81,23 @@ class Creneau
 	public function setDateFin($fin)
 	{
 		$this->datefin = $fin;
+	}
+
+	public function getSecVal()
+	{
+		return $this->sec_val;
+	}
+	public function isSecVal($login)
+	{
+		return $this->sec_val->contains($login);
+	}
+	public function addSecVal($login)
+	{
+		$this->sec_val[] = $login;
+	}
+	public function removeSecVal($login)
+	{
+		return $this->sec_val->remove($login);
 	}
 }
 

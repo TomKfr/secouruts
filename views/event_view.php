@@ -3,9 +3,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="robots" content="INDEX,FOLLOW">
-	<title>	Accueil -     Secourut's
-
-	</title>
+	<title>	Accueil -     Secourut's</title>
 	<link rel="stylesheet" href="../src/css/reset.css" type="text/css" />
 	<link rel="stylesheet" href="../src/css/main.css" type="text/css" />
 	<link rel="stylesheet" href="../src/css/responsive.css" type="text/css" />
@@ -23,7 +21,6 @@
 
 <body>
 	<!-- Ici, placer les éléments communs à toutes les pages -->
-
 
 	<div class="header-container">
 		<header>

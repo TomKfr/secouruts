@@ -36,14 +36,12 @@ class DPS
 	protected $client;
 	/** @OneToMany(targetEntity="Creneau", mappedBy="poste", cascade={"persist", "remove"}) */
 	protected $creneaux;
-	/** @OneToMany(targetEntity="Inscription", mappedBy="poste", cascade={"persist", "remove"}) */
-	protected $inscriptions;
 
 	public function __construct()
 	{
 		$this->creneaux = new \Doctrine\Common\Collections\ArrayCollection();
 		//Générer les créneaux dès la construction ? -> pas possible. à faire une fois que les dates de deb et fin sont ok.
-		$this->inscriptions = new \Doctrine\Common\Collections\ArrayCollection();
+		// $this->inscriptions = new \Doctrine\Common\Collections\ArrayCollection();
 
 		$this->setClosed(false);
 		$this->setCancelled(false);
@@ -173,15 +171,15 @@ class DPS
 		$this->creneaux[] = $cre;
 	}
 
-	public function getInscriptions()
-	{
-		return $this->inscriptions;
-	}
-	public function addInscription($inscr)
-	{
-		$inscr->setPoste($this);
-		$this->inscriptions[] = $inscr;
-	}
+	// public function getInscriptions()
+	// {
+	// 	return $this->inscriptions;
+	// }
+	// public function addInscription($inscr)
+	// {
+	// 	$inscr->setPoste($this);
+	// 	$this->inscriptions[] = $inscr;
+	// }
 
 	//Other methods
 
