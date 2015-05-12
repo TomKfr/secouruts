@@ -12,9 +12,12 @@
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 	<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
 	<style type="text/css">
-		th:hover{
-			background-color: #e8e8e8;
-		}
+	th:hover{
+		background-color: #e8e8e8;
+	}
+	li{
+		font-color: black;
+	}
 	</style>
 
 </head>
@@ -28,7 +31,8 @@
 			<div class="title red">Secourut's<br/>Sensibiliser, Alerter, Agir</div>	
 
 		</header>
-		<div class="col-lg-offset-9 col-lg-2">
+		
+		<!-- <div class="col-lg-2">
 			<ul class="nav nav-pills">
 				<li class="dropdown">
 					<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false"><?php echo $user?>
@@ -39,22 +43,66 @@
 					</ul>
 				</li>
 			</ul>
-		</div>
+		</div> -->
 	</div>
 
 	<div class="main-container">
 		<div class="main">
 
-			<div class="left-content">
+			<!-- <div class="col-lg-12">
+			<div class="container-fluid">
+				<div class="nav navbar-default">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="#">Evènements</a></li>
+						<li ><a href="./profile">Mon profil</a></li>
+						<li ><a href="./admin">Administration</a></li>
+					</ul>
+					<ul class="nav navbar navbar-right">
+						<li class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false"><?php echo $user?>
+								<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="./index.php/logout">Déconnexion</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div> -->
+
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="#">Evènements</a></li>
+						<li ><a href="./profile">Mon profil</a></li>
+						<li ><a href="./admin">Administration</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo $user?><span class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="./index.php/logout">Déconnexion</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div><!-- /.navbar-collapse -->
+			</div><!-- /.container-fluid -->
+		</nav>
+
+			<!-- <div class="left-content">
 				<div class="left-menu light-grey-bg">
 					<li class="selected"><a href="#">Evènements</a></li>
 					<li ><a href="./profile">Mon profil</a></li>
 					<li ><a href="./admin">Administration</a></li>
 				</div>
-			</div>
+			</div> -->
 
 
-			<div class="right-content">
+			<div class="col-lg-12">
 				<h3>Evènements à venir :</h3>
 				<div id="accordion">
 					<?php
@@ -118,7 +166,7 @@
 					for(var i=1; i<data.length; i++){
 						result += data[i]+"<br>";
 					}
-				  	if(data[0] == "add"){
+					if(data[0] == "add"){
 						toastr.success("Inscription de l'utilisateur <?php echo $user?> au créneau "+$(event.target).text());
 					}
 					else {
