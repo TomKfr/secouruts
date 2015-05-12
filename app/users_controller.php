@@ -3,6 +3,7 @@
 use Silex\Application;
 use Silex\ControllerProviderInterface;
 use Secouruts\Secouriste;
+use Secouruts\Diplome;
 
 class UsersController implements ControllerProviderInterface
 {
@@ -12,18 +13,10 @@ class UsersController implements ControllerProviderInterface
 
 		$controllers->post('/new_user',function() use ($app){
 			$login = $_POST['login'];
-			$nom = $_POST['nom'] ; //Le nom de la variable dans le formulaire est 'nom';
-			// $prenom = $_POST['firstname'] ; C'est cette ligne qui merdait, je ne comprends pas pourquoi ...
+			$nom = $_POST['nom'] ; 
 			$prenom = $_POST['prenom'];
-			if(isset($_POST['admin'])) $admin = true; //ce test est nécessaire car si la case n'est pas cochée, la variable $_POST['admin'] n'existe pas, ça renvoie une erreur quand tu essayes d'avoir la valeur.
+			if(isset($_POST['admin'])) $admin = true; 
 			else $admin = false;
-
-			// if($login == null){                  -------> Login ne sera jamais null car il est rentré dans le formulaire, il faut tester si il est dans la base ou non pour déterminer si c'est une mise à jour.
-			// 	$newuser = new Secouriste();
-			// }
-			// else{
-			// 	$newuser = $app['entity_manager']->find('Secouruts\Secouriste', $login);
-			// }
 
 			$newuser = $app['entity_manager']->find('Secouruts\Secouriste', $login);
 
@@ -34,13 +27,13 @@ class UsersController implements ControllerProviderInterface
 			$newuser->setPrenom($prenom);
 			$newuser->setAdmin($admin);
 
-			$newuser->setDDN(new \DateTime()); //Des valeurs comme ça, sinon Doctrine refuse d'enregistrer ^^'
-			$newuser->setLDN("0");
-			$newuser->setAdresse("0");
-			$newuser->setEmail("0");
-			$newuser->settel("0");
-			$newuser->setTaille("0");
-			$newuser->setSemestre("0");
+			$newuser->setDDN(new \DateTime()); 
+			$newuser->setLDN("");
+			$newuser->setAdresse("");
+			$newuser->setEmail("");
+			$newuser->settel("");
+			$newuser->setTaille("");
+			$newuser->setSemestre("");
 			$newuser->setPermis(false);
 
 			$app['entity_manager']->persist($newuser);
@@ -50,14 +43,144 @@ class UsersController implements ControllerProviderInterface
 
 		});
 
+		$controllers->post('/modify_user/{login}',function($login) use ($app){
+			//$login = $_POST['login'];
+			$nom = $_POST['nom'] ; 
+			$prenom = $_POST['prenom'];
+			if(isset($_POST['admin'])) $admin = true; 
+			else $admin = false;
+
+			$modifuser = $app['entity_manager']->find('Secouruts\Secouriste', $login);
+
+			$modifuser->setLogin($login);
+			$modifuser->setNom($nom);
+			$modifuser->setPrenom($prenom);
+			$modifuser->setAdmin($admin);
+			if(isset($_POST['pse1'])) {
+				$dip = new Diplome();
+				$dip->setType('PSE1');
+				$dip->setDate($_POST['date_pse1']);
+				$modifuser->addDiplome($dip);
+			}
+			if(isset($_POST['pse2'])) {
+				$dip = new Diplome();
+				$dip->setType('PSE2');
+				$dip->setDate($_POST['date_pse2']);
+				$modifuser->addDiplome($dip);
+			}
+			if(isset($_POST['lat'])) {
+				$dip = new Diplome();
+				$dip->setType('LAT');
+				$dip->setDate($_POST['date_lat']);
+				$modifuser->addDiplome($dip);
+			}
+			if(isset($_POST['cod1'])) {
+				$dip = new Diplome();
+				$dip->setType('COD1');
+				$dip->setDate($_POST['date_cod1']);
+				$modifuser->addDiplome($dip);
+			}
+			if(isset($_POST['cod2'])) {
+				$dip = new Diplome();
+				$dip->setType('COD2');
+				$dip->setDate($_POST['date_cod2']);
+				$modifuser->addDiplome($dip);
+			}
+			if(isset($_POST['vpsp'])) {
+				$dip = new Diplome();
+				$dip->setType('VPSP');
+				$dip->setDate($_POST['date_vpsp']);
+				$modifuser->addDiplome($dip);
+			}
+
+			$modifuser->setDDN($_POST['ddn']); 
+			$modifuser->setLDN($_POST['ldn']);
+			$modifuser->setAdresse($_POST['adresse']);
+			$modifuser->setEmail($_POST['email']);
+			$modifuser->settel($_POST['tel']);
+			$modifuser->setTaille($_POST['taille']);
+			$modifuser->setSemestre($_POST['semestre']);
+			$modifuser->setPermis($_POST['permis']);
+
+			$app['entity_manager']->persist($modifuser);
+			$app['entity_manager']->flush();
+
+			return $modifuser->getLogin();
+
+		});
+		$controllers->post('/profil_user',function() use ($app){
+			
+			$nom = $_POST['nom'] ; 
+			$prenom = $_POST['prenom'];
+			if(isset($_POST['admin'])) $admin = true; 
+			else $admin = false;
+
+			$profiluser = $app['entity_manager']->find('Secouruts\Secouriste', $user);
+
+			$profiluser->setLogin($login);
+			$profiluser->setNom($nom);
+			$profiluser->setPrenom($prenom);
+			$profiluser->setAdmin($admin);
+			if(isset($_POST['pse1'])) {
+				$dip = new Diplome();
+				$dip->setType('PSE1');
+				$dip->setDate($_POST['date_pse1']);
+				$profiluser->addDiplome($dip);
+			}
+			if(isset($_POST['pse2'])) {
+				$dip = new Diplome();
+				$dip->setType('PSE2');
+				$dip->setDate($_POST['date_pse2']);
+				$profiluser->addDiplome($dip);
+			}
+			if(isset($_POST['lat'])) {
+				$dip = new Diplome();
+				$dip->setType('LAT');
+				$dip->setDate($_POST['date_lat']);
+				$profiluser->addDiplome($dip);
+			}
+			if(isset($_POST['cod1'])) {
+				$dip = new Diplome();
+				$dip->setType('COD1');
+				$dip->setDate($_POST['date_cod1']);
+				$profiluser->addDiplome($dip);
+			}
+			if(isset($_POST['cod2'])) {
+				$dip = new Diplome();
+				$dip->setType('COD2');
+				$dip->setDate($_POST['date_cod2']);
+				$profiluser->addDiplome($dip);
+			}
+			if(isset($_POST['vpsp'])) {
+				$dip = new Diplome();
+				$dip->setType('VPSP');
+				$dip->setDate($_POST['date_vpsp']);
+				$profiluser->addDiplome($dip);
+			}
+
+			$profiluser->setDDN($_POST['ddn']); 
+			$profiluser->setLDN($_POST['ldn']);
+			$profiluser->setAdresse($_POST['adresse']);
+			$profiluser->setEmail($_POST['email']);
+			$profiluser->settel($_POST['tel']);
+			$profiluser->setTaille($_POST['taille']);
+			$profiluser->setSemestre($_POST['semestre']);
+			$profiluser->setPermis($_POST['permis']);
+
+			$app['entity_manager']->persist($profiluser);
+			$app['entity_manager']->flush();
+
+			return $modifuser->getLogin();
+
+		});
 		$controllers->get('/get/{login}', function($login) use ($app)
 		{
 			if($login == "all"){
-				$users = $app['entity_manager']->getRepository('Secouruts\Secouriste')->findAll();
-				return $users;
+				$secouriste = $app['entity_manager']->getRepository('Secouruts\Secouriste')->findAll();
+				return $secouriste;
 			}
 			else {
-				$user = $app['entity_manager']->getRepository('Secouruts\Secouriste')->find($login);
+				$secouriste = $app['entity_manager']->getRepository('Secouruts\Secouriste')->find($login);
 				ob_start();
 				require './views/user_info.php';
 				$view = ob_get_clean();

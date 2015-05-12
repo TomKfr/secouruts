@@ -82,7 +82,7 @@ $(function(){
 	$('#modify').click(function(){
 		var dps_id = $('#selectbasic').val();
 		$('#content').load('../ajax/dps_form/'+dps_id);
-		toastr.info('Modification du poste.');
+		//toastr.info('Modification du poste.');
 	});
 });
 </script>

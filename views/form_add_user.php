@@ -3,25 +3,25 @@
 		<div class="form-group">
 			<label class="col-md-2 control-label" for="login">Login</label>  
 			<div class="col-md-10">
-				<input id="login" name="login" type="text" class="form-control">
+				<input id="login" name="login" type="text" class="form-control" value=<?php if(isset($user)) echo("'".$user->getLogin()."'"); ?>>
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-md-2 control-label" for="nom">Nom</label>
 			<div class="col-md-10">
-				<input id="nom" type="text" name="nom" class="form-control">
+				<input id="nom" type="text" name="nom" class="form-control" value=<?php if(isset($user)) echo("'".$user->getNom()."'"); ?>>
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-md-2 control-label" for="prenom">Prénom</label>
 			<div class="col-md-10">
-				<input id="prenom" type="text" name="prenom" class="form-control">
+				<input id="prenom" type="text" name="prenom" class="form-control" value=<?php if(isset($user)) echo("'".$user->getPrenom()."'"); ?>>
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-md-2 control-label" for="admin">Administrateur</label>
 			<div class="col-md-3">
-				<input id="admin" type="checkbox" name="admin" class="form-control">
+				<input id="admin" type="checkbox" name="admin" class="form-control" value=<?php if(isset($user)) echo("'".$user->isAdmin()."'"); ?>>
 			</div>
 		</div>
 		<div class="col-md-offset-3">
@@ -32,12 +32,12 @@
 
 	</form>
 </div>
-<div id="successdiv" class="col-md-offset-1 col-md-10 alert alert-success" style="margin-top : 15px">
+<!-- <div id="successdiv" class="col-md-offset-1 col-md-10 alert alert-success" style="margin-top : 15px">
 			<h4 align="center">Enregistrement réussi ! Cliquer pour revenir à la liste.</h4>
 </div>
 <div id="faildiv" class="col-md-offset-3 col-md-6 alert alert-danger" style="margin-top : 15px">
 			<h3 align="center">Echec ...</h3>
-</div>
+</div> -->
 
 <script>
 
@@ -50,27 +50,30 @@ $(function(){
 			//Si valide alors : 
 
 			$this = $('#newuser');
+			//mail("'".$_POST['login']."'"+"@utc.fr", "Accès plateforme d'inscription de Secourut\'s", "Bonjour, \n Votre compte vient d\'être ajouté sur le site d'inscriptions aux postes de secours de Secourut's. \n Merci de vous connecter à l\'adresse suivante pour compléter votre profil : ");
+			//mail("morgane.becret@gmail.com", "Accès plateforme d'inscription de Secourut\'s", "Bonjour, \n Votre compte vient d\'être ajouté sur le site d'inscriptions aux postes de secours de Secourut's. \n Merci de vous connecter à l\'adresse suivante pour compléter votre profil : ");
 			//Envoi en ajax :
 			$.ajax({
                 url: $this.attr('action'), // Le nom du fichier indiqué dans le formulaire
                 type: $this.attr('method'), // La méthode indiquée dans le formulaire (get ou post)
                 data: $this.serialize(), // Je sérialise les données (j'envoie toutes les valeurs présentes dans le formulaire)
                 success: function(html) {
-                	$('#successdiv').show('slow');
+                	toastr.clear();
+                	toastr.success('Enregistrement réussi !');
                 	$('#submit').text("Modifier");
-                	alert("login du user : "+html);
                 	$('#hidden').attr('value', html);
                 },
-                statusCode: {
-                	500: function() { $('#faildiv').show('slow'); }
+                error: {
+                	//toastr.error('Echec');
                 }
+
             });
 
 		});
 	
-	$('#successdiv').click(function(){
-		$('#content').load('../ajax/users_content');
-	});
+	//$('#successdiv').click(function(){
+		//$('#content').load('../ajax/users_content');
+	//});
 
 	$('#back').click(function(event){
 		event.preventDefault();

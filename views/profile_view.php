@@ -1,4 +1,3 @@
- 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
 <head>
@@ -47,18 +46,16 @@
 					<li ><a href="./admin">Administration</a></li>
 				</div>
 			</div>
-
 			<div class="right-content">
-
 				<h3>Profil utilisateur</h3>
-				<form id="form" class="form-horizontal" method="get" action="#">
+				<form id="form" class="form-horizontal" method="get" action="../secouriste/profil_user">
 					<fieldset id="target">
 						<div class="row">
 							<div class="col-md-5">
 								<div class="form-group">
 									<label class="col-md-4 control-label" for="name">Nom</label>  
 									<div class="col-md-4">
-										<input id="name" name="name" type="text" placeholder="" class="form-control input-md" required="">
+										<input id="name" name="name" type="text" placeholder="" class="form-control input-md" required="" value=<?php if(isset($secouriste)) echo("'".$secouriste->getNom()."'"); ?>>
 									</div>							
 								</div>
 							</div>
@@ -66,7 +63,7 @@
 								<div class="form-group">
 									<label class="col-md-4 control-label" for="surname">Prénom</label>  
 									<div class="col-md-4">
-										<input id="surname" name="surname" type="text" placeholder="" class="form-control input-md" required="">
+										<input id="surname" name="surname" type="text" placeholder="" class="form-control input-md"  required="" value=<?php if(isset($secouriste)) echo("'".$secouriste->getPrenom()."'"); ?>>
 									</div>
 								</div>
 							</div>
@@ -76,7 +73,7 @@
 								<div class="form-group">
 									<label class="col-md-4 control-label" for="ddn">Date de naissance</label>  
 									<div class="col-md-4">
-										<input id="ddn" name="ddn" type="text" placeholder="" class="form-control input-md" required="">
+										<input id="ddn" name="ddn" type="text" placeholder="" class="form-control input-md" required="" value=<?php if(isset($secouriste)) echo("'".$secouriste->getDDN()."'"); ?> >
 									</div>
 								</div>
 							</div>
@@ -84,7 +81,7 @@
 								<div class="form-group">
 									<label class="col-md-4 control-label" for="ldn">Lieu de naissance</label>  
 									<div class="col-md-4">
-										<input id="ldn" name="ldn" type="text" placeholder="" class="form-control input-md" required="">
+										<input id="ldn" name="ldn" type="text" placeholder="" class="form-control input-md"  required="" value=<?php if(isset($secouriste)) echo("'".$secouriste->getLDN()."'"); ?>>
 
 									</div>
 								</div>
@@ -92,15 +89,15 @@
 						</div>
 						<h4>Diplômes obtenus :</h4>
 						<div class="row">
-							<div class="col-md-3">
+							<div class="col-md-5">
 								<div class="form-group">
-									<label class="col-md-5 control-label" for="pse1">PSE1</label>  
+									<label class="col-md-4 control-label" for="pse1">PSE1</label>  
 									<div class="col-md-4">
 										<input id="pse1" name="pse1" type="checkbox" placeholder="" class="form-control input-md" >
 									</div>
 								</div>
 							</div>
-							<div class="col-md-9">
+							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-md-4 control-label" for="date_dip">Date d'obtention</label>  
 									<div class="col-md-4">
@@ -112,15 +109,15 @@
 						</div>
 
 						<div class="row">
-							<div class="col-md-3">
+							<div class="col-md-5">
 								<div class="form-group">
-									<label class="col-md-5 control-label" for="pse2">PSE2</label>  
+									<label class="col-md-4 control-label" for="pse2">PSE2</label>  
 									<div class="col-md-4">
 										<input id="pse2" name="pse2" type="checkbox" placeholder="" class="form-control input-md">
 									</div>
 								</div>
 							</div>
-							<div class="col-md-9">
+							<div class="col-md-6">
 								<div class="form-group">
 									<label class="col-md-4 control-label" for="date_dip">Date d'obtention</label>  
 									<div class="col-md-4">
@@ -132,26 +129,106 @@
 							<div id="alert" class="col-md-10 alert alert-danger" style="display:none">
 								<p align="center">Au moins un des deux diplômes est requis !</p>
 							</div>
-						</div>
+							<div class="row">
+								<div class="col-md-5">
+									<div class="form-group">
+										<label class="col-md-4 control-label" for="lat">LAT</label>  
+										<div class="col-md-4">
+											<input id="lat" name="lat" type="checkbox" placeholder="" class="form-control input-md">
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="col-md-4 control-label" for="date_dip">Date d'obtention</label>  
+										<div class="col-md-4">
+											<input id="date_lat" name="date_lat" type="text" placeholder="" class="form-control input-md">
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-5">
+									<div class="form-group">
+										<label class="col-md-4 control-label" for="cod1">COD1</label>  
+										<div class="col-md-4">
+											<input id="cod1" name="cod1" type="checkbox" placeholder="" class="form-control input-md">
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="col-md-4 control-label" for="date_dip">Date d'obtention</label>  
+										<div class="col-md-4">
+											<input id="date_cod1" name="date_cod1" type="text" placeholder="" class="form-control input-md">
+
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-5">
+									<div class="form-group">
+										<label class="col-md-4 control-label" for="cod2">COD2</label>  
+										<div class="col-md-4">
+											<input id="cod2" name="cod2" type="checkbox" placeholder="" class="form-control input-md">
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="col-md-4 control-label" for="date_dip">Date d'obtention</label>  
+										<div class="col-md-4">
+											<input id="date_cod2" name="date_cod2" type="text" placeholder="" class="form-control input-md">
+
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-5">
+									<div class="form-group">
+										<label class="col-md-4 control-label" for="vpsp">VPSP</label>  
+										<div class="col-md-4">
+											<input id="vpsp" name="vpsp" type="checkbox" placeholder="" class="form-control input-md">
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="col-md-4 control-label" for="date_dip">Date d'obtention</label>  
+										<div class="col-md-4">
+											<input id="date_vpsp" name="date_vpsp" type="text" placeholder="" class="form-control input-md">
+
+										</div>
+									</div>
+								</div>
+							</div>
 						<br>
+						<div class="form-group">
+							<label class="col-md-4 control-label" for="permis">Permis B</label>  
+							<div class="col-md-4">
+								<input id="permis" type="checkbox" name="permis" class="form-control" value=<?php if(isset($secouriste)) echo("'".$secouriste->isPermis()."'"); ?>>
+							</div>
+						</div>
 						<div class="form-group">
 							<label class="col-md-4 control-label" for="address">Adresse</label>  
 							<div class="col-md-4">
-								<input id="address" name="address" type="text" placeholder="" class="form-control input-md" required="">
-
+								
+								<textarea id="address" name="address" class="form-control" required="" value=<?php if(isset($secouriste)) echo("'".$secouriste->getAdresse()."'"); ?> ></textarea>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-md-4 control-label" for="mail">Email</label>  
 							<div class="col-md-4">
-								<input id="mail" name="mail" type="text" placeholder="" class="form-control input-md" required="">
+								<input id="mail" name="mail" type="text" placeholder="" class="form-control input-md" required="" value=<?php if(isset($secouriste)) echo("'".$secouriste->getEmail()."'"); ?> >
 
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-md-4 control-label" for="phone">Téléphone</label>  
 							<div class="col-md-4">
-								<input id="phone" name="phone" type="text" placeholder="" class="form-control input-md" required="">
+								<input id="phone" name="phone" type="text" placeholder="" class="form-control input-md" required="" value=<?php if(isset($secouriste)) echo("'".$secouriste->getTel()."'"); ?> >
 
 							</div>
 						</div>

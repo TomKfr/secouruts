@@ -21,10 +21,25 @@
 	</div>
 </div>
 <script type="text/javascript">
+function user_action(action){
+	var user_id = $('#selectbasic').val();
+		$.ajax({
+			url: '../secouriste/'+action+'/'+user_id,
+			type: 'get',
+			success: function(data){
+				//alert(data);
+			},
+			error: function(data){
+				alert(data);
+			}
+		});
+
+		return user_id;
+};
+
 $(function(){
 	$('#control_buttons').hide();
 	$('#selectbasic').change(function(event){
-		//demander les détails de l'utilisateur sélectionné
 		var user_id = $('#selectbasic').val();
 		// $('form').submit();
 		if(user_id != ""){
@@ -38,23 +53,20 @@ $(function(){
 	});
 
 	$('#adduser').click(function(){
-		$('#content').load('../ajax/users_form');
+		$('#content').load('../ajax/users_form/null');
 	});
 
 	$('#delete').click(function(){
+		user_id = user_action('delete');
+		$('#selectbasic option[value='+'"'+user_id+'"]').remove();
+		$('#control_buttons').hide('fast');
+		$('#info').empty();
+		toastr.error('Le compte a été supprimé.');
+	});
+	$('#modify').click(function(){
 		var user_id = $('#selectbasic').val();
-		$.ajax({
-			url: '../secouriste/delete/'+user_id,
-			type: 'get',
-			success: function(data){
-				alert(data);
-			},
-			error: function(data){
-				alert(data);
-			}
-		});
-
-		//$('option [value='+"'"+dps_id+"'"+']').remove();  TROUVER UNE SOLUTION !!
+		$('#content').load('../ajax/users_form2/'+user_id);
 	});
 });
 </script>
+

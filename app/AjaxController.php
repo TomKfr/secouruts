@@ -11,16 +11,26 @@ class AjaxController implements ControllerProviderInterface
 	{
 		$controllers = $app['controllers_factory'];
 
-		$controllers->get('/users_content', function(){
+		$controllers->get('/users_content', function() use ($app) {
+			$users = $app['entity_manager']->getRepository('Secouruts\Secouriste')->findAll();
 			ob_start();
 			require './views/users_content.php';
 			$view = ob_get_clean();
 			return $view;
 		});
 
-		$controllers->get('/users_form', function(){
+		$controllers->get('/users_form/{login}', function($login) use ($app){
+			$user = $app['entity_manager']->getRepository('Secouruts\Secouriste')->find($login);
 			ob_start();
 			require './views/form_add_user.php';
+			$view = ob_get_clean();
+			return $view;
+		});
+
+		$controllers->get('/users_form2/{login}', function($login) use ($app){
+			$user = $app['entity_manager']->getRepository('Secouruts\Secouriste')->find($login);
+			ob_start();
+			require './views/form_modify_user.php';
 			$view = ob_get_clean();
 			return $view;
 		});
@@ -89,3 +99,4 @@ class AjaxController implements ControllerProviderInterface
 }
 
 ?>
+
