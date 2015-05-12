@@ -79,7 +79,7 @@
 	<div class="footer-container">
 
 		<footer>
-			<span class="tools"> <span>Outils :</span>  <a href="/secouruts/contactus">Nous contacter</a> <a href="/secouruts/calendar">Calendrier</a> <a href="/secouruts/admin/">Administration</a> <a class="facebook" href="https://www.facebook.com/secouruts.utc"></a></span>		
+			
 
 			<span class="links"> <span>Liens utiles :</span> <span>	<a href="http://assos.utc.fr/asso/bde">BDE</a> | 	<a href="http://assos.utc.fr/">Portail des associations</a> | 	<a href="http://www.utc.fr/">UTC</a> | 	<a href="http://www.croixblanche.org/">Croix Blanche</a> </span> <a class="credit" href="/secouruts/credits"> Crédits </a></span>
 		</footer>
