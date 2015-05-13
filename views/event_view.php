@@ -41,7 +41,7 @@
 					<ul class="nav navbar-nav">
 						<li class="active"><a href="#">Evènements</a></li>
 						<li ><a href="./profile">Mon profil</a></li>
-						<?php if(true) { ?>
+						<?php if($user2->isAdmin()) { ?>
 						<li class="dropdown">
 							<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Administration <span class="caret"></span></a>
 							<ul id="test" class="dropdown-menu" role="menu">
@@ -53,7 +53,7 @@
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo $user ?> <span class="caret"></span></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo $user2->getLogin() ?> <span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="./logout">Déconnexion</a></li>
 							</ul>

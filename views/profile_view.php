@@ -39,14 +39,6 @@
 	<div class="main-container">
 		<div class="main">
 
-			<!-- <div class="left-content">
-				<div class="left-menu light-grey-bg">
-					<li ><a href="./">Evènements</a></li>
-					<li class="selected"><a href="#">Mon profil</a></li>
-					<li ><a href="./admin">Administration</a></li>
-				</div>
-			</div> -->
-
 			<nav class="navbar navbar-default">
 				<div class="container-fluid">
 
@@ -55,7 +47,7 @@
 						<ul class="nav navbar-nav">
 							<li ><a href="./">Evènements</a></li>
 							<li class="active"><a href="#">Mon profil</a></li>
-							<?php if(true) { ?>
+							<?php if($user2->isAdmin()) { ?>
 							<li class="dropdown">
 								<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Administration <span class="caret"></span></a>
 								<ul class="dropdown-menu" role="menu">
@@ -67,7 +59,7 @@
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
 							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo $user?> <span class="caret"></span></a>
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo $user2->getLogin() ?> <span class="caret"></span></a>
 								<ul class="dropdown-menu" role="menu">
 									<li><a href="./logout">Déconnexion</a></li>
 								</ul>

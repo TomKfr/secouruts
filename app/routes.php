@@ -10,6 +10,7 @@ $app->get('/hello/{name}', function ($name) use ($app) {
 // Home page
 $app->get('/', function () use ($app) {
 	$user = $GLOBALS['user'];
+	$user2 = $_SESSION['user2'];
 	$postes = $app['entity_manager']->getRepository('Secouruts\DPS')->findAll();
     ob_start();             // start buffering HTML output
     require './views/event_view.php';
@@ -18,7 +19,7 @@ $app->get('/', function () use ($app) {
 });
 
 $app->get('/profile', function(){
-	$user = $GLOBALS['user'];
+	$user2 = $_SESSION['user2'];
 	ob_start();
 	require './views/profile_view.php';
 	$view = ob_get_clean();
@@ -26,11 +27,9 @@ $app->get('/profile', function(){
 });
 
 $app->get('/logout', function(){
-	$GLOBALS['user'] = null;
+	$_SESSION['user2'] = null;
+	session_destroy();
 	require_once './vendor/jasig/phpcas/config.php';
-	// phpCAS::setDebug();
-	// phpCAS::client(CAS_VERSION_2_0, $cas_host, $cas_port, $cas_context);
-	// phpCAS::setNoCasServerValidation();
 	phpCAS::logout();
 });
 

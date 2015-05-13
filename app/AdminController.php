@@ -11,7 +11,7 @@ class AdminController implements ControllerProviderInterface
 		$controllers = $app['controllers_factory'];
 
 		$controllers->get('/', function() {
-			$user = $GLOBALS['user'];
+			$user2 = $_SESSION['user2'];
 			$target = 'dps';
 			ob_start();
 			require './views/admin_view.php';
@@ -20,7 +20,7 @@ class AdminController implements ControllerProviderInterface
 		});
 
 		$controllers->get('/dps', function() {
-			$user = $GLOBALS['user'];
+			$user2 = $_SESSION['user2'];
 			$target = 'dps';
 			ob_start();
 			require './views/admin_view.php';
@@ -29,7 +29,7 @@ class AdminController implements ControllerProviderInterface
 		});
 
 		$controllers->get('/users', function() {
-			$user = $GLOBALS['user'];
+			$user2 = $_SESSION['user2'];
 			$target = 'users';
 			ob_start();
 			require './views/admin_view.php';
