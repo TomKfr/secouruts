@@ -28,9 +28,9 @@ $app->get('/profile', function(){
 $app->get('/logout', function(){
 	$GLOBALS['user'] = null;
 	require_once './vendor/jasig/phpcas/config.php';
-	phpCAS::setDebug();
-	phpCAS::client(CAS_VERSION_2_0, $cas_host, $cas_port, $cas_context);
-	phpCAS::setNoCasServerValidation();
+	// phpCAS::setDebug();
+	// phpCAS::client(CAS_VERSION_2_0, $cas_host, $cas_port, $cas_context);
+	// phpCAS::setNoCasServerValidation();
 	phpCAS::logout();
 });
 
