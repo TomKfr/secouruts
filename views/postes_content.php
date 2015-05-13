@@ -19,7 +19,7 @@
 	</div>
 	<div id='info' class="well col-md-12" style="height: 200px; margin-top: 15px;"></div>
 	<div class="col-md-offset-5 col-md-2" style="margin-top : 20px">
-		<button id="addpost" class="btn btn-success">Ajouter un nouveau poste</button>
+		<button id="addpost" class="btn btn-primary">Ajouter un nouveau poste</button>
 	</div>
 </div>
 <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>

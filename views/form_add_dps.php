@@ -76,12 +76,11 @@
 
 	</form>
 </div>
-<!-- <div id="successdiv" class="col-md-offset-1 col-md-10 alert alert-success" style="margin-top : 15px">
-			<h4 align="center">Enregistrement réussi !</h4>
-</div>
-<div id="faildiv" class="col-md-offset-3 col-md-6 alert alert-danger" style="margin-top : 15px">
-			<h3 align="center">Echec ...</h3>
-</div> -->
+
+<script	src="../../src/moment-with-locales.min.js"></script>
+<script	src="../../src/bootstrap-datepicker.js"></script>
+<script	src="../../src/bootstrap-datepicker.fr.min.js"></script>
+<script	src="../../src/bootstrap-datetimepicker.min.js"></script>
 
 <script>
 

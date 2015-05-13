@@ -8,9 +8,10 @@ phpCAS::client(CAS_VERSION_2_0, $cas_host, $cas_port, $cas_context);
 
 phpCAS::setNoCasServerValidation();
 
-	// force CAS authentication
+// force CAS authentication
 phpCAS::forceAuthentication();
 $GLOBALS['user'] = phpCAS::getUser();
+$_SESSION['user'] = $app['entity_manager']->getRepository('Secouruts\Secouriste')->find(phpCAS::getUser());
 $user = $GLOBALS['user'];
 
 
