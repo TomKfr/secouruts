@@ -26,20 +26,21 @@
 <script type="text/javascript">
 
 function dps_action(action){
-	var retrn = "";
 	var dps_id = $('#selectbasic').val();
 		$.ajax({
 			url: '../dps/'+action+'/'+dps_id,
 			type: 'get',
 			success: function(data){
+				if(action == 'close'){
+					toastr.info(data);
+				}
 				retrn = data;
+				$('#info').load('../dps/get/'+dps_id);
 			},
 			error: function(data){
 				alert(data);
 			}
 		});
-
-		return retrn;
 };
 
 $(function(){
@@ -63,18 +64,15 @@ $(function(){
 	});
 
 	$('#close').click(function(){
-		var status = dps_action('close');
-		if(status == "already_closed") { toastr.error('Le poste est déjà clos !'); }
-		else  { toastr.info('Le poste a été clos.'); }
-		var dps_id = $('#selectbasic').val();
-		$('#info').load('../dps/get/'+dps_id);
+		dps_action('close');
+		if($('#close').text() == "Clore") $('#close').text("Ouvrir");
+		if($('#close').text() == "Ouvrir") $('#close').text("Clore");
 	});
 
 	$('#cancel').click(function(){
 		dps_action('cancel');
 		toastr.warning('Le poste a été annulé.');
 		var dps_id = $('#selectbasic').val();
-		$('#info').load('../dps/get/'+dps_id);
 	});
 
 	$('#delete').click(function(){

@@ -95,12 +95,14 @@ class DPSController implements ControllerProviderInterface
 				$dps = $app['entity_manager']->getRepository('Secouruts\DPS')->find($id);
 
 				if($dps->isClosed()){
-					return "already_closed";
+					$dps->setClosed(false);
+					$app['entity_manager']->flush();
+					return "Le poste ".$dps->getTitre()." est ouvert";
 				}
 				else{
 					$dps->setClosed(true);
 					$app['entity_manager']->flush();
-					return 	"ok";
+					return "Le poste ".$dps->getTitre()." est clos";
 				}
 			}
 			else return "err";

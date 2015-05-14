@@ -15,6 +15,12 @@
 	th:hover{
 		background-color: #e8e8e8;
 	}
+	.red{
+		font-color : #ed0000;
+	}
+	table{
+		margin-top: 15px;
+	}
 	</style>
 
 </head>
@@ -63,26 +69,60 @@
 			</div><!-- /.container-fluid -->
 		</nav>
 
-			<div class="col-lg-12">
-				<h3>Evènements à venir :</h3>
-				<div id="accordion">
-					<?php
-					if(isset($postes)){
-						foreach ($postes as $dps) {
+		<div class="col-lg-12">
+			<h3>Evènements à venir :</h3>
+			<div id="accordion">
+				<?php
+				if(isset($postes)){
+					foreach ($postes as $dps) {
+						$closed = $dps->isclosed();
+						if(!$dps->isCancelled()){
 							echo "<h3>".$dps->getTitre()." - ".$dps->getDebut()->format('d/m/Y \d\e H:i').$dps->getFin()->format(' \à H:i')."</h3>";
-							echo "<div><p>".$dps->getDesc()."</p><p><table class='table'><tr>";
-							foreach ($dps->getCreneaux() as $creneau) {
-								echo "<th cre=".$creneau->getId().">".$creneau->getDateDeb()->format('H:i')." - ".$creneau->getDateFin()->format('H:i')."</th>";
-							}
-							echo "</tr><tr>";
-							foreach ($dps->getCreneaux() as $creneau) {
-								echo "<td cre=".$creneau->getId().">";
-								foreach ($creneau->getSecouristes() as $secouriste) {
-									echo $secouriste->getPrenom()." ".$secouriste->getNom()."<br>";
+							?>
+							<div class='min'>
+								<div class="col-md-4">
+									<?php echo "Lieu : ".$dps->getLieu()."\n"; ?>
+								</div>
+								<div class="col-md-4">
+									<?php echo "Type : ".$dps->getType() ?>
+								</div>
+								<div class="col-md-4">
+									<?php if($dps->isClosed()) echo "<h4 class='red'>Inscriptions clôturées</h4>" ?>
+								</div>
+								<div class="col-md-6">
+									<?php echo "Demandeur : ".$dps->getClient()."\n"; ?>
+								</div>
+
+								<div class="col-md-6">
+									<?php echo "Limite inscriptions : ".$dps->getLimitDate()->format('d/m/Y')."\n"; ?>
+								</div>
+
+								<div class="col-md-3">
+									<?php echo "PSE1 requis : ".$dps->getPSE1() ?>
+								</div>
+								<div class="col-md-3">
+									<?php echo "PSE2 requis : ".$dps->getPSE2() ?>
+								</div>
+
+								<div class="col-md-12">
+									<?php $dps->getDesc() ?>
+								</div>
+
+								<?php
+								echo "<div class='col-md-12'><table class='table'><tr>";
+								foreach ($dps->getCreneaux() as $creneau) {
+									echo "<th closed=".($closed ? 'true' : '')." cre=".$creneau->getId().">".$creneau->getDateDeb()->format('H:i')." - ".$creneau->getDateFin()->format('H:i')."</th>";
 								}
-								echo "</td>";
+								echo "</tr><tr>";
+								foreach ($dps->getCreneaux() as $creneau) {
+									echo "<td cre=".$creneau->getId().">";
+									foreach ($creneau->getSecouristes() as $secouriste) {
+										echo $secouriste->getPrenom()." ".$secouriste->getNom()."<br>";
+									}
+									echo "</td>";
+								}
+								echo "</tr></table></div></div>";
 							}
-							echo "</tr></table></p></div>";
 						}
 					}
 					?>
@@ -117,7 +157,7 @@
 	$(function(){
 		$('#accordion').accordion();
 
-		$('th').click(function(event){
+		$('th[closed!="true"]').click(function(event){
 			$.ajax({
 				type: "POST",
 				url: './ajax/sec_cre/<?php echo $user?>/'+$(event.target).attr('cre'),
@@ -138,6 +178,10 @@
 					$target.closest('tr').next().children().eq(cellIndex).html(result);
 				}
 			});
+		});
+
+		$('th[closed="true"]').click(function(event){
+			toastr.warning("Les inscriptions ne sont pas ouvertes pour ce poste !");
 		});
 
 		$('#accordion').one('mouseover', function() {

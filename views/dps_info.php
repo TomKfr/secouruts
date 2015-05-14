@@ -39,8 +39,9 @@
 </div>
 
 <div class="col-md-12">
-	<table class="table" style="margin-top:15px"><tr>
+	<table class="table" style="margin-top:15px" closed=<?php if($dps->isClosed()) echo "true"; ?><tr>
 	<?php
+		$closed = $dps->isClosed();
 		foreach ($crenos as $key => &$cre) {
 			echo "<th cre=".$key.">".array_shift($cre)."</th>";
 		}
@@ -52,7 +53,7 @@
 				$login = key($cre);
 				$name = array_shift($cre);
 				$empty = !is_null($name) ? false : true;
-				echo "<td cre=".$key." login=".$login.">".$name."  <span class='";
+				echo "<td closed=".($closed ? 'true' : '')." cre=".$key." login=".$login.">".$name."  <span class='";
 				if($dps->getCreneau($key)->isSecVal($login)) echo "glyphicon glyphicon-ok";
 				echo "' ></span></td>";
 			}
@@ -66,7 +67,7 @@
 
 <script type="text/javascript">
 $(function(){
-	$('td').click(function(event){
+	$('td[closed!="true"]').click(function(event){
 		var cell = $(event.target);
 		// toastr.success("Valider "+cell.text()+" (login : "+cell.attr('login')+") pour le créneau d'id : "+cell.attr('cre'));
 		if(cell.text() != ""){
@@ -84,10 +85,13 @@ $(function(){
 				}
 			});
 		}
-
 	});
 
-	$('table').one('mouseover', function() {
+	$('td[closed="true"]').click(function(event){
+		toastr.warning("Tu ne peux pas modifier les inscriptions d'un poste cloturé !");
+	});
+
+	$('table[closed!="true"]').one('mouseover', function() {
 		toastr.info("Cliquer sur un nom pour valider/invalider son inscription");
 	});
 });
