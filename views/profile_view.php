@@ -22,18 +22,6 @@
 			<a class="logo" href="/secouruts/" ></a>
 			<div class="title red">Secourut's<br/>Sensibiliser, Alerter, Agir</div>	
 		</header>
-		<!-- <div class="col-lg-offset-9 col-lg-2">
-			<ul class="nav nav-pills">
-				<li class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false"><?php echo $user?>
-						<span class="caret"></span>
-					</a>
-					<ul class="dropdown-menu" role="menu">
-						<li><a href="./index.php/logout">Déconnexion</a></li>
-					</ul>
-				</li>
-			</ul>
-		</div> -->
 	</div>
 
 	<div class="main-container">
@@ -45,9 +33,9 @@
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav">
-							<li ><a href="./">Evènements</a></li>
+							<?php if($display_all) echo '<li ><a href="./">Evènements</a></li>' ?>
 							<li class="active"><a href="#">Mon profil</a></li>
-							<?php if($user2->isAdmin()) { ?>
+							<?php if($user2->isAdmin() && $display_all) { ?>
 							<li class="dropdown">
 								<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Administration <span class="caret"></span></a>
 								<ul class="dropdown-menu" role="menu">
@@ -71,14 +59,19 @@
 
 			<div class="col-md-12">
 				<h3>Profil utilisateur</h3>
-				<form id="form" class="form-horizontal" method="get" action="../secouriste/profil_user">
+				<?php if(!$display_all) { ?>
+				<div class="alert alert-info">
+					<p>C'est ta première visite sur le site, pour continuer tu dois d'abord compléter ton profil utilisateur.</p>
+				</div>
+				<?php } ?>
+				<form id="form" class="form-horizontal" method="get" action="./secouriste/profil_user">
 					<fieldset id="target">
 						<div class="row">
 							<div class="col-md-5">
 								<div class="form-group">
 									<label class="col-md-4 control-label" for="name">Nom</label>  
 									<div class="col-md-4">
-										<input id="name" name="name" type="text" placeholder="" class="form-control input-md" required="" value=<?php if(isset($secouriste)) echo("'".$secouriste->getNom()."'"); ?>>
+										<input id="name" name="name" type="text" placeholder="" class="form-control input-md" required="" value=<?php if($user2->getNom() != null ) echo("'".$user2->getNom()."'"); ?>>
 									</div>							
 								</div>
 							</div>
@@ -86,7 +79,7 @@
 								<div class="form-group">
 									<label class="col-md-4 control-label" for="surname">Prénom</label>  
 									<div class="col-md-4">
-										<input id="surname" name="surname" type="text" placeholder="" class="form-control input-md"  required="" value=<?php if(isset($secouriste)) echo("'".$secouriste->getPrenom()."'"); ?>>
+										<input id="surname" name="surname" type="text" placeholder="" class="form-control input-md"  required="" value=<?php if($user2->getPrenom() != null ) echo("'".$user2->getPrenom()."'"); ?>>
 									</div>
 								</div>
 							</div>
@@ -96,7 +89,7 @@
 								<div class="form-group">
 									<label class="col-md-4 control-label" for="ddn">Date de naissance</label>  
 									<div class="col-md-4">
-										<input id="ddn" name="ddn" type="text" placeholder="" class="form-control input-md" required="" value=<?php if(isset($secouriste)) echo("'".$secouriste->getDDN()."'"); ?> >
+										<input id="ddn" name="ddn" type="text" placeholder="" class="form-control input-md" required="" value=<?php if($user2->getDDN() != null ) echo("'".$user2->getDDN()->format('d/m/Y')."'"); ?> >
 									</div>
 								</div>
 							</div>
@@ -104,7 +97,7 @@
 								<div class="form-group">
 									<label class="col-md-4 control-label" for="ldn">Lieu de naissance</label>  
 									<div class="col-md-4">
-										<input id="ldn" name="ldn" type="text" placeholder="" class="form-control input-md"  required="" value=<?php if(isset($secouriste)) echo("'".$secouriste->getLDN()."'"); ?>>
+										<input id="ldn" name="ldn" type="text" placeholder="" class="form-control input-md"  required="" value=<?php if($user2->getLDN() != null ) echo("'".$user2->getLDN()."'"); ?>>
 
 									</div>
 								</div>
@@ -149,9 +142,9 @@
 									</div>
 								</div>
 							</div>
-							<div id="alert" class="col-md-10 alert alert-danger" style="display:none">
+							<!-- <div id="alert" class="col-md-10 alert alert-danger" style="display:none">
 								<p align="center">Au moins un des deux diplômes est requis !</p>
-							</div>
+							</div> -->
 							<div class="row">
 								<div class="col-md-5">
 									<div class="form-group">
@@ -231,27 +224,27 @@
 						<div class="form-group">
 							<label class="col-md-4 control-label" for="permis">Permis B</label>  
 							<div class="col-md-4">
-								<input id="permis" type="checkbox" name="permis" class="form-control" value=<?php if(isset($secouriste)) echo("'".$secouriste->isPermis()."'"); ?>>
+								<input id="permis" type="checkbox" name="permis" class="form-control" value=<?php if($user2->isPermis() != null ) echo("'".$user2->isPermis()."'"); ?>>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-md-4 control-label" for="address">Adresse</label>  
 							<div class="col-md-4">
 								
-								<textarea id="address" name="address" class="form-control" required="" value=<?php if(isset($secouriste)) echo("'".$secouriste->getAdresse()."'"); ?> ></textarea>
+								<textarea id="address" name="address" class="form-control" required="" value=<?php if($user2->getAdresse() != null ) echo("'".$user2->getAdresse()."'"); ?> ></textarea>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-md-4 control-label" for="mail">Email</label>  
 							<div class="col-md-4">
-								<input id="mail" name="mail" type="text" placeholder="" class="form-control input-md" required="" value=<?php if(isset($secouriste)) echo("'".$secouriste->getEmail()."'"); ?> >
+								<input id="mail" name="mail" type="text" placeholder="" class="form-control input-md" required="" value=<?php if($user2->getEmail() != null ) echo("'".$user2->getEmail()."'"); ?> >
 
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-md-4 control-label" for="phone">Téléphone</label>  
 							<div class="col-md-4">
-								<input id="phone" name="phone" type="text" placeholder="" class="form-control input-md" required="" value=<?php if(isset($secouriste)) echo("'".$secouriste->getTel()."'"); ?> >
+								<input id="phone" name="phone" type="text" placeholder="" class="form-control input-md" required="" value=<?php if($user2->getTel() != null ) echo("'".$user2->getTel()."'"); ?> >
 
 							</div>
 						</div>
@@ -322,12 +315,11 @@
 	<script src="https://code.jquery.com/jquery-2.1.3.min.js" type="text/javascript"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-	<!-- <script src="http://assos.utc.fr/secouruts/javascript/jquery.blockUI.js" type=text/javascript></script>
-	<script src="http://assos.utc.fr/secouruts/javascript/loader.js" type="text/javascript"></script>
-	<script src="http://assos.utc.fr/secouruts/bundles/fosjsrouting/js/router.js"></script> -->
+	<script	src="../src/bootstrap-datepicker.js"></script>
+	<script	src="../src/bootstrap-datepicker.fr.min.js"></script>
 	<script type="text/javascript">
 	$(function() {
-		$( "#ddn" ).datepicker();
+		$( "#ddn" ).datepicker({language: 'fr'});
 		$("#date_pse1").datepicker();
 		$("#date_pse2").datepicker();
 
