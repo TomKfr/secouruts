@@ -11,6 +11,7 @@
 	<link rel="stylesheet" href="../src/css/responsive.css" type="text/css" />
 	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/themes/base/jquery-ui.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../src/css/bootstrap-datepicker3.min.css">
 
 </head>
 
@@ -89,7 +90,7 @@
 								<div class="form-group">
 									<label class="col-md-4 control-label" for="ddn">Date de naissance</label>  
 									<div class="col-md-4">
-										<input id="ddn" name="ddn" type="text" placeholder="" class="form-control input-md" required="" value=<?php if($user2->getDDN() != null ) echo("'".$user2->getDDN()->format('d/m/Y')."'"); ?> >
+										<input id="ddn" name="ddn" type="text" placeholder="" class="form-control input-md " required="" value=<?php if($user2->getDDN() != null && $user2->getDDN()->format('Y') > 1900) echo("'".$user2->getDDN()->format('d/m/Y')."'"); ?> >
 									</div>
 								</div>
 							</div>
@@ -109,7 +110,7 @@
 								<div class="form-group">
 									<label class="col-md-4 control-label" for="pse1">PSE1</label>  
 									<div class="col-md-4">
-										<input id="pse1" name="pse1" type="checkbox" placeholder="" class="form-control input-md" >
+										<input id="pse1" name="pse1" type="checkbox" placeholder="" class="form-control input-md datepicker" >
 									</div>
 								</div>
 							</div>
@@ -117,7 +118,7 @@
 								<div class="form-group">
 									<label class="col-md-4 control-label" for="date_dip">Date d'obtention</label>  
 									<div class="col-md-4">
-										<input id="date_pse1" name="date_pse1" type="text" placeholder="" class="form-control input-md">
+										<input id="date_pse1" name="date_pse1" type="text" placeholder="" class="form-control input-md datepicker">
 
 									</div>
 								</div>
@@ -129,7 +130,7 @@
 								<div class="form-group">
 									<label class="col-md-4 control-label" for="pse2">PSE2</label>  
 									<div class="col-md-4">
-										<input id="pse2" name="pse2" type="checkbox" placeholder="" class="form-control input-md">
+										<input id="pse2" name="pse2" type="checkbox" placeholder="" class="form-control input-md datepicker">
 									</div>
 								</div>
 							</div>
@@ -137,7 +138,7 @@
 								<div class="form-group">
 									<label class="col-md-4 control-label" for="date_dip">Date d'obtention</label>  
 									<div class="col-md-4">
-										<input id="date_pse2" name="date_pse2" type="text" placeholder="" class="form-control input-md">
+										<input id="date_pse2" name="date_pse2" type="text" placeholder="" class="form-control input-md datepicker">
 
 									</div>
 								</div>
@@ -150,7 +151,7 @@
 									<div class="form-group">
 										<label class="col-md-4 control-label" for="lat">LAT</label>  
 										<div class="col-md-4">
-											<input id="lat" name="lat" type="checkbox" placeholder="" class="form-control input-md">
+											<input id="lat" name="lat" type="checkbox" placeholder="" class="form-control input-md datepicker">
 										</div>
 									</div>
 								</div>
@@ -158,7 +159,7 @@
 									<div class="form-group">
 										<label class="col-md-4 control-label" for="date_dip">Date d'obtention</label>  
 										<div class="col-md-4">
-											<input id="date_lat" name="date_lat" type="text" placeholder="" class="form-control input-md">
+											<input id="date_lat" name="date_lat" type="text" placeholder="" class="form-control input-md datepicker">
 										</div>
 									</div>
 								</div>
@@ -168,7 +169,7 @@
 									<div class="form-group">
 										<label class="col-md-4 control-label" for="cod1">COD1</label>  
 										<div class="col-md-4">
-											<input id="cod1" name="cod1" type="checkbox" placeholder="" class="form-control input-md">
+											<input id="cod1" name="cod1" type="checkbox" placeholder="" class="form-control input-md datepicker">
 										</div>
 									</div>
 								</div>
@@ -176,7 +177,7 @@
 									<div class="form-group">
 										<label class="col-md-4 control-label" for="date_dip">Date d'obtention</label>  
 										<div class="col-md-4">
-											<input id="date_cod1" name="date_cod1" type="text" placeholder="" class="form-control input-md">
+											<input id="date_cod1" name="date_cod1" type="text" placeholder="" class="form-control input-md datepicker">
 
 										</div>
 									</div>
@@ -187,7 +188,7 @@
 									<div class="form-group">
 										<label class="col-md-4 control-label" for="cod2">COD2</label>  
 										<div class="col-md-4">
-											<input id="cod2" name="cod2" type="checkbox" placeholder="" class="form-control input-md">
+											<input id="cod2" name="cod2" type="checkbox" placeholder="" class="form-control input-md datepicker">
 										</div>
 									</div>
 								</div>
@@ -195,7 +196,7 @@
 									<div class="form-group">
 										<label class="col-md-4 control-label" for="date_dip">Date d'obtention</label>  
 										<div class="col-md-4">
-											<input id="date_cod2" name="date_cod2" type="text" placeholder="" class="form-control input-md">
+											<input id="date_cod2" name="date_cod2" type="text" placeholder="" class="form-control input-md datepicker">
 
 										</div>
 									</div>
@@ -206,7 +207,7 @@
 									<div class="form-group">
 										<label class="col-md-4 control-label" for="vpsp">VPSP</label>  
 										<div class="col-md-4">
-											<input id="vpsp" name="vpsp" type="checkbox" placeholder="" class="form-control input-md">
+											<input id="vpsp" name="vpsp" type="checkbox" placeholder="" class="form-control input-md datepicker">
 										</div>
 									</div>
 								</div>
@@ -214,7 +215,7 @@
 									<div class="form-group">
 										<label class="col-md-4 control-label" for="date_dip">Date d'obtention</label>  
 										<div class="col-md-4">
-											<input id="date_vpsp" name="date_vpsp" type="text" placeholder="" class="form-control input-md">
+											<input id="date_vpsp" name="date_vpsp" type="text" placeholder="" class="form-control input-md datepicker">
 
 										</div>
 									</div>
@@ -315,13 +316,20 @@
 	<script src="https://code.jquery.com/jquery-2.1.3.min.js" type="text/javascript"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-	<script	src="../src/bootstrap-datepicker.js"></script>
+	<script	src="../src/bootstrap-datepicker.min.js"></script>
 	<script	src="../src/bootstrap-datepicker.fr.min.js"></script>
+	<script	src="../src/moment-with-locales.min.js"></script>
+	<script	src="../src/bootstrap-datetimepicker.min.js"></script>
 	<script type="text/javascript">
 	$(function() {
-		$( "#ddn" ).datepicker({language: 'fr'});
-		$("#date_pse1").datepicker();
-		$("#date_pse2").datepicker();
+		$('.datepicker').datepicker({
+			startView : 1,
+			language : 'fr'
+		});
+		$('#ddn').datepicker({
+			startView : 2,
+			language : 'fr'
+		});
 
 		function hide_alert(){
 			$("#alert").hide("slow");
@@ -336,9 +344,6 @@
     				$("#alert").show("slow");
     			}
     		});
-
-		$("#pse1").change(hide_alert);
-		$("#pse2").change(hide_alert);
 
 	});
 	</script>

@@ -111,7 +111,7 @@
 								<?php
 								echo "<div class='col-md-12'><table class='table'><tr>";
 								foreach ($dps->getCreneaux() as $creneau) {
-									echo "<th closed=".($closed ? 'true' : '')." cre=".$creneau->getId().">".$creneau->getDateDeb()->format('H:i')." - ".$creneau->getDateFin()->format('H:i')."</th>";
+									echo "<th closed=".($closed ? 'true' : 'false')." cre=".$creneau->getId().">".$creneau->getDateDeb()->format('H:i')." - ".$creneau->getDateFin()->format('H:i')."</th>";
 								}
 								echo "</tr><tr>";
 								foreach ($dps->getCreneaux() as $creneau) {
@@ -148,9 +148,6 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 		<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.js"></script>
-	<!-- <script src="http://assos.utc.fr/secouruts/javascript/jquery.blockUI.js" type=text/javascript></script>
-	<script src="http://assos.utc.fr/secouruts/javascript/loader.js" type="text/javascript"></script>
-	<script src="http://assos.utc.fr/secouruts/bundles/fosjsrouting/js/router.js"></script> -->
 	<script type="text/javascript">
 	var triggered = false;
 
@@ -160,7 +157,7 @@
 		$('th[closed!="true"]').click(function(event){
 			$.ajax({
 				type: "POST",
-				url: './ajax/sec_cre/<?php echo $user?>/'+$(event.target).attr('cre'),
+				url: './ajax/sec_cre/<?php echo $user2->getLogin() ?>/'+$(event.target).attr('cre'),
 				success: function(txt){
 					var data = $.parseJSON(txt);
 					var result = "";

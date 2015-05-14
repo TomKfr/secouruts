@@ -17,7 +17,7 @@
 	</div>
 	<div id='info' class="well col-md-12" style="height: 150px; margin-top: 15px;"></div>
 	<div class="col-md-offset-4 col-md-2" style="margin-top : 20px">
-		<button id="adduser" class="btn btn-success">Ajouter un nouvel utilisateur</button>
+		<button id="adduser" class="btn btn-primary">Ajouter un nouvel utilisateur</button>
 	</div>
 </div>
 <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
