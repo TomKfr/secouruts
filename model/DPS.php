@@ -169,15 +169,13 @@ class DPS
 		$this->creneaux[] = $cre;
 	}
 
-	// public function getInscriptions()
-	// {
-	// 	return $this->inscriptions;
-	// }
-	// public function addInscription($inscr)
-	// {
-	// 	$inscr->setPoste($this);
-	// 	$this->inscriptions[] = $inscr;
-	// }
+	public function getCreneau($id)
+	{
+		foreach ($this->creneaux as $cre) {
+			if ($cre->getId() == $id) return $cre;
+		}
+		return null;
+	}
 
 	//Other methods
 

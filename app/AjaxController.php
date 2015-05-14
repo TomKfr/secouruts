@@ -63,7 +63,7 @@ class AjaxController implements ControllerProviderInterface
 
 
 			$returnarray = array();
-																//Si l'inscription existe, on vérifie si le secouriste est déjà dans le créneau en question
+
 			if($creneau->secouristeInscrit($user)){				//Si on trouve l'utilisateur dans le créneau, il s'agit d'une suppression
 				$creneau->removeSecouriste($user);				//Exécution de la suppression
 				$creneau->removeSecVal($user->getLogin());
@@ -81,6 +81,26 @@ class AjaxController implements ControllerProviderInterface
 			}
 
 			return json_encode($returnarray);
+		});
+
+		$controllers->match('/val_inscr/{login}/{id}', function($login, $id) use ($app) {
+
+			$creneau = $app['entity_manager']->getRepository('Secouruts\Creneau')->find($id);
+			$returntxt = "";
+
+			if($creneau->isSecVal($login)) {
+				$creneau->removeSecVal($login); //Si le secouriste est déja validé, on l'enlève	
+				$returntxt = $login." n'est plus validé sur le créneau ".$creneau->getDateDeb()->format('H:i')." - ".$creneau->getDateFin()->format('H:i');
+			} 
+			else {
+				$creneau->addSecVal($login); //Si le secouriste n'est pas validé, on l'ajoute	
+				$returntxt = $login." est validé sur le créneau ".$creneau->getDateDeb()->format('H:i')." - ".$creneau->getDateFin()->format('H:i');	
+			}
+
+			$app['entity_manager']->flush();
+
+			return $returntxt;
+
 		});
 
 		return $controllers;

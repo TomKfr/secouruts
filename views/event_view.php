@@ -69,7 +69,7 @@
 					<?php
 					if(isset($postes)){
 						foreach ($postes as $dps) {
-							echo "<h3>".$dps->getTitre()." - ".$dps->getDebut()->format('d M Y')."</h3>";
+							echo "<h3>".$dps->getTitre()." - ".$dps->getDebut()->format('d/m/Y \d\e H:i').$dps->getFin()->format(' \à H:i')."</h3>";
 							echo "<div><p>".$dps->getDesc()."</p><p><table class='table'><tr>";
 							foreach ($dps->getCreneaux() as $creneau) {
 								echo "<th cre=".$creneau->getId().">".$creneau->getDateDeb()->format('H:i')." - ".$creneau->getDateFin()->format('H:i')."</th>";

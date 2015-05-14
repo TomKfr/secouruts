@@ -58,6 +58,21 @@ class DPSController implements ControllerProviderInterface
 			}
 			else {
 				$dps = $app['entity_manager']->getRepository('Secouruts\DPS')->find($id);
+
+				$i = 0;
+				$crenos = array();
+
+				foreach ($dps->getCreneaux() as $creneau) { // COPIE des créneaux et des participants dans un tableaus pour passage à la page
+					$item = array();
+					$item['time'] = $creneau->getDateDeb()->format('H:i')." - ".$creneau->getDateFin()->format('H:i');
+					foreach ($creneau->getSecouristes() as $user) {
+						$item[$user->getLogin()] = $user->getPrenom()." ".$user->getNom();
+					}
+					$crenos[$creneau->getId()] = $item;
+				}
+
+				// return print_r($crenos);
+
 				ob_start();
 				require './views/dps_info.php';
 				$view = ob_get_clean();

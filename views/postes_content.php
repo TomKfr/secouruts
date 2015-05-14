@@ -17,7 +17,7 @@
 		<button id="cancel" class="btn btn-danger">Annuler</button>
 		<button id="delete" class="btn btn-danger">Supprimer</button>
 	</div>
-	<div id='info' class="well col-md-12" style="height: 200px; margin-top: 15px;"></div>
+	<div id='info' class="well col-md-12" style="min-height: 200px; margin-top: 15px;"></div>
 	<div class="col-md-offset-5 col-md-2" style="margin-top : 20px">
 		<button id="addpost" class="btn btn-primary">Ajouter un nouveau poste</button>
 	</div>
@@ -55,6 +55,7 @@ $(function(){
 			$('#control_buttons').hide('fast');
 			$('#info').html("");
 		}
+		// document.location.href='../dps/get/'+dps_id;
 	});
 
 	$('#addpost').click(function(){
@@ -65,11 +66,15 @@ $(function(){
 		var status = dps_action('close');
 		if(status == "already_closed") { toastr.error('Le poste est déjà clos !'); }
 		else  { toastr.info('Le poste a été clos.'); }
+		var dps_id = $('#selectbasic').val();
+		$('#info').load('../dps/get/'+dps_id);
 	});
 
 	$('#cancel').click(function(){
 		dps_action('cancel');
 		toastr.warning('Le poste a été annulé.');
+		var dps_id = $('#selectbasic').val();
+		$('#info').load('../dps/get/'+dps_id);
 	});
 
 	$('#delete').click(function(){

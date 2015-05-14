@@ -89,7 +89,8 @@ class Creneau
 	}
 	public function isSecVal($login)
 	{
-		return $this->sec_val->contains($login);
+		if(isset($this->sec_val)) return in_array($login, $this->sec_val);
+		else return false;
 	}
 	public function addSecVal($login)
 	{
@@ -97,7 +98,11 @@ class Creneau
 	}
 	public function removeSecVal($login)
 	{
-		if(isset($this->sec_val)) return $this->sec_val->remove($login);
+		if(isset($this->sec_val)) {
+			$key = array_search($login, $this->sec_val);
+			unset($this->sec_val[$key]);
+			return true;
+		}
 		else return false;
 	}
 }
