@@ -31,7 +31,13 @@ class Secouriste
 	protected $isadmin;
 	/** @Column(type="boolean") */
 	protected $isPermis;
-	/** @OneToMany(targetEntity="Diplome", mappedBy="id", cascade={"persist", "remove"}) */ //OneToMany unidirectionnel vers la classe diplome
+	/**
+     * @ManyToMany(targetEntity="Diplome", cascade={"persist", "remove"}, orphanRemoval=true)
+     * @JoinTable(name="secouriste_diplome",
+     *      joinColumns={@JoinColumn(name="secouriste_login", referencedColumnName="login")},
+     *      inverseJoinColumns={@JoinColumn(name="diplome_id", referencedColumnName="id", unique=true)}
+     *      )
+     **/
 	protected $diplomes;
 	/** @ManyToMany(targetEntity="Creneau", mappedBy="secouristes")	 */ //ManyToOne bidirectionnel vers la classe créneau.
 	protected $creneaux;
@@ -39,7 +45,6 @@ class Secouriste
 	public function __construct()
 	{
 		$this->diplomes = new \Doctrine\Common\Collections\ArrayCollection();
-		//$this->inscriptions = new \Doctrine\Common\Collections\ArrayCollection();
 	}
 
 	//Gettesr & setters

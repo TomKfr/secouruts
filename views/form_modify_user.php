@@ -196,23 +196,23 @@ $(function(){
 	$('.datepicker').datepicker({ language : 'fr' });
 
 	$('#submit').click(function(event){
-			event.preventDefault();
+			// event.preventDefault();
 			//Valider la conformité du formulaire et l'envoyer si OK, alerter sinon.
 			//Si valide alors : 
 			//Envoi en ajax :
-			$.ajax({
-                url: $('#modifuser').attr('action'), // Le nom du fichier indiqué dans le formulaire
-                type: $('#modifuser').attr('method'), // La méthode indiquée dans le formulaire (get ou post)
-                data: $('#modifuser').serialize(), // Je sérialise les données (j'envoie toutes les valeurs présentes dans le formulaire)
-                success: function(html) {
-                	toastr.clear();
-                	toastr.success('Enregistrement réussi !');
-                	$('#hidden').attr('value', html);
-                },
-                error: function() {
-                	toastr.error('Il y a eu un problème...');
-                }
-            });
+			// $.ajax({
+   //              url: $('#modifuser').attr('action'), // Le nom du fichier indiqué dans le formulaire
+   //              type: $('#modifuser').attr('method'), // La méthode indiquée dans le formulaire (get ou post)
+   //              data: $('#modifuser').serialize(), // Je sérialise les données (j'envoie toutes les valeurs présentes dans le formulaire)
+   //              success: function(html) {
+   //              	toastr.clear();
+   //              	toastr.success('Enregistrement réussi !');
+   //              	$('#hidden').attr('value', html);
+   //              },
+   //              error: function() {
+   //              	toastr.error('Il y a eu un problème...');
+   //              }
+   //          });
 
 		});
 

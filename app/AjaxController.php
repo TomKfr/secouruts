@@ -77,6 +77,7 @@ class AjaxController implements ControllerProviderInterface
 			$app['entity_manager']->flush();
 
 			foreach ($creneau->getSecouristes() as $secouriste) {
+				$dip = "";
 				$returnarray[] = $secouriste->getPrenom()." ".$secouriste->getNom();
 			}
 
@@ -101,6 +102,14 @@ class AjaxController implements ControllerProviderInterface
 
 			return $returntxt;
 
+		});
+
+		$controllers->get('/dip/{login}', function($login) use ($app) {
+			$secouriste = $app['entity_manager']->getRepository('Secouruts\Secouriste')->find($login);
+			$dip = "";
+				if($secouriste->getDiplome("PSE2") != null) $dip = "<h5>PSE2</h5>";
+				elseif($secouriste->getDiplome("PSE1") != null) $dip = "<h5>PSE1</h5>";
+			return $dip;
 		});
 
 		return $controllers;
