@@ -76,7 +76,7 @@
 				if(isset($postes)){
 					foreach ($postes as $dps) {
 						$closed = $dps->isclosed();
-						if(!$dps->isCancelled()){
+						if(!$dps->isCancelled() && !$dps->date_passed()){
 							echo "<h3>".$dps->getTitre()." - ".$dps->getDebut()->format('d/m/Y \d\e H:i').$dps->getFin()->format(' \à H:i')."</h3>";
 							?>
 							<div class='min'>

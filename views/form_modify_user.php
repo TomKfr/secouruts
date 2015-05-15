@@ -18,7 +18,7 @@
 		<div class="form-group col-md-5">
 			<label class="col-md-4 control-label" for="ddn">Date de naissance</label>  
 			<div class="col-md-4">
-				<input id="ddn" name="ddn" type="text" placeholder="" class="form-control input-md" required="" value=<?php if(isset($user)) echo("'".$user->getDDN()->format('d/m/Y')."'"); ?> >
+				<input id="ddn" name="ddn" type="text" placeholder="" class="form-control input-md" required="" value=<?php if($user->getDDN() != null && $user->getDDN()->format('Y') > 1900) echo("'".$user->getDDN()->format('d/m/Y')."'"); ?> >
 			</div>
 		</div>
 		<div class="form-group col-md-6">
@@ -39,7 +39,7 @@
 		<div class="form-group col-md-6">
 			<label class="col-md-4 control-label" for="date_dip">Date d'obtention</label>  
 			<div class="col-md-4">
-				<input id="date_pse1" name="date_pse1" type="text" placeholder="" class="form-control input-md">
+				<input id="date_pse1" name="date_pse1" type="text" placeholder="" class="form-control input-md datepicker">
 			</div>
 		</div>
 		<div class="form-group col-md-5">
@@ -51,19 +51,19 @@
 		<div class="form-group col-md-6">
 			<label class="col-md-4 control-label" for="date_dip">Date d'obtention</label>  
 				<div class="col-md-4">
-					<input id="date_pse2" name="date_pse2" type="text" placeholder="" class="form-control input-md">
+					<input id="date_pse2" name="date_pse2" type="text" placeholder="" class="form-control input-md datepicker">
 				</div>
 		</div>
 		<div class="form-group col-md-5">
 			<label class="col-md-4 control-label" for="lat">LAT</label>  
 			<div class="col-md-4">
-				<input id="lat" name="lat" type="checkbox" placeholder="" class="form-control input-md">
+				<input id="lat" name="lat" type="checkbox" placeholder="" class="form-control input-md datepicker">
 			</div>
 		</div>
 		<div class="form-group col-md-6">
 			<label class="col-md-4 control-label" for="date_dip">Date d'obtention</label>  
 				<div class="col-md-4">
-					<input id="date_lat" name="date_lat" type="text" placeholder="" class="form-control input-md">
+					<input id="date_lat" name="date_lat" type="text" placeholder="" class="form-control input-md datepicker">
 				</div>
 		</div>
 		<div class="form-group col-md-5">
@@ -75,7 +75,7 @@
 		<div class="form-group col-md-6">
 			<label class="col-md-4 control-label" for="date_dip">Date d'obtention</label>  
 				<div class="col-md-4">
-					<input id="date_cod1" name="date_cod1" type="text" placeholder="" class="form-control input-md">
+					<input id="date_cod1" name="date_cod1" type="text" placeholder="" class="form-control input-md datepicker">
 				</div>
 		</div>
 		<div class="form-group col-md-5">
@@ -87,7 +87,7 @@
 		<div class="form-group col-md-6">
 			<label class="col-md-4 control-label" for="date_dip">Date d'obtention</label>  
 				<div class="col-md-4">
-					<input id="date_cod2" name="date_cod2" type="text" placeholder="" class="form-control input-md">
+					<input id="date_cod2" name="date_cod2" type="text" placeholder="" class="form-control input-md datepicker">
 				</div>
 		</div>
 		<div class="form-group col-md-5">
@@ -99,7 +99,7 @@
 		<div class="form-group col-md-6">
 			<label class="col-md-4 control-label" for="date_dip">Date d'obtention</label>  
 				<div class="col-md-4">
-					<input id="date_vpsp" name="date_vpsp" type="text" placeholder="" class="form-control input-md">
+					<input id="date_vpsp" name="date_vpsp" type="text" placeholder="" class="form-control input-md datepicker">
 				</div>
 		</div>
 		<div class="form-group">
@@ -183,37 +183,36 @@
 			<h3 align="center">Echec ...</h3>
 </div> -->
 
+	<script	src="../../src/bootstrap-datepicker.min.js"></script>
+	<script	src="../../src/bootstrap-datepicker.fr.min.js"></script>
+
 <script>
 
 $(function(){
-	$('#ddn').datepicker();
-	$("#date_pse1").datepicker();
-	$("#date_pse2").datepicker();
-	$("#date_lat").datepicker();
-	$("#date_cod1").datepicker();
-	$("#date_cod2").datepicker();
-	$("#date_vpsp").datepicker();
-	$('.alert').hide();
+	$('#ddn').datepicker({ 
+		language : 'fr',
+		startView : 1
+	});
+	$('.datepicker').datepicker({ language : 'fr' });
 
 	$('#submit').click(function(event){
-			//event.preventDefault();
+			event.preventDefault();
 			//Valider la conformité du formulaire et l'envoyer si OK, alerter sinon.
 			//Si valide alors : 
-
 			//Envoi en ajax :
-			// $.ajax({
-   //              url: $('#modifuser').attr('action'), // Le nom du fichier indiqué dans le formulaire
-   //              type: $('#modifuser').attr('method'), // La méthode indiquée dans le formulaire (get ou post)
-   //              data: $('#modifuser').serialize(), // Je sérialise les données (j'envoie toutes les valeurs présentes dans le formulaire)
-   //              success: function(html) {
-   //              	toastr.clear();
-   //              	toastr.success('Modification réussie !');
-   //              	$('#hidden').attr('value', html);
-   //              },
-   //              error: {
-   //              	//toastr.error('Il y a eu un problème...');
-   //              }
-   //          });
+			$.ajax({
+                url: $('#modifuser').attr('action'), // Le nom du fichier indiqué dans le formulaire
+                type: $('#modifuser').attr('method'), // La méthode indiquée dans le formulaire (get ou post)
+                data: $('#modifuser').serialize(), // Je sérialise les données (j'envoie toutes les valeurs présentes dans le formulaire)
+                success: function(html) {
+                	toastr.clear();
+                	toastr.success('Enregistrement réussie !');
+                	$('#hidden').attr('value', html);
+                },
+                error: {
+                	//toastr.error('Il y a eu un problème...');
+                }
+            });
 
 		});
 

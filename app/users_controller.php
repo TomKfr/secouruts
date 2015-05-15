@@ -43,7 +43,7 @@ class UsersController implements ControllerProviderInterface
 
 		});
 
-		$controllers->post('/modify_user/{login}',function($login) use ($app){
+		$controllers->match('/modify_user/{login}',function($login) use ($app){
 			//$login = $_POST['login'];
 			$nom = $_POST['nom'] ; 
 			$prenom = $_POST['prenom'];
@@ -52,7 +52,6 @@ class UsersController implements ControllerProviderInterface
 
 			$modifuser = $app['entity_manager']->find('Secouruts\Secouriste', $login);
 
-			// $modifuser->setLogin($login);
 			$modifuser->setNom($nom);
 			$modifuser->setPrenom($prenom);
 			$modifuser->setAdmin($admin);

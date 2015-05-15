@@ -2,6 +2,12 @@
 
 require_once 'require.php';
 
+function init(){ // Appelée à chaque connexion, vérifie si la date de chaque poste est passée ou non 
+	$postes = $app['entity_manager']->getRepository('Secouruts\DPS')->findAll();
+	foreach ($postes as $dps) {
+		$dps->closedIfPassed();
+	}
+}
 
 $app->get('/hello/{name}', function ($name) use ($app) {
     return 'Hello ' . $app->escape($name);
@@ -11,6 +17,12 @@ $app->get('/hello/{name}', function ($name) use ($app) {
 $app->get('/', function () use ($app) {
 	$user = $GLOBALS['user'];
 	$user2 = $_SESSION['user2'];
+
+	// $postes = $app['entity_manager']->getRepository('Secouruts\DPS')->findAll();
+	// foreach ($postes as $dps) {
+	// 	$dps->closeIfPassed();
+	// }
+	$app['entity_manager']->flush();
 
 	if(is_null($user2)){ //Si l'utilisateur n'est pas dans la base, il est interdit d'accès.
 		ob_start();

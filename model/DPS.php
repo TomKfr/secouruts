@@ -242,6 +242,19 @@ class DPS
 
 		return false;
 	}
+
+	public function closeIfPassed(){ // Clos les inscriptions au poste si la date limite d'inscription a été atteinte.
+		if(!is_null($this->limit_date)){
+			if($this->limit_date->diff(new \DateTime())->invert == 0) $this->setClosed(true);
+		}
+	}
+
+	public function date_passed(){ // Renvoie true si la date de fin du poste a été dépassée.
+		if(!is_null($this->fin)){
+			if($this->fin->diff(new \DateTime())->invert == 0) return true;
+			else return false;
+		}
+	}
 }
 
 ?>
