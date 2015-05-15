@@ -168,6 +168,15 @@ class Secouriste
 	{
 		$this->inscriptions[] = $inscr;
 	}
+
+	//Other methods
+
+	public function getDiplome($dip){ // Si l'utilisateur possède le diplome en paramètre, renvoie l'objet DateTime d'obtention, null sinon
+		foreach ($this->diplomes as $diplom) {
+			if($diplom->getType() == $dip) return $diplom->getDate();
+		}
+		return null;
+	}
 }
 
 ?>

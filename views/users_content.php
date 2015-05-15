@@ -15,7 +15,7 @@
 		<button id="modify" class="btn btn-warning">Modifier</button>
 		<button id="delete" class="btn btn-danger">Supprimer</button>
 	</div>
-	<div id='info' class="well col-md-12" style="height: 150px; margin-top: 15px;"></div>
+	<div id='info' class="well col-md-12" style="min-height: 200px; margin-top: 15px;"></div>
 	<div class="col-md-offset-4 col-md-2" style="margin-top : 20px">
 		<button id="adduser" class="btn btn-primary">Ajouter un nouvel utilisateur</button>
 	</div>

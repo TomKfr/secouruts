@@ -1,5 +1,5 @@
 <div class="right-content">
-	<h3>Modification du Profil utilisateur</h3>
+	<h3>Modification du Profil de <?php echo $user->getLogin() ?></h3>
 </div>
 <div id="formdiv" class="col-md-12" style="margin-top : 15px">
 	<form id="modifuser" class="form-horizontal" method='post' action="../secouriste/modify_user/<?php echo $user->getLogin() ?>">
@@ -117,19 +117,19 @@
 		<div class="form-group">
 			<label class="col-md-3 control-label" for="address">Adresse</label>  
 			<div class="col-md-3">
-				<textarea id="address" name="address" class="form-control" required="" value=<?php if(isset($user)) echo("'".$user->getAdresse()."'"); ?> ></textarea>
+				<textarea id="address" name="adresse" class="form-control" required="" value=<?php if(isset($user)) echo("'".$user->getAdresse()."'"); ?> ></textarea>
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-md-3 control-label" for="mail">Email</label>  
 			<div class="col-md-3">
-				<input id="mail" name="mail" type="text" placeholder="" class="form-control input-md" required="" value=<?php if(isset($user)) echo("'".$user->getEmail()."'"); ?> >
+				<input id="mail" name="email" type="text" placeholder="" class="form-control input-md" required="" value=<?php if(isset($user)) echo("'".$user->getEmail()."'"); ?> >
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-md-3 control-label" for="phone">Téléphone</label>  
 			<div class="col-md-3">
-				<input id="phone" name="phone" type="text" placeholder="" class="form-control input-md" required="" value=<?php if(isset($user)) echo("'".$user->getTel()."'"); ?> >
+				<input id="phone" name="tel" type="text" placeholder="" class="form-control input-md" required="" value=<?php if(isset($user)) echo("'".$user->getTel()."'"); ?> >
 			</div>
 		</div>
 		<div class="form-group">
@@ -191,7 +191,7 @@
 $(function(){
 	$('#ddn').datepicker({ 
 		language : 'fr',
-		startView : 1
+		startView : 2
 	});
 	$('.datepicker').datepicker({ language : 'fr' });
 
@@ -206,11 +206,11 @@ $(function(){
                 data: $('#modifuser').serialize(), // Je sérialise les données (j'envoie toutes les valeurs présentes dans le formulaire)
                 success: function(html) {
                 	toastr.clear();
-                	toastr.success('Enregistrement réussie !');
+                	toastr.success('Enregistrement réussi !');
                 	$('#hidden').attr('value', html);
                 },
-                error: {
-                	//toastr.error('Il y a eu un problème...');
+                error: function() {
+                	toastr.error('Il y a eu un problème...');
                 }
             });
 

@@ -58,48 +58,48 @@ class UsersController implements ControllerProviderInterface
 			if(isset($_POST['pse1'])) {
 				$dip = new Diplome();
 				$dip->setType('PSE1');
-				$dip->setDate($_POST['date_pse1']);
+				$dip->setDate(DateTime::createFromFormat('d/m/Y',$_POST['date_pse1']));
 				$modifuser->addDiplome($dip);
 			}
 			if(isset($_POST['pse2'])) {
 				$dip = new Diplome();
 				$dip->setType('PSE2');
-				$dip->setDate($_POST['date_pse2']);
+				$dip->setDate(DateTime::createFromFormat('d/m/Y',$_POST['date_pse2']));
 				$modifuser->addDiplome($dip);
 			}
 			if(isset($_POST['lat'])) {
 				$dip = new Diplome();
 				$dip->setType('LAT');
-				$dip->setDate($_POST['date_lat']);
+				$dip->setDate(DateTime::createFromFormat('d/m/Y',$_POST['date_lat']));
 				$modifuser->addDiplome($dip);
 			}
 			if(isset($_POST['cod1'])) {
 				$dip = new Diplome();
 				$dip->setType('COD1');
-				$dip->setDate($_POST['date_cod1']);
+				$dip->setDate(DateTime::createFromFormat('d/m/Y',$_POST['date_cod1']));
 				$modifuser->addDiplome($dip);
 			}
 			if(isset($_POST['cod2'])) {
 				$dip = new Diplome();
 				$dip->setType('COD2');
-				$dip->setDate($_POST['date_cod2']);
+				$dip->setDate(DateTime::createFromFormat('d/m/Y',$_POST['date_cod2']));
 				$modifuser->addDiplome($dip);
 			}
 			if(isset($_POST['vpsp'])) {
 				$dip = new Diplome();
 				$dip->setType('VPSP');
-				$dip->setDate($_POST['date_vpsp']);
+				$dip->setDate(DateTime::createFromFormat('d/m/Y',$_POST['date_vpsp']));
 				$modifuser->addDiplome($dip);
 			}
 
-			$modifuser->setDDN(new DateTime($_POST['ddn'])); 
+			$modifuser->setDDN(DateTime::createFromFormat('d/m/Y',$_POST['ddn'])); 
 			$modifuser->setLDN($_POST['ldn']);
 			$modifuser->setAdresse($_POST['adresse']);
 			$modifuser->setEmail($_POST['email']);
 			$modifuser->settel($_POST['tel']);
 			$modifuser->setTaille($_POST['taille']);
 			$modifuser->setSemestre($_POST['semestre']);
-			$modifuser->setPermis($_POST['permis']);
+			if(isset($_POST['permis'])) $modifuser->setPermis($_POST['permis']);
 
 			$app['entity_manager']->persist($modifuser);
 			$app['entity_manager']->flush();
@@ -123,37 +123,37 @@ class UsersController implements ControllerProviderInterface
 			if(isset($_POST['pse1'])) {
 				$dip = new Diplome();
 				$dip->setType('PSE1');
-				$dip->setDate($_POST['date_pse1']);
+				$dip->setDate(DateTime::createFromFormat('d/m/Y',$_POST['date_pse1']));
 				$profiluser->addDiplome($dip);
 			}
 			if(isset($_POST['pse2'])) {
 				$dip = new Diplome();
 				$dip->setType('PSE2');
-				$dip->setDate($_POST['date_pse2']);
+				$dip->setDate(new DateTime($_POST['date_pse2']));
 				$profiluser->addDiplome($dip);
 			}
 			if(isset($_POST['lat'])) {
 				$dip = new Diplome();
 				$dip->setType('LAT');
-				$dip->setDate($_POST['date_lat']);
+				$dip->setDate(new DateTime($_POST['date_lat']));
 				$profiluser->addDiplome($dip);
 			}
 			if(isset($_POST['cod1'])) {
 				$dip = new Diplome();
 				$dip->setType('COD1');
-				$dip->setDate($_POST['date_cod1']);
+				$dip->setDate(new DateTime($_POST['date_cod1']));
 				$profiluser->addDiplome($dip);
 			}
 			if(isset($_POST['cod2'])) {
 				$dip = new Diplome();
 				$dip->setType('COD2');
-				$dip->setDate($_POST['date_cod2']);
+				$dip->setDate(new DateTime($_POST['date_cod2']));
 				$profiluser->addDiplome($dip);
 			}
 			if(isset($_POST['vpsp'])) {
 				$dip = new Diplome();
 				$dip->setType('VPSP');
-				$dip->setDate($_POST['date_vpsp']);
+				$dip->setDate(new DateTime($_POST['date_vpsp']));
 				$profiluser->addDiplome($dip);
 			}
 

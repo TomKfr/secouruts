@@ -53,7 +53,7 @@
 				$login = key($cre);
 				$name = array_shift($cre);
 				$empty = !is_null($name) ? false : true;
-				echo "<td closed=".($closed ? 'true' : '')." cre=".$key." login=".$login.">".$name."  <span class='";
+				echo "<td closed=".($closed ? 'true' : 'false')." cre=".$key." login=".$login.">".$name."  <span class='";
 				if($dps->getCreneau($key)->isSecVal($login)) echo "glyphicon glyphicon-ok";
 				echo "' ></span></td>";
 			}

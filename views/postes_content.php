@@ -5,7 +5,9 @@
 			<?php
 			if(isset($postes)){
 				foreach ($postes as $dps) {
-					echo "<option id=".$dps->getId()." value=".$dps->getId().">".$dps->getTitre()."  -  ".$dps->getDebut()->format("d F Y")."</option>";
+					echo "<option id=".$dps->getId()." value=".$dps->getId().">".$dps->getTitre()."  -  ".$dps->getDebut()->format("d F Y");
+					if($dps->date_passed()) echo " - Terminé";
+					echo"</option>";
 				}
 			}
 			?>
