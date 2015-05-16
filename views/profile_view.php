@@ -11,7 +11,17 @@
 	<link rel="stylesheet" href="../src/css/responsive.css" type="text/css" />
 	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/themes/base/jquery-ui.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
 	<link rel="stylesheet" href="../src/css/bootstrap-datepicker3.min.css">
+
+	<style type="text/css">
+	input{
+		text-align: center;
+	}
+	label ~ div {
+		margin-top: 10px;
+	}
+	</style>
 
 </head>
 
@@ -61,18 +71,18 @@
 			<div class="col-md-12">
 				<h3>Profil utilisateur</h3>
 				<?php if(!$display_all) { ?>
-				<div class="alert alert-info">
+				<div id="infodiv" class="alert alert-info">
 					<p>C'est ta première visite sur le site, pour continuer tu dois d'abord compléter ton profil utilisateur.</p>
 				</div>
 				<?php } ?>
-				<form id="form" class="form-horizontal" method="get" action="./secouriste/profil_user">
+				<form id="form" class="form-horizontal" method="post" action="./secouriste/modify_user/<?php echo $user2->getLogin() ?>">
 					<fieldset id="target">
 						<div class="row">
 							<div class="col-md-5">
 								<div class="form-group">
 									<label class="col-md-4 control-label" for="name">Nom</label>  
 									<div class="col-md-4">
-										<input id="name" name="name" type="text" placeholder="" class="form-control input-md" required="" value=<?php if($user2->getNom() != null ) echo("'".$user2->getNom()."'"); ?>>
+										<input id="name" name="nom" type="text" placeholder="" class="form-control input-md" required="" value=<?php if($user2->getNom() != null ) echo("'".$user2->getNom()."'"); ?>>
 									</div>							
 								</div>
 							</div>
@@ -80,7 +90,7 @@
 								<div class="form-group">
 									<label class="col-md-4 control-label" for="surname">Prénom</label>  
 									<div class="col-md-4">
-										<input id="surname" name="surname" type="text" placeholder="" class="form-control input-md"  required="" value=<?php if($user2->getPrenom() != null ) echo("'".$user2->getPrenom()."'"); ?>>
+										<input id="surname" name="prenom" type="text" placeholder="" class="form-control input-md"  required="" value=<?php if($user2->getPrenom() != null ) echo("'".$user2->getPrenom()."'"); ?>>
 									</div>
 								</div>
 							</div>
@@ -105,12 +115,75 @@
 							</div>
 						</div>
 						<h4>Diplômes obtenus :</h4>
-						<div class="row">
+						<div id="dips" class="row"> <!-- PSE1 & PSE2 -->
+						  <div class="col-md-5">
+						  	<label class="col-md-4 control-label" for="pse1">PSE1</label>
+						    <div class="input-group">
+						      <span class="input-group-addon">
+						        <input id="pse1" name="pse1" type="checkbox" placeholder="" <?php if(($dip = $user2->getDiplome("PSE1")) != null) echo "checked" ?> >
+						      </span>
+						      <input id="date_pse1" name="date_pse1" type="text" placeholder="Date d'obtention" class="form-control input-md datepicker" value=<?php if($dip != null) echo '"'.$dip.'"' ?> >
+						    </div><!-- /input-group -->
+						  </div><!-- /.col-md-6 -->
+						  <div class="col-md-5">
+						  	<label class="col-md-4 control-label" for="pse2">PSE2</label>  
+						    <div class="input-group">
+						      <span class="input-group-addon">
+						        <input id="pse2" name="pse2" type="checkbox" placeholder="" <?php if(($dip = $user2->getDiplome("PSE2")) != null) echo "checked" ?> >
+						      </span>
+						      <input id="date_pse2" name="date_pse2" type="text" placeholder="Date d'obtention" class="form-control input-md datepicker" value=<?php if($dip != null) echo '"'.$dip.'"' ?> >
+						    </div><!-- /input-group -->
+						  </div><!-- /.col-md-6 -->
+						</div><!-- /.row -->
+
+						<div class="row"> <!-- COD1 & COD2 -->
+						  <div class="col-md-5">
+						  	<label class="col-md-4 control-label" for="cod1">COD1</label> 
+						    <div class="input-group">
+						      <span class="input-group-addon">
+						        <input id="cod1" name="cod1" type="checkbox" placeholder="" <?php if(($dip = $user2->getDiplome("COD1")) != null) echo "checked" ?> >
+						      </span>
+						      <input id="date_cod1" name="date_cod1" type="text" placeholder="Date d'obtention" class="form-control input-md datepicker" value=<?php if($dip != null) echo '"'.$dip.'"' ?>>
+						    </div><!-- /input-group -->
+						  </div><!-- /.col-md-6 -->
+						  <div class="col-md-5">
+						  	<label class="col-md-4 control-label" for="cod2">COD2</label>
+						    <div class="input-group">
+						      <span class="input-group-addon">
+						        <input id="cod2" name="cod2" type="checkbox" placeholder="" <?php if(($dip = $user2->getDiplome("COD2")) != null) echo "checked" ?> >
+						      </span>
+						      <input id="date_cod2" name="date_cod2" type="text" placeholder="Date d'obtention" class="form-control input-md datepicker" value=<?php if($dip != null) echo '"'.$dip.'"' ?>>
+						    </div><!-- /input-group -->
+						  </div><!-- /.col-md-6 -->
+						</div><!-- /.row -->
+
+						<div class="row"> <!-- LAT & VPSP -->
+						  <div class="col-md-5">
+						  	<label class="col-md-4 control-label" for="lat">LAT</label>  
+						    <div class="input-group">
+						      <span class="input-group-addon">
+						        <input id="lat" name="lat" type="checkbox" placeholder="" <?php if(($dip = $user2->getDiplome("LAT")) != null) echo "checked" ?> >
+						      </span>
+						      <input id="date_lat" name="date_lat" type="text" placeholder="Date d'obtention" class="form-control input-md datepicker" value=<?php if($dip != null) echo '"'.$dip.'"' ?>>
+						    </div><!-- /input-group -->
+						  </div><!-- /.col-md-6 -->
+						  <div class="col-md-5">
+						  	<label class="col-md-4 control-label" for="vpsp">VPSP</label>  
+						    <div class="input-group">
+						      <span class="input-group-addon">
+						        <input id="vpsp" name="vpsp" type="checkbox" placeholder="" <?php if(($dip = $user2->getDiplome("VPSP")) != null) echo "checked" ?> >
+						      </span>
+						      <input id="date_vpsp" name="date_vpsp" type="text" placeholder="Date d'obtention" class="form-control input-md datepicker" value=<?php if($dip != null) echo '"'.$dip.'"' ?>>
+						    </div><!-- /input-group -->
+						  </div><!-- /.col-md-6 -->
+						</div><!-- /.row -->
+
+						<!-- <div class="row">
 							<div class="col-md-5">
 								<div class="form-group">
 									<label class="col-md-4 control-label" for="pse1">PSE1</label>  
 									<div class="col-md-4">
-										<input id="pse1" name="pse1" type="checkbox" placeholder="" class="form-control input-md datepicker" >
+										<input id="pse1" name="pse1" type="checkbox" placeholder="" class="form-control input-md" <?php if(($dip = $user2->getDiplome("PSE1")) != null) echo "checked" ?> >
 									</div>
 								</div>
 							</div>
@@ -118,7 +191,7 @@
 								<div class="form-group">
 									<label class="col-md-4 control-label" for="date_dip">Date d'obtention</label>  
 									<div class="col-md-4">
-										<input id="date_pse1" name="date_pse1" type="text" placeholder="" class="form-control input-md datepicker">
+										<input id="date_pse1" name="date_pse1" type="text" placeholder="" class="form-control input-md datepicker" value=<?php if($dip != null) echo '"'.$dip.'"' ?> >
 
 									</div>
 								</div>
@@ -130,7 +203,7 @@
 								<div class="form-group">
 									<label class="col-md-4 control-label" for="pse2">PSE2</label>  
 									<div class="col-md-4">
-										<input id="pse2" name="pse2" type="checkbox" placeholder="" class="form-control input-md datepicker">
+										<input id="pse2" name="pse2" type="checkbox" placeholder="" class="form-control input-md" <?php if(($dip = $user2->getDiplome("PSE2")) != null) echo "checked" ?> >
 									</div>
 								</div>
 							</div>
@@ -138,20 +211,16 @@
 								<div class="form-group">
 									<label class="col-md-4 control-label" for="date_dip">Date d'obtention</label>  
 									<div class="col-md-4">
-										<input id="date_pse2" name="date_pse2" type="text" placeholder="" class="form-control input-md datepicker">
-
+										<input id="date_pse2" name="date_pse2" type="text" placeholder="" class="form-control input-md datepicker" value=<?php if($dip != null) echo '"'.$dip.'"' ?> >
 									</div>
 								</div>
 							</div>
-							<!-- <div id="alert" class="col-md-10 alert alert-danger" style="display:none">
-								<p align="center">Au moins un des deux diplômes est requis !</p>
-							</div> -->
 							<div class="row">
-								<div class="col-md-5">
+								<div class="col-md-6">
 									<div class="form-group">
 										<label class="col-md-4 control-label" for="lat">LAT</label>  
 										<div class="col-md-4">
-											<input id="lat" name="lat" type="checkbox" placeholder="" class="form-control input-md datepicker">
+											<input id="lat" name="lat" type="checkbox" placeholder="" class="form-control input-md" <?php if(($dip = $user2->getDiplome("LAT")) != null) echo "checked" ?> >
 										</div>
 									</div>
 								</div>
@@ -159,7 +228,7 @@
 									<div class="form-group">
 										<label class="col-md-4 control-label" for="date_dip">Date d'obtention</label>  
 										<div class="col-md-4">
-											<input id="date_lat" name="date_lat" type="text" placeholder="" class="form-control input-md datepicker">
+											<input id="date_lat" name="date_lat" type="text" placeholder="" class="form-control input-md datepicker" value=<?php if($dip != null) echo '"'.$dip.'"' ?>>
 										</div>
 									</div>
 								</div>
@@ -169,7 +238,7 @@
 									<div class="form-group">
 										<label class="col-md-4 control-label" for="cod1">COD1</label>  
 										<div class="col-md-4">
-											<input id="cod1" name="cod1" type="checkbox" placeholder="" class="form-control input-md datepicker">
+											<input id="cod1" name="cod1" type="checkbox" placeholder="" class="form-control input-md" <?php if(($dip = $user2->getDiplome("COD1")) != null) echo "checked" ?> >
 										</div>
 									</div>
 								</div>
@@ -177,7 +246,7 @@
 									<div class="form-group">
 										<label class="col-md-4 control-label" for="date_dip">Date d'obtention</label>  
 										<div class="col-md-4">
-											<input id="date_cod1" name="date_cod1" type="text" placeholder="" class="form-control input-md datepicker">
+											<input id="date_cod1" name="date_cod1" type="text" placeholder="" class="form-control input-md datepicker" value=<?php if($dip != null) echo '"'.$dip.'"' ?>>
 
 										</div>
 									</div>
@@ -188,7 +257,7 @@
 									<div class="form-group">
 										<label class="col-md-4 control-label" for="cod2">COD2</label>  
 										<div class="col-md-4">
-											<input id="cod2" name="cod2" type="checkbox" placeholder="" class="form-control input-md datepicker">
+											<input id="cod2" name="cod2" type="checkbox" placeholder="" class="form-control input-md" <?php if(($dip = $user2->getDiplome("COD2")) != null) echo "checked" ?> >
 										</div>
 									</div>
 								</div>
@@ -196,7 +265,7 @@
 									<div class="form-group">
 										<label class="col-md-4 control-label" for="date_dip">Date d'obtention</label>  
 										<div class="col-md-4">
-											<input id="date_cod2" name="date_cod2" type="text" placeholder="" class="form-control input-md datepicker">
+											<input id="date_cod2" name="date_cod2" type="text" placeholder="" class="form-control input-md datepicker" value=<?php if($dip != null) echo '"'.$dip.'"' ?>>
 
 										</div>
 									</div>
@@ -207,7 +276,7 @@
 									<div class="form-group">
 										<label class="col-md-4 control-label" for="vpsp">VPSP</label>  
 										<div class="col-md-4">
-											<input id="vpsp" name="vpsp" type="checkbox" placeholder="" class="form-control input-md datepicker">
+											<input id="vpsp" name="vpsp" type="checkbox" placeholder="" class="form-control input-md" <?php if(($dip = $user2->getDiplome("VPSP")) != null) echo "checked" ?> >
 										</div>
 									</div>
 								</div>
@@ -215,37 +284,39 @@
 									<div class="form-group">
 										<label class="col-md-4 control-label" for="date_dip">Date d'obtention</label>  
 										<div class="col-md-4">
-											<input id="date_vpsp" name="date_vpsp" type="text" placeholder="" class="form-control input-md datepicker">
+											<input id="date_vpsp" name="date_vpsp" type="text" placeholder="" class="form-control input-md datepicker" value=<?php if($dip != null) echo '"'.$dip.'"' ?>>
 
 										</div>
 									</div>
 								</div>
-							</div>
+							</div> -->
 						<br>
 						<div class="form-group">
-							<label class="col-md-4 control-label" for="permis">Permis B</label>  
-							<div class="col-md-4">
-								<input id="permis" type="checkbox" name="permis" class="form-control" value=<?php if($user2->isPermis() != null ) echo("'".$user2->isPermis()."'"); ?>>
+							<!-- <label class="col-md-4 control5label" for="permis">Permis B</label>   -->
+							<div class="col-md-offset-5 col-md-4">
+								<label class="btn btn-primary">
+								<input id="permis" type="checkbox" name="permis" <?php if($user2->isPermis() != null ) echo "checked" ?> > Permis B
+								</label>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-md-4 control-label" for="address">Adresse</label>  
 							<div class="col-md-4">
 								
-								<textarea id="address" name="address" class="form-control" required="" value=<?php if($user2->getAdresse() != null ) echo("'".$user2->getAdresse()."'"); ?> ></textarea>
+								<textarea id="address" name="adresse" class="form-control" required="" ><?php if($user2->getAdresse() != null ) echo($user2->getAdresse()); ?></textarea>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-md-4 control-label" for="mail">Email</label>  
 							<div class="col-md-4">
-								<input id="mail" name="mail" type="text" placeholder="" class="form-control input-md" required="" value=<?php if($user2->getEmail() != null ) echo("'".$user2->getEmail()."'"); ?> >
+								<input id="mail" name="email" type="text" placeholder="" class="form-control input-md" required="" value=<?php if($user2->getEmail() != null ) echo("'".$user2->getEmail()."'"); ?> >
 
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-md-4 control-label" for="phone">Téléphone</label>  
 							<div class="col-md-4">
-								<input id="phone" name="phone" type="text" placeholder="" class="form-control input-md" required="" value=<?php if($user2->getTel() != null ) echo("'".$user2->getTel()."'"); ?> >
+								<input id="phone" name="tel" type="text" placeholder="" class="form-control input-md" required="" value=<?php if($user2->getTel() != null ) echo("'".$user2->getTel()."'"); ?> >
 
 							</div>
 						</div>
@@ -253,20 +324,20 @@
 							<label class="col-md-4 control-label" for="semestre">Semestre actuel </label>
 							<div class="col-md-3">
 								<select id="semestre" name="semestre" class="form-control">
-									<option value="TC01">TC01</option>
-									<option value="TC02">TC02</option>
-									<option value="TC03">TC03</option>
-									<option value="TC04">TC04</option>
-									<option value="TC05">TC05</option>
-									<option value="TC05">TC06</option>
-									<option value="GX01">GX01</option>
-									<option value="GX02">GX02</option>
-									<option value="GX03">GX03</option>
-									<option value="GX04">GX04</option>
-									<option value="GX05">GX05</option>
-									<option value="GX06">GX06</option>
-									<option value="GX07">GX07</option>
-									<option value="Master">Master</option>
+									<option value="TC01" <?php if($user2->getSemestre() == 'TC01') echo "selected" ?> >TC01</option>
+									<option value="TC02" <?php if($user2->getSemestre() == 'TC02') echo "selected" ?>>TC02</option>
+									<option value="TC03" <?php if($user2->getSemestre() == 'TC03') echo "selected" ?>>TC03</option>
+									<option value="TC04" <?php if($user2->getSemestre() == 'TC04') echo "selected" ?>>TC04</option>
+									<option value="TC05" <?php if($user2->getSemestre() == 'TC05') echo "selected" ?>>TC05</option>
+									<option value="TC06" <?php if($user2->getSemestre() == 'TC06') echo "selected" ?>>TC06</option>
+									<option value="GX01" <?php if($user2->getSemestre() == 'GX01') echo "selected" ?>>GX01</option>
+									<option value="GX02" <?php if($user2->getSemestre() == 'GX02') echo "selected" ?>>GX02</option>
+									<option value="GX03" <?php if($user2->getSemestre() == 'GX03') echo "selected" ?>>GX03</option>
+									<option value="GX04" <?php if($user2->getSemestre() == 'GX04') echo "selected" ?>>GX04</option>
+									<option value="GX05" <?php if($user2->getSemestre() == 'GX05') echo "selected" ?>>GX05</option>
+									<option value="GX06" <?php if($user2->getSemestre() == 'GX06') echo "selected" ?>>GX06</option>
+									<option value="GX07" <?php if($user2->getSemestre() == 'GX07') echo "selected" ?>>GX07</option>
+									<option value="Master" <?php if($user2->getSemestre() == 'Master') echo "selected" ?>>Master</option>
 								</select>
 							</div>
 								<input id="other" name="other" type="text" placeholder=" Autre (préciser)" class="form-control input-md" >
@@ -275,22 +346,23 @@
 							<label class="col-md-4 control-label" for="taille">Taille de vêtements: </label>
 							<div class="col-md-3">
 								<select id="taille" name="taille" class="form-control">
-									<option value="XS">XS / 34</option>
-									<option value="S">S / 36</option>
-									<option value="M">M / 38</option>
-									<option value="L">L / 40</option>
-									<option value="XL">XL / 42</option>
-									<option value="XXL">XXL / 44</option>
-									<option value="XXXL">XXXL / 46</option>
+									<option value="XS" <?php if($user2->getTaille() == 'XS') echo "selected" ?>>XS / 34</option>
+									<option value="S" <?php if($user2->getTaille() == 'S') echo "selected" ?>>S / 36</option>
+									<option value="M" <?php if($user2->getTaille() == 'M') echo "selected" ?>>M / 38</option>
+									<option value="L" <?php if($user2->getTaille() == 'L') echo "selected" ?>>L / 40</option>
+									<option value="XL" <?php if($user2->getTaille() == 'XL') echo "selected" ?>>XL / 42</option>
+									<option value="XXL" <?php if($user2->getTaille() == 'XXl') echo "selected" ?>>XXL / 44</option>
+									<option value="XXXL" <?php if($user2->getTaille() == 'XXXL') echo "selected" ?>>XXXL / 46</option>
 								</select>
 							</div>
 						</div>
 						<div class="form-group">
-							<div class="col-md-2 col-md-offset-4">
-								<button id="validate" class="btn btn-primary">Valider</button>
+							<div class="col-md-2 col-md-offset-5">
+								<button id="validate" class="btn btn-primary"> Valider </button>
 							</div>
 						</div>
 					</fieldset>
+					<input type="hidden" name="origin" value="profileview" />
 				</form>
 
 
@@ -316,6 +388,7 @@
 	<script src="https://code.jquery.com/jquery-2.1.3.min.js" type="text/javascript"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.js"></script>
 	<script	src="../src/bootstrap-datepicker.min.js"></script>
 	<script	src="../src/bootstrap-datepicker.fr.min.js"></script>
 	<script	src="../src/moment-with-locales.min.js"></script>
@@ -326,23 +399,47 @@
 			startView : 1,
 			language : 'fr'
 		});
+		$('.datepicker').click(function(event){
+			$(event.target).prev().children('input').prop('checked', true);
+		});
+
 		$('#ddn').datepicker({
 			startView : 2,
 			language : 'fr'
 		});
 
-		function hide_alert(){
-			$("#alert").hide("slow");
+		$('input[type="checkbox"][checked]').click(function(event){
+			$(event.target).parent().next().prop('value','');
+		});
+
+		function redirect(){
+			document.location.href = '../';
 		}
 
-		$("#validate").click(function(){
-			if($("#pse1").prop('checked') || $("#pse2").prop('checked')){
-    				//envoyer les données
-    				$("#form").submit();
-    			}
-    			else{
-    				$("#alert").show("slow");
-    			}
+		$("#validate").click(function(event){
+			event.preventDefault();
+
+			// Valider le formulaire
+
+			$.ajax({
+					type: "POST",
+					url: $('#form').attr('action'),
+					data : $('#form').serialize(),
+					success: function(txt){
+						if(<?php echo $display_all ?>) {
+							toastr.success("Modifications enregistrées");
+							$('#validate').text("Modifier");
+						}
+						else{
+							toastr.success("Ton profil est complet, retour à la page d'accueil");
+							setTimeout(redirect, 1500);
+						}
+					},
+					error: function(txt){
+						alert(txt);
+					}
+				});
+
     		});
 
 	});

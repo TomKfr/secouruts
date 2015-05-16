@@ -31,13 +31,7 @@ class Secouriste
 	protected $isadmin;
 	/** @Column(type="boolean") */
 	protected $isPermis;
-	/**
-     * @ManyToMany(targetEntity="Diplome", cascade={"persist", "remove"}, orphanRemoval=true)
-     * @JoinTable(name="secouriste_diplome",
-     *      joinColumns={@JoinColumn(name="secouriste_login", referencedColumnName="login")},
-     *      inverseJoinColumns={@JoinColumn(name="diplome_id", referencedColumnName="id", unique=true)}
-     *      )
-     **/
+	/** @OneToMany(targetEntity="Diplome", mappedBy="secouriste", cascade={"persist", "remove"}, orphanRemoval=true) **/
 	protected $diplomes;
 	/** @ManyToMany(targetEntity="Creneau", mappedBy="secouristes")	 */ //ManyToOne bidirectionnel vers la classe créneau.
 	protected $creneaux;
@@ -162,6 +156,7 @@ class Secouriste
 	}
 	public function addDiplome($dip)
 	{
+		$dip->setSecouriste($this);
 		$this->diplomes[] = $dip;
 	}
 
@@ -178,9 +173,18 @@ class Secouriste
 
 	public function getDiplome($dip){ // Si l'utilisateur possède le diplome en paramètre, renvoie l'objet DateTime d'obtention, null sinon
 		foreach ($this->diplomes as $diplom) {
-			if($diplom->getType() == $dip) return $diplom->getDate();
+			if($diplom->getType() == $dip) return $diplom->getDate()->format('d/m/Y');
 		}
 		return null;
+	}
+
+	public function delDiplome($dip){
+		foreach ($this->diplomes as $diplom) {
+			if($diplom->getType() == $dip){
+				$this->diplomes->removeElement($diplom);
+				break;
+			}
+		}
 	}
 }
 

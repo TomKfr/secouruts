@@ -43,54 +43,77 @@ class UsersController implements ControllerProviderInterface
 
 		});
 
-		$controllers->match('/modify_user/{login}',function($login) use ($app){
+		$controllers->match('/modify_user/{login}',function($login) use ($app){ //modification d'un profil utilisateur par l'admin et de l'utilisateur courant
 			//$login = $_POST['login'];
 			$nom = $_POST['nom'] ; 
 			$prenom = $_POST['prenom'];
-			if(isset($_POST['admin'])) $admin = true; 
-			else $admin = false;
+			// if(isset($_POST['admin'])) $admin = true; 
+			// else $admin = false;
 
 			$modifuser = $app['entity_manager']->find('Secouruts\Secouriste', $login);
 
 			$modifuser->setNom($nom);
 			$modifuser->setPrenom($prenom);
-			$modifuser->setAdmin($admin);
-			if(isset($_POST['pse1'])) {
+
+			if(!isset($_POST['origin'])){ // On vient du formulaire Admin
+				if(isset($_POST['admin'])) $modifuser->setAdmin(true); 
+				else $modifuser->setAdmin(false);
+			}
+
+			if(isset($_POST['pse1']) && $modifuser->getDiplome("PSE1") == null) { // Si le diplome n'existe pas on le crée
 				$dip = new Diplome();
 				$dip->setType('PSE1');
 				$dip->setDate(DateTime::createFromFormat('d/m/Y',$_POST['date_pse1']));
 				$modifuser->addDiplome($dip);
 			}
+			elseif(!isset($_POST['pse1']) && $modifuser->getDiplome("PSE1") != null){ // si il existe on l'enlève
+				$modifuser->delDiplome("PSE1");
+			}
+
 			if(isset($_POST['pse2'])) {
+				$modifuser->delDiplome("PSE2");
 				$dip = new Diplome();
 				$dip->setType('PSE2');
 				$dip->setDate(DateTime::createFromFormat('d/m/Y',$_POST['date_pse2']));
 				$modifuser->addDiplome($dip);
 			}
+			else $modifuser->delDiplome("PSE2");
+
 			if(isset($_POST['lat'])) {
+				$modifuser->delDiplome("LAT");
 				$dip = new Diplome();
 				$dip->setType('LAT');
 				$dip->setDate(DateTime::createFromFormat('d/m/Y',$_POST['date_lat']));
 				$modifuser->addDiplome($dip);
 			}
+			else $modifuser->delDiplome("LAT");
+
 			if(isset($_POST['cod1'])) {
+				$modifuser->delDiplome("COD1");
 				$dip = new Diplome();
 				$dip->setType('COD1');
 				$dip->setDate(DateTime::createFromFormat('d/m/Y',$_POST['date_cod1']));
 				$modifuser->addDiplome($dip);
 			}
+			else $modifuser->delDiplome("COD1");
+
 			if(isset($_POST['cod2'])) {
+				$modifuser->delDiplome("COD2");
 				$dip = new Diplome();
 				$dip->setType('COD2');
 				$dip->setDate(DateTime::createFromFormat('d/m/Y',$_POST['date_cod2']));
 				$modifuser->addDiplome($dip);
 			}
+			else $modifuser->delDiplome("COD2");
+
 			if(isset($_POST['vpsp'])) {
+				$modifuser->delDiplome("VPSP");
 				$dip = new Diplome();
 				$dip->setType('VPSP');
 				$dip->setDate(DateTime::createFromFormat('d/m/Y',$_POST['date_vpsp']));
 				$modifuser->addDiplome($dip);
 			}
+			else $modifuser->delDiplome("VPSP");
 
 			$modifuser->setDDN(DateTime::createFromFormat('d/m/Y',$_POST['ddn'])); 
 			$modifuser->setLDN($_POST['ldn']);
@@ -99,7 +122,8 @@ class UsersController implements ControllerProviderInterface
 			$modifuser->settel($_POST['tel']);
 			$modifuser->setTaille($_POST['taille']);
 			$modifuser->setSemestre($_POST['semestre']);
-			if(isset($_POST['permis'])) $modifuser->setPermis($_POST['permis']);
+			if(isset($_POST['permis'])) $modifuser->setPermis(true);
+			else $modifuser->setPermis(false);
 
 			$app['entity_manager']->persist($modifuser);
 			$app['entity_manager']->flush();
@@ -107,71 +131,82 @@ class UsersController implements ControllerProviderInterface
 			return $modifuser->getLogin();
 
 		});
-		$controllers->post('/profil_user',function() use ($app){
+		
+		// $controllers->match('/profil_user/{login}',function() use ($app){ // Modification du profil utilisateur courant
 			
-			$nom = $_POST['nom'] ; 
-			$prenom = $_POST['prenom'];
-			if(isset($_POST['admin'])) $admin = true; 
-			else $admin = false;
+		// 	$nom = $_POST['nom'] ; 
+		// 	$prenom = $_POST['prenom'];
+		// 	if(isset($_POST['admin'])) $admin = true; 
+		// 	else $admin = false;
 
-			$profiluser = $app['entity_manager']->find('Secouruts\Secouriste', $user);
+		// 	$profiluser = $app['entity_manager']->find('Secouruts\Secouriste', $user);
 
-			$profiluser->setLogin($login);
-			$profiluser->setNom($nom);
-			$profiluser->setPrenom($prenom);
-			$profiluser->setAdmin($admin);
-			if(isset($_POST['pse1'])) {
-				$dip = new Diplome();
-				$dip->setType('PSE1');
-				$dip->setDate(DateTime::createFromFormat('d/m/Y',$_POST['date_pse1']));
-				$profiluser->addDiplome($dip);
-			}
-			if(isset($_POST['pse2'])) {
-				$dip = new Diplome();
-				$dip->setType('PSE2');
-				$dip->setDate(new DateTime($_POST['date_pse2']));
-				$profiluser->addDiplome($dip);
-			}
-			if(isset($_POST['lat'])) {
-				$dip = new Diplome();
-				$dip->setType('LAT');
-				$dip->setDate(new DateTime($_POST['date_lat']));
-				$profiluser->addDiplome($dip);
-			}
-			if(isset($_POST['cod1'])) {
-				$dip = new Diplome();
-				$dip->setType('COD1');
-				$dip->setDate(new DateTime($_POST['date_cod1']));
-				$profiluser->addDiplome($dip);
-			}
-			if(isset($_POST['cod2'])) {
-				$dip = new Diplome();
-				$dip->setType('COD2');
-				$dip->setDate(new DateTime($_POST['date_cod2']));
-				$profiluser->addDiplome($dip);
-			}
-			if(isset($_POST['vpsp'])) {
-				$dip = new Diplome();
-				$dip->setType('VPSP');
-				$dip->setDate(new DateTime($_POST['date_vpsp']));
-				$profiluser->addDiplome($dip);
-			}
+		// 	$profiluser->setLogin($login);
+		// 	$profiluser->setNom($nom);
+		// 	$profiluser->setPrenom($prenom);
+		// 	$profiluser->setAdmin($admin);
+		// 	if(isset($_POST['pse1'])) {
+		// 		$dip = new Diplome();
+		// 		$dip->setType('PSE1');
+		// 		$dip->setDate(DateTime::createFromFormat('d/m/Y',$_POST['date_pse1']));
+		// 		$profiluser->addDiplome($dip);
+		// 	}
+		// 	if(isset($_POST['pse2'])) {
+		// 		$dip = new Diplome();
+		// 		$dip->setType('PSE2');
+		// 		$dip->setDate(new DateTime($_POST['date_pse2']));
+		// 		$profiluser->addDiplome($dip);
+		// 	}
+		// 	if(isset($_POST['lat'])) {
+		// 		$dip = new Diplome();
+		// 		$dip->setType('LAT');
+		// 		$dip->setDate(new DateTime($_POST['date_lat']));
+		// 		$profiluser->addDiplome($dip);
+		// 	}
+		// 	if(isset($_POST['cod1'])) {
+		// 		$dip = new Diplome();
+		// 		$dip->setType('COD1');
+		// 		$dip->setDate(new DateTime($_POST['date_cod1']));
+		// 		$profiluser->addDiplome($dip);
+		// 	}
+		// 	if(isset($_POST['cod2'])) {
+		// 		$dip = new Diplome();
+		// 		$dip->setType('COD2');
+		// 		$dip->setDate(new DateTime($_POST['date_cod2']));
+		// 		$profiluser->addDiplome($dip);
+		// 	}
+		// 	if(isset($_POST['vpsp'])) {
+		// 		$dip = new Diplome();
+		// 		$dip->setType('VPSP');
+		// 		$dip->setDate(new DateTime($_POST['date_vpsp']));
+		// 		$profiluser->addDiplome($dip);
+		// 	}
 
-			$profiluser->setDDN($_POST['ddn']); 
-			$profiluser->setLDN($_POST['ldn']);
-			$profiluser->setAdresse($_POST['adresse']);
-			$profiluser->setEmail($_POST['email']);
-			$profiluser->settel($_POST['tel']);
-			$profiluser->setTaille($_POST['taille']);
-			$profiluser->setSemestre($_POST['semestre']);
-			$profiluser->setPermis($_POST['permis']);
+		// 	$profiluser->setDDN($_POST['ddn']); 
+		// 	$profiluser->setLDN($_POST['ldn']);
+		// 	$profiluser->setAdresse($_POST['adresse']);
+		// 	$profiluser->setEmail($_POST['email']);
+		// 	$profiluser->settel($_POST['tel']);
+		// 	$profiluser->setTaille($_POST['taille']);
+		// 	$profiluser->setSemestre($_POST['semestre']);
+		// 	$profiluser->setPermis($_POST['permis']);
 
-			$app['entity_manager']->persist($profiluser);
-			$app['entity_manager']->flush();
+		// 	$app['entity_manager']->persist($profiluser);
+		// 	$app['entity_manager']->flush();
 
-			return $modifuser->getLogin();
+		// 	if($_POST['first_visit']){
+		// 		$postes = $app['entity_manager']->getRepository('Secouruts\DPS')->findAll();  // Renvoi vers la page d'accueil
+  //   			ob_start();
+  //   			require './views/event_view.php';
+  //   			$view = ob_get_clean();
+  //   			return $view;
+		// 	}
+		// 	else {
+		// 		return $modifuser->getLogin(); // simple réponse en cas de demande ajax
+		// 	}
 
-		});
+//		});
+
 		$controllers->get('/get/{login}', function($login) use ($app)
 		{
 			if($login == "all"){
@@ -201,4 +236,4 @@ class UsersController implements ControllerProviderInterface
 	}
 }
 
-?>
+?> 
