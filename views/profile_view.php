@@ -413,8 +413,8 @@
 		});
 
 		function redirect(){
-			document.location.href = '../';
-		}
+			document.location.href = './';
+		};
 
 		$("#validate").click(function(event){
 			event.preventDefault();
@@ -426,7 +426,7 @@
 					url: $('#form').attr('action'),
 					data : $('#form').serialize(),
 					success: function(txt){
-						if(<?php echo $display_all ?>) {
+						if(<?php echo $display_all?'true':'false' ?>) {
 							toastr.success("Modifications enregistrées");
 							$('#validate').text("Modifier");
 						}
