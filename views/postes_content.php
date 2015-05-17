@@ -20,7 +20,7 @@
 		<button id="delete" class="btn btn-danger">Supprimer</button>
 	</div>
 	<div id='info' class="well col-md-12" style="min-height: 200px; margin-top: 15px;"></div>
-	<div class="col-md-offset-5 col-md-2" style="margin-top : 20px">
+	<div class="col-md-offset-4 col-md-2" style="margin-top : 20px">
 		<button id="addpost" class="btn btn-primary">Ajouter un nouveau poste</button>
 	</div>
 </div>

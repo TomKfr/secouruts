@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="../../src/css/reset.css" type="text/css" />
 	<link rel="stylesheet" href="../../src/css/main.css" type="text/css" />
 	<link rel="stylesheet" href="../../src/css/responsive.css" type="text/css" />
+	<link rel="stylesheet" href="../../src/css/layout.css" type="text/css" />
 	<link rel="stylesheet" href="../../src/css/datepicker.css" type="text/css" />
 	<link rel="stylesheet" href="../../src/css/bootstrap-datetimepicker.min.css" type="text/css" />
 	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/themes/base/jquery-ui.css">
@@ -20,6 +21,7 @@
 </head>
 
 <body>
+	<div class="wrapper">
 	<!-- Ici, placer les éléments communs à toutes les pages -->
 
 
@@ -63,22 +65,20 @@
 
 				<div class="col-lg-12" id="content" target="<?php echo $target ?>">
 				</div>
-
 		</div>
 
 	</div>
-
-
+	<div class="push"></div>
+</div>
 	<!-- Ici, placer les éléments communs à toutes les pages -->
-
+<div calss="footer">
 	<div class="footer-container">
 
 		<footer>
-			
-
 			<span class="links"> <span>Liens utiles :</span> <span>	<a href="http://assos.utc.fr/asso/bde">BDE</a> | 	<a href="http://assos.utc.fr/">Portail des associations</a> | 	<a href="http://www.utc.fr/">UTC</a> | 	<a href="http://www.croixblanche.org/">Croix Blanche</a> </span> 
 		</footer>
 	</div>
+</div>
 
 
 	<script src="https://code.jquery.com/jquery-2.1.3.min.js" type="text/javascript"></script>
