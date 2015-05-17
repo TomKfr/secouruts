@@ -11,5 +11,6 @@ require_once __DIR__.'/../model/Secouriste.php';
 require_once __DIR__.'/../model/Diplome.php';
 
 require_once 'auth.php';
+require_once 'swiftmailer.php';
 
 ?>

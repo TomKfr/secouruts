@@ -16,8 +16,9 @@ $config = Setup::createAnnotationMetadataConfiguration(array(__DIR__."/../../mod
 $dbParams = array(
     'driver'   => 'pdo_mysql',
     'user'     => 'root',
-    'password' => '',
+    'password' => null,
     'dbname'   => 'secouruts',
+	'host'	   => 'localhost'
 );
 
 // obtaining the entity manager

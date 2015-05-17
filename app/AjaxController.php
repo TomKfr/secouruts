@@ -104,12 +104,21 @@ class AjaxController implements ControllerProviderInterface
 
 		});
 
-		$controllers->get('/dip/{login}', function($login) use ($app) {
-			$secouriste = $app['entity_manager']->getRepository('Secouruts\Secouriste')->find($login);
-			$dip = "";
-				if($secouriste->getDiplome("PSE2") != null) $dip = "<h5>PSE2</h5>";
-				elseif($secouriste->getDiplome("PSE1") != null) $dip = "<h5>PSE1</h5>";
-			return $dip;
+		$controllers->get('/mail', function() use ($app) {
+
+			$message = \Swift_Message::newInstance()
+		        ->setSubject('[Secouruts] Feedback')
+		        ->setFrom(array('secouruts@assos.utc.fr'))
+		        ->setTo(array('tkieffer67@gmail.com'))
+		        ->setBody("yo!");
+
+		        try{
+		        	$app['mailer']->send($message);
+		        }catch(\Swift_TransportException $e){
+		        	$response = $e->getMessage() ;
+		        }
+
+			return "OK";
 		});
 
 		return $controllers;
