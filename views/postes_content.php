@@ -1,4 +1,5 @@
 <div class="col-lg-12">
+	<div class="col-md-1"><span style="font-size:2.5em" class="glyphicon glyphicon-calendar"></span></div>
 	<div class="col-md-6">
 		<select id="selectbasic" name="selectbasic" class="form-control">
 			<option value="0"> -- Sélectionner un poste -- </option>
@@ -13,7 +14,7 @@
 			?>
 		</select>
 	</div>
-	<div id="control_buttons" class="col-md-offset-1 col-md-5">
+	<div id="control_buttons" class="col-md-5">
 		<button id="close" class="btn btn-info">Clore</button>
 		<button id="modify" class="btn btn-warning">Modifier</button>
 		<button id="cancel" class="btn btn-danger">Annuler</button>

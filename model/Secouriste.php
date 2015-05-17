@@ -160,15 +160,6 @@ class Secouriste
 		$this->diplomes[] = $dip;
 	}
 
-	public function getInscriptions()
-	{
-		return $this->inscriptions;
-	}
-	public function addInscription($inscr)
-	{
-		$this->inscriptions[] = $inscr;
-	}
-
 	//Other methods
 
 	public function getDiplome($dip){ // Si l'utilisateur possède le diplome en paramètre, renvoie l'objet DateTime d'obtention, null sinon

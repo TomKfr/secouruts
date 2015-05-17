@@ -1,4 +1,5 @@
 <div class="col-lg-12">
+	<div class="col-md-1"><span style="font-size:2.5em" class="glyphicon glyphicon-user"></span></div>
 	<div class="col-md-6">
 		<select id="selectbasic" name="selectbasic" class="form-control">
 			<option value="0"> -- Sélectionner un compte -- </option>
@@ -11,7 +12,7 @@
 			?>
 		</select>
 	</div>
-	<div id="control_buttons" class="col-md-6">
+	<div id="control_buttons" class="col-md-offset-1 col-md-4">
 		<button id="modify" class="btn btn-warning">Modifier</button>
 		<button id="delete" class="btn btn-danger">Supprimer</button>
 	</div>
