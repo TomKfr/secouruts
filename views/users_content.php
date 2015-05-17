@@ -43,10 +43,12 @@ $(function(){
 	$('#control_buttons').hide();
 	$('#selectbasic').change(function(event){
 		var user_id = $('#selectbasic').val();
-		// $('form').submit();
+		var logged_user = $('#userloggedin').text().trim();
+
 		if(user_id != ""){
 			$('#info').load('../secouriste/get/'+user_id);
-			$('#control_buttons').show('fast');
+			if(user_id != logged_user) $('#control_buttons').show('fast');
+			else $('#control_buttons').hide('fast');
 		}
 		else {
 			$('#control_buttons').hide('fast');
