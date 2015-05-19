@@ -1,8 +1,18 @@
+
+<style type="text/css">
+	input{
+		text-align: center;
+	}
+	label ~ div {
+		margin-top: 10px;
+	}
+</style>
+
 <div class="right-content">
-	<h3>Modification du Profil de <?php echo $user->getLogin() ?></h3>
+	<h3>Modification du Profil de <?php echo $user2->getLogin() ?></h3>
 </div>
 <div id="formdiv" class="col-md-12" style="margin-top : 15px">
-	<form id="modifuser" class="form-horizontal" method='post' action="../secouriste/modify_user/<?php echo $user->getLogin() ?>">
+	<form id="modifuser" class="form-horizontal" method='post' action="../secouriste/modify_user/<?php echo $user2->getLogin() ?>">
 		<fieldset id="target">
 						<div class="row">
 							<div class="col-md-5">
@@ -170,11 +180,6 @@
 								</select>
 							</div>
 						</div>
-						<div class="form-group">
-							<div class="col-md-2 col-md-offset-5">
-								<button id="validate" class="btn btn-primary"> Valider </button>
-							</div>
-						</div>
 					</fieldset>
 					<input type="hidden" name="origin" value="adminview" />
 			<div class="col-md-offset-4">
@@ -182,15 +187,8 @@
 			<button id="back" class="btn btn-info">Retour</button>
 			</div>
 		<input id="hidden" type="hidden" name="id" value=<?php if(isset($user)) echo("'".$user->getLogin()."'"); ?> >
-
 	</form>
 </div>
-<!-- <div id="successdiv" class="col-md-offset-1 col-md-10 alert alert-success" style="margin-top : 15px">
-			<h4 align="center">Enregistrement réussi !</h4>
-</div>
-<div id="faildiv" class="col-md-offset-3 col-md-6 alert alert-danger" style="margin-top : 15px">
-			<h3 align="center">Echec ...</h3>
-</div> -->
 
 	<script	src="../../src/bootstrap-datepicker.min.js"></script>
 	<script	src="../../src/bootstrap-datepicker.fr.min.js"></script>
@@ -204,24 +202,33 @@ $(function(){
 	});
 	$('.datepicker').datepicker({ language : 'fr' });
 
+	$('input[type="checkbox"][checked]').click(function(event){
+			$(event.target).parent().next().prop('value','');
+	});
+
+	$('.datepicker').change(function(event){
+			if($('.datepicker').val() != "") $(event.target).prev().children('input').prop('checked', true);
+			else  $(event.target).prev().children('input').prop('checked', false);
+	});
+
 	$('#submit').click(function(event){
-			// event.preventDefault();
+			event.preventDefault();
 			//Valider la conformité du formulaire et l'envoyer si OK, alerter sinon.
 			//Si valide alors : 
 			//Envoi en ajax :
-			// $.ajax({
-   //              url: $('#modifuser').attr('action'), // Le nom du fichier indiqué dans le formulaire
-   //              type: $('#modifuser').attr('method'), // La méthode indiquée dans le formulaire (get ou post)
-   //              data: $('#modifuser').serialize(), // Je sérialise les données (j'envoie toutes les valeurs présentes dans le formulaire)
-   //              success: function(html) {
-   //              	toastr.clear();
-   //              	toastr.success('Enregistrement réussi !');
-   //              	$('#hidden').attr('value', html);
-   //              },
-   //              error: function() {
-   //              	toastr.error('Il y a eu un problème...');
-   //              }
-   //          });
+			$.ajax({
+                url: $('#modifuser').attr('action'), // Le nom du fichier indiqué dans le formulaire
+                type: $('#modifuser').attr('method'), // La méthode indiquée dans le formulaire (get ou post)
+                data: $('#modifuser').serialize(), // Je sérialise les données (j'envoie toutes les valeurs présentes dans le formulaire)
+                success: function(html) {
+                	toastr.clear();
+                	toastr.success('Enregistrement réussi !');
+                	$('#hidden').attr('value', html);
+                },
+                error: function() {
+                	toastr.error('Il y a eu un problème...');
+                }
+            });
 
 		});
 
