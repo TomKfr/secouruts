@@ -66,7 +66,7 @@ class DPSController implements ControllerProviderInterface
 					$item = array();
 					$item['time'] = $creneau->getDateDeb()->format('H:i')." - ".$creneau->getDateFin()->format('H:i');
 					foreach ($creneau->getSecouristes() as $user) {
-						$item[$user->getLogin()] = $user->getPrenom()." ".$user->getNom()."(".$user->getBestDiplome().")";
+						$item[$user->getLogin()] = $user->getPrenom()." ".$user->getNom()." <small>(".$user->getBestDiplome().")</small>";
 					}
 					$crenos[$creneau->getId()] = $item;
 				}
