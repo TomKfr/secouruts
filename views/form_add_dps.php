@@ -1,28 +1,14 @@
 <div id="formdiv" class="col-md-12" style="margin-top : 15px">
 	<form id="newpost" class="form-horizontal" method='post' action="../dps/new_post">
 		<div class="form-group col-md-12">
-			<label class="col-md-4 control-label" for="titre">Titre</label>  
-			<div class="col-md-8">
+			<label class="col-md-2 control-label" for="titre">Titre</label>  
+			<div class="col-md-4">
 				<input id="titre" name="titre" type="text" class="form-control" value=<?php if(isset($dps)) echo("'".$dps->getTitre()."'"); ?> >
 			</div>
-		</div>
-		<div class="col-md-12">
-			<div class="col-md-6 form-group">
-				<label class="col-md-4 control-label" for="datedeb">Début</label>
-				<div class="col-md-8">
-					<input id="datedeb" type="text" name="datedeb" class="form-control datetimepicker" value=<?php if(isset($dps)) echo("'".$dps->getDebut()->format('d/m/Y H:i')."'"); ?> >
-				</div>
-			</div>
-			<div class="col-md-6 form-group">
-				<label class="col-md-4 control-label" for="datefin">Fin</label>
-				<div class="col-md-8">
-					<input id="datefin" type="text" name="datefin" class="form-control datetimepicker" value=<?php if(isset($dps)) echo("'".$dps->getFin()->format('d/m/Y H:i')."'"); ?> >
-				</div>
-			</div>
-		</div>
-		<div class="form-group col-md-6">
-			<label class="col-md-4 control-label" for="typpost">Type</label>
-			<div class="col-md-8">
+		
+		
+			<label class="col-md-2 control-label" for="typpost">Type</label>
+			<div class="col-md-2">
 				<select id="typpost" name="typpost" class="form-control">
 					<option value="" <?php if(isset($dps)) {if($dps->getType() == "") echo("selected");} ?> ></option>
 					<option value="PAPS" <?php if(isset($dps)) {if($dps->getType() == "PAPS") echo("selected");} ?> >PAPS</option>
@@ -32,38 +18,53 @@
 				</select>
 			</div>
 		</div>
-		<div class="form-group col-md-6">
-			<label class="col-md-4 control-label" for="lieu">Lieu</label>
-			<div class="col-md-8">
+		<div class="form-group col-md-12">
+			
+				<label class="col-md-2 control-label" for="datedeb">Début</label>
+				<div class="col-md-4">
+					<input id="datedeb" type="text" name="datedeb" class="form-control datetimepicker" value=<?php if(isset($dps)) echo("'".$dps->getDebut()->format('d/m/Y H:i')."'"); ?> >
+				</div>
+			
+			
+				<label class="col-md-2 control-label" for="datefin">Fin</label>
+				<div class="col-md-4">
+					<input id="datefin" type="text" name="datefin" class="form-control datetimepicker" value=<?php if(isset($dps)) echo("'".$dps->getFin()->format('d/m/Y H:i')."'"); ?> >
+				</div>
+			
+		</div>
+		<div class="form-group col-md-12">
+			<label class="col-md-2 control-label" for="lieu">Lieu</label>
+			<div class="col-md-4">
 				<input id="lieu" type="text" name="lieu" class="form-control" value=<?php if(isset($dps)) echo("'".$dps->getLieu()."'"); ?> >
 			</div>
-		</div>
-		<div class="form-group col-md-12">
-			<label class="col-md-4 control-label" for="limitdate">Date limite d'inscription</label>
+
+			<label class="col-md-2 control-label" for="client">Client</label>
 			<div class="col-md-4">
-				<input id="limitdate" type="text" name="limitdate" class="form-control" value=<?php if(isset($dps)) echo("'".$dps->getLimitDate()->format('d/m/Y')."'"); ?> >
-			</div>
-		</div>
-		<div class="form-group col-md-12">
-			<label class="col-md-4 control-label" for="client">Client</label>
-			<div class="col-md-8">
 				<input id="client" type="text" name="client" class="form-control" value=<?php if(isset($dps)) echo("'".$dps->getClient()."'"); ?> >
 			</div>
 		</div>
-		<div class="form-group col-md-6">
-			<label class="col-md-5 control-label" for="nbpse1">PSE1 requis</label>
-			<div class="col-md-7">
+		<div class="form-group col-md-12">
+			<label class="col-md-2 control-label" for="nbpse1">PSE1 requis</label>
+			<div class="col-md-4">
 				<input id="nbpse1" type="text" name="nbpse1" class="form-control" value=<?php if(isset($dps)) echo("'".$dps->getPSE1()."'"); ?> >
 			</div>
-		</div>
-		<div class="form-group col-md-6">
-			<label class="col-md-5 control-label" for="nbpse2">PSE2 requis</label>
-			<div class="col-md-7">
+		
+			<label class="col-md-2 control-label" for="nbpse2">PSE2 requis</label>
+			<div class="col-md-4">
 				<input id="nbpse2" type="text" name="nbpse2" class="form-control" value=<?php if(isset($dps)) echo("'".$dps->getPSE2()."'"); ?> >
 			</div>
 		</div>
+
+		
 		<div class="form-group col-md-12">
-			<label class="col-md-4 control-label" for"desc">Description</label>
+			<label class="col-md-2 control-label" for="limitdate">Date limite d'inscription</label>
+			<div class="col-md-6">
+				<input id="limitdate" type="text" name="limitdate" class="form-control" value=<?php if(isset($dps)) echo("'".$dps->getLimitDate()->format('d/m/Y')."'"); ?> >
+			</div>
+		</div>
+
+		<div class="form-group col-md-12">
+			<label class="col-md-2 control-label" for"desc">Description</label>
 			<div class="col-md-8">
 				<textarea id="desc" name="desc" class="form-control"><?php if(isset($dps)) echo($dps->getDesc()); ?></textarea>
 			</div>
