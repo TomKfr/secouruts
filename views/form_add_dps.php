@@ -88,33 +88,79 @@
 $(function(){
 	$('.datetimepicker').datetimepicker({ locale: 'fr'});
 	$('#limitdate').datepicker({language: 'fr'});
-	$('.alert').hide();
 
 	$('#submit').click(function(event){
+			var valid = true;
 			event.preventDefault();
 			//Valider la conformité du formulaire et l'envoyer si OK, alerter sinon.
-			//Si valide alors : 
+			var deb = moment($('#datedeb').val(), "DD/MM/YYYY HH:mm");
+			var fin = moment($('#datefin').val(), "DD/MM/YYYY HH:mm");
 
-			//Envoi en ajax :
-			// $.ajax({
-   //              url: $('#newpost').attr('action'), // Le nom du fichier indiqué dans le formulaire
-   //              type: $('#newpost').attr('method'), // La méthode indiquée dans le formulaire (get ou post)
-   //              data: $('#newpost').serialize(), // Je sérialise les données (j'envoie toutes les valeurs présentes dans le formulaire)
-   //              success: function(html) {
-   //              	toastr.clear();
-   //              	toastr.success('Enregistrement réussi !');
-   //              	$('#submit').text("Modifier");
-   //              	$('#hidden').attr('value', html);
-   //              },
-   //              error: {
-   //              	//toastr.error('Il y a eu un problème...');
-   //              }
-   //          });
-		var date = moment($('#datedeb').val(), "DD-MM-YYYY HH:mm");
-		 
-		alert(date);
+			$('input').focus(function(event){
+				$(event.target).removeClass("alert alert-danger");
+				valid = true;
+			});
+
+			if(deb > fin){
+				toastr.error("La date de début doit être inférieure à la date de fin !");
+				$('#datedeb').addClass("alert alert-danger");
+				$('#datefin').addClass("alert alert-danger");
+				var valid = false;
+			}
+
+			if($('#titre').val() == ""){
+				$('#titre').addClass("alert alert-danger");
+				toastr.error("Le titre est requis !");
+				var valid = false;
+			}
+			if($('#lieu').val() == ""){
+				$('#lieu').addClass("alert alert-danger");
+				toastr.error("Le lieu est requis !");
+				var valid = false;
+			}
+			if($('#client').val() == ""){
+				$('#client').addClass("alert alert-danger");
+				toastr.error("Le client est requis !");
+				var valid = false;
+			}
+			if($('#nbpse1').val() == ""){
+				$('#nbpse1').addClass("alert alert-danger");
+				toastr.error("Le nombre de PSE1 requis est nécessaire !");
+				var valid = false;
+			}
+			if($('#nbpse2').val() == ""){
+				$('#nbpse2').addClass("alert alert-danger");
+				toastr.error("Le nombre de PSE2 requis est nécessaire !");
+				var valid = false;
+			}
+			if($('#datedeb').val() == "" || $('#datefin').val() == ""){
+				$('.datetimepicker').addClass("alert alert-danger");
+				toastr.error("Les dates de début et de fin sont requises !");
+				var valid = false;
+			}
+
+			//Si valide alors : 
+			if(valid){
+			// Envoi en ajax :
+			toastr.info("C'est valide, on envoie !");
+			$.ajax({
+                url: $('#newpost').attr('action'), // Le nom du fichier indiqué dans le formulaire
+                type: $('#newpost').attr('method'), // La méthode indiquée dans le formulaire (get ou post)
+                data: $('#newpost').serialize(), // Je sérialise les données (j'envoie toutes les valeurs présentes dans le formulaire)
+                success: function(html) {
+                	toastr.clear();
+                	toastr.success('Enregistrement réussi !');
+                	$('#submit').text("Modifier");
+                	$('#hidden').attr('value', html);
+                },
+                error: {
+                	//toastr.error('Il y a eu un problème...');
+                }
+            });
+		}
 
 	});
+
 
 	$('#back').click(function(event){
 		event.preventDefault();
