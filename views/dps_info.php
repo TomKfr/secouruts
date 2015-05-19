@@ -5,37 +5,38 @@
 </style>
 
 <div class="col-md-8">
-	<h4><?php echo $dps->getTitre()." - ".$dps->getDebut()->format("d/m/Y")." de ".$dps->getDebut()->format("H:i")." à ".$dps->getFin()->format("H:i")."</h4>" ?>
+	<h4><b><?php echo $dps->getTitre()." - ".$dps->getDebut()->format("d/m/Y")." de ".$dps->getDebut()->format("H:i")." à ".$dps->getFin()->format("H:i")."</b></h4>" ?>
 </div>
-<div class="col-md-4">
-	<?php if($dps->isClosed()) echo "<h4 class='red'>Inscriptions clôturées</h4>" ?>
-	<?php if($dps->isCancelled()) echo "<h4 class='red'>Annulé</h4>" ?>
-</div>
+
 
 <div class="col-md-6">
 	<?php echo "Lieu : ".$dps->getLieu()."\n"; ?>
 </div>
+<div class="col-md-4">
+	<?php echo "Type : ".$dps->getType() ?>
+</div>
+<div class="col-md-2">
+	<?php if($dps->isClosed()) echo "<h4 class='red'>Inscriptions clôturées</h4>" ?>
+	<?php if($dps->isCancelled()) echo "<h4 class='red'>Annulé</h4>" ?>
+</div>
 <div class="col-md-6">
+	<?php echo "PSE1 requis : ".$dps->getPSE1() ?>
+</div>
+<div class="col-md-4">
+	<?php echo "PSE2 requis : ".$dps->getPSE2() ?>
+</div>
+<div class="col-md-10">
 	<?php echo "Demandeur : ".$dps->getClient()."\n"; ?>
 </div>
 
-
-<div class="col-md-6">
-	<?php echo "Type : ".$dps->getType() ?>
-</div>
-<div class="col-md-6">
-	<?php echo "Limite inscriptions : ".$dps->getLimitDate()->format('d/m/Y')."\n"; ?>
+<div class="col-md-12">
+	<?php echo "Limite inscriptions : <u>".$dps->getLimitDate()->format('d/m/Y')."</u>\n"; ?>
 </div>
 
-<div class="col-md-2">
-	<?php echo "PSE1 requis : ".$dps->getPSE1() ?>
-</div>
-<div class="col-md-2">
-	<?php echo "PSE2 requis : ".$dps->getPSE2() ?>
-</div>
+
 
 <div class="col-md-12">
-	<?php $dps->getDesc() ?>
+	<?php echo "Description : <i>".$dps->getDesc()."</i> \n" ?>
 </div>
 
 <div class="col-md-12">

@@ -79,35 +79,38 @@
 							foreach ($postes as $dps) {
 								$closed = $dps->isclosed();
 								if(!$dps->isCancelled() && !$dps->date_passed()){
-									echo "<h3>".$dps->getTitre()." - ".$dps->getDebut()->format('d/m/Y \d\e H:i').$dps->getFin()->format(' \à H:i')."</h3>";
+									echo "<h3> <b>".$dps->getTitre()." - ".$dps->getDebut()->format('d/m/Y \d\e H:i').$dps->getFin()->format(' \à H:i')."</b></h3>";
 									?>
 									<div class='min'>
-										<div class="col-md-4">
+										<div class="col-md-6">
 											<?php echo "Lieu : ".$dps->getLieu()."\n"; ?>
 										</div>
 										<div class="col-md-4">
 											<?php echo "Type : ".$dps->getType() ?>
 										</div>
-										<div class="col-md-4">
+										<div class="col-md-2">
 											<?php if($dps->isClosed()) echo "<h4 class='red'>Inscriptions clôturées</h4>" ?>
 										</div>
-										<div class="col-md-6">
-											<?php echo "Demandeur : ".$dps->getClient()."\n"; ?>
-										</div>
-
-										<div class="col-md-6">
-											<?php echo "Limite inscriptions : ".$dps->getLimitDate()->format('d/m/Y')."\n"; ?>
-										</div>
-
-										<div class="col-md-3">
+											<div class="col-md-6">
 											<?php echo "PSE1 requis : ".$dps->getPSE1() ?>
 										</div>
-										<div class="col-md-3">
+										<div class="col-md-4">
 											<?php echo "PSE2 requis : ".$dps->getPSE2() ?>
 										</div>
+										<div class="col-md-10">
+											<?php echo "Demandeur : ".$dps->getClient()."\n"; ?>
+										</div>
+										<div class="col-md-12">
+											<?php echo "Limite inscriptions : <u>".$dps->getLimitDate()->format('d/m/Y')."</u>\n"; ?>
+										</div>
+										
+
+										
+
+									
 
 										<div class="col-md-12">
-											<?php $dps->getDesc() ?>
+											<?php if($dps->getDesc() != "") echo "Description : \n<i>".$dps->getDesc()."</i>\n"; ?>
 										</div>
 
 										<?php

@@ -177,6 +177,14 @@ class Secouriste
 			}
 		}
 	}
+
+	public function getBestDiplome() {
+		if ($this->getDiplome("PSE2")!= null) {
+			return "PSE2";
+		} else if ($this->getDiplome("PSE1")!=null) {
+			return "PSE1";
+		} else return "";
+	}
 }
 
 ?>
