@@ -178,118 +178,6 @@
 						  </div><!-- /.col-md-6 -->
 						</div><!-- /.row -->
 
-						<!-- <div class="row">
-							<div class="col-md-5">
-								<div class="form-group">
-									<label class="col-md-4 control-label" for="pse1">PSE1</label>  
-									<div class="col-md-4">
-										<input id="pse1" name="pse1" type="checkbox" placeholder="" class="form-control input-md" <?php if(($dip = $user2->getDiplome("PSE1")) != null) echo "checked" ?> >
-									</div>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label class="col-md-4 control-label" for="date_dip">Date d'obtention</label>  
-									<div class="col-md-4">
-										<input id="date_pse1" name="date_pse1" type="text" placeholder="" class="form-control input-md datepicker" value=<?php if($dip != null) echo '"'.$dip.'"' ?> >
-
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="row">
-							<div class="col-md-5">
-								<div class="form-group">
-									<label class="col-md-4 control-label" for="pse2">PSE2</label>  
-									<div class="col-md-4">
-										<input id="pse2" name="pse2" type="checkbox" placeholder="" class="form-control input-md" <?php if(($dip = $user2->getDiplome("PSE2")) != null) echo "checked" ?> >
-									</div>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label class="col-md-4 control-label" for="date_dip">Date d'obtention</label>  
-									<div class="col-md-4">
-										<input id="date_pse2" name="date_pse2" type="text" placeholder="" class="form-control input-md datepicker" value=<?php if($dip != null) echo '"'.$dip.'"' ?> >
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-6">
-									<div class="form-group">
-										<label class="col-md-4 control-label" for="lat">LAT</label>  
-										<div class="col-md-4">
-											<input id="lat" name="lat" type="checkbox" placeholder="" class="form-control input-md" <?php if(($dip = $user2->getDiplome("LAT")) != null) echo "checked" ?> >
-										</div>
-									</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-										<label class="col-md-4 control-label" for="date_dip">Date d'obtention</label>  
-										<div class="col-md-4">
-											<input id="date_lat" name="date_lat" type="text" placeholder="" class="form-control input-md datepicker" value=<?php if($dip != null) echo '"'.$dip.'"' ?>>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-5">
-									<div class="form-group">
-										<label class="col-md-4 control-label" for="cod1">COD1</label>  
-										<div class="col-md-4">
-											<input id="cod1" name="cod1" type="checkbox" placeholder="" class="form-control input-md" <?php if(($dip = $user2->getDiplome("COD1")) != null) echo "checked" ?> >
-										</div>
-									</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-										<label class="col-md-4 control-label" for="date_dip">Date d'obtention</label>  
-										<div class="col-md-4">
-											<input id="date_cod1" name="date_cod1" type="text" placeholder="" class="form-control input-md datepicker" value=<?php if($dip != null) echo '"'.$dip.'"' ?>>
-
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-5">
-									<div class="form-group">
-										<label class="col-md-4 control-label" for="cod2">COD2</label>  
-										<div class="col-md-4">
-											<input id="cod2" name="cod2" type="checkbox" placeholder="" class="form-control input-md" <?php if(($dip = $user2->getDiplome("COD2")) != null) echo "checked" ?> >
-										</div>
-									</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-										<label class="col-md-4 control-label" for="date_dip">Date d'obtention</label>  
-										<div class="col-md-4">
-											<input id="date_cod2" name="date_cod2" type="text" placeholder="" class="form-control input-md datepicker" value=<?php if($dip != null) echo '"'.$dip.'"' ?>>
-
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-5">
-									<div class="form-group">
-										<label class="col-md-4 control-label" for="vpsp">VPSP</label>  
-										<div class="col-md-4">
-											<input id="vpsp" name="vpsp" type="checkbox" placeholder="" class="form-control input-md" <?php if(($dip = $user2->getDiplome("VPSP")) != null) echo "checked" ?> >
-										</div>
-									</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-										<label class="col-md-4 control-label" for="date_dip">Date d'obtention</label>  
-										<div class="col-md-4">
-											<input id="date_vpsp" name="date_vpsp" type="text" placeholder="" class="form-control input-md datepicker" value=<?php if($dip != null) echo '"'.$dip.'"' ?>>
-
-										</div>
-									</div>
-								</div>
-							</div> -->
 						<br>
 						<div class="form-group">
 							<!-- <label class="col-md-4 control5label" for="permis">Permis B</label>   -->
@@ -340,7 +228,6 @@
 									<option value="Master" <?php if($user2->getSemestre() == 'Master') echo "selected" ?>>Master</option>
 								</select>
 							</div>
-								<input id="other" name="other" type="text" placeholder=" Autre (préciser)" class="form-control input-md" >
 						</div>
 						<div class="form-group">
 							<label class="col-md-4 control-label" for="taille">Taille de vêtements: </label>
