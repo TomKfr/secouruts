@@ -95,22 +95,25 @@ $(function(){
 			//Si valide alors : 
 
 			//Envoi en ajax :
-			$.ajax({
-                url: $('#newpost').attr('action'), // Le nom du fichier indiqué dans le formulaire
-                type: $('#newpost').attr('method'), // La méthode indiquée dans le formulaire (get ou post)
-                data: $('#newpost').serialize(), // Je sérialise les données (j'envoie toutes les valeurs présentes dans le formulaire)
-                success: function(html) {
-                	toastr.clear();
-                	toastr.success('Enregistrement réussi !');
-                	$('#submit').text("Modifier");
-                	$('#hidden').attr('value', html);
-                },
-                error: {
-                	//toastr.error('Il y a eu un problème...');
-                }
-            });
+			// $.ajax({
+   //              url: $('#newpost').attr('action'), // Le nom du fichier indiqué dans le formulaire
+   //              type: $('#newpost').attr('method'), // La méthode indiquée dans le formulaire (get ou post)
+   //              data: $('#newpost').serialize(), // Je sérialise les données (j'envoie toutes les valeurs présentes dans le formulaire)
+   //              success: function(html) {
+   //              	toastr.clear();
+   //              	toastr.success('Enregistrement réussi !');
+   //              	$('#submit').text("Modifier");
+   //              	$('#hidden').attr('value', html);
+   //              },
+   //              error: {
+   //              	//toastr.error('Il y a eu un problème...');
+   //              }
+   //          });
+		var date = moment($('#datedeb').val(), "DD-MM-YYYY HH:mm");
+		 
+		alert(date);
 
-		});
+	});
 
 	$('#back').click(function(event){
 		event.preventDefault();

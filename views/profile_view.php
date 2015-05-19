@@ -282,6 +282,7 @@
 	<script	src="../src/bootstrap-datetimepicker.min.js"></script>
 	<script type="text/javascript">
 	$(function() {
+
 		$('.datepicker').datepicker({
 			startView : 1,
 			language : 'fr'
@@ -306,9 +307,18 @@
 		$("#validate").click(function(event){
 			event.preventDefault();
 
-			// Valider le formulaire
+			var valid = true;
 
-			$.ajax({
+			if($('#pse2').prop('checked')){
+				if(!$('#pse1').prop('checked')){
+					toastr.warning('Tu dois également enregistrer ton PSE1 !');
+					valid = false;
+				}
+			}
+
+			// Valider le formulaire
+			if(valid){ // Seulement si le formulaire est valide.
+				$.ajax({
 					type: "POST",
 					url: $('#form').attr('action'),
 					data : $('#form').serialize(),
@@ -326,8 +336,9 @@
 						alert(txt);
 					}
 				});
+			}
 
-    		});
+		});
 
 	});
 	</script>
