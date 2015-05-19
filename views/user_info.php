@@ -3,7 +3,7 @@
 	margin-top: 10px;
 }
 td, th{
-	padding-left: 20px;
+	padding-right: 20px;
 	padding-top: 5px;
 }
 </style>
@@ -16,7 +16,7 @@ td, th{
 	</div>
 	
 
-	<div class="col-md-8">
+	<div class="col-md-6">
 			Né(e) le <?php echo $secouriste->getDDN()->format('d/m/Y') ?> à <?php echo $secouriste->getLDN()?>
 	</div>
 	<div class="col-md-4">
@@ -29,9 +29,9 @@ td, th{
 		<tr><td></td><td colspan=2 ><span class="glyphicon glyphicon-envelope"></span> <?php echo $secouriste->getAdresse() ?></td></tr>
 	</table>
 	</div>
-	<div class="col-md-6">
+	<div class="col-md-6 space">
 		<table>
-		<tr><td>Diplômes possédés : </td><th>Type</th><th>Date d'obtention</th></tr>
+		<tr><td>Diplômes : </td><th>Type</th><th>Date d'obtention</th></tr>
 		<?php foreach ($secouriste->getDiplomes() as $dip) {
 			echo "<tr><td></td><td>".$dip->getType()."</td><td>".$dip->getDate()->format('d/m/Y')."</td></tr>";
 		}
@@ -39,8 +39,10 @@ td, th{
 	</table>
 	</div>
 
-	<div class="col-md-4">
+	<div class="col-md-12 space">
+		<p>Vêtements : <?php echo $secouriste->getTaille() ?></p>
 	</div>
+
 	<div class="col-md-4">
 	</div>
 	<div class="col-md-4">

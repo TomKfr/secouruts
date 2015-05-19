@@ -28,7 +28,7 @@ class AjaxController implements ControllerProviderInterface
 		});
 
 		$controllers->get('/users_form2/{login}', function($login) use ($app){
-			$user = $app['entity_manager']->getRepository('Secouruts\Secouriste')->find($login);
+			$user2 = $app['entity_manager']->getRepository('Secouruts\Secouriste')->find($login);
 			ob_start();
 			require './views/form_modify_user.php';
 			$view = ob_get_clean();
