@@ -102,6 +102,17 @@ class DPSController implements ControllerProviderInterface
 				else{
 					$dps->setClosed(true);
 					$app['entity_manager']->flush();
+
+					$message = \Swift_Message::newInstance()
+			        ->setSubject('[Secouruts] Le poste :'.$dps->getTitre()." à été cloturé.")
+			        ->setFrom('secouruts@assos.utc.fr')
+			        ->setTo($dps->getParticipantsMails())
+			        ->setBody("Les inscriptions pour le poste ".$dps->getTitre()." ont été fermées.\n
+			        Tu es maintenant engagé à tenir le poste aux créneaux pour lesquels ton inscription a été validée.\n
+			        On compte sur toi !");
+
+			        $app['mailer']->send($message);
+
 					return "Le poste ".$dps->getTitre()." est clos";
 				}
 			}

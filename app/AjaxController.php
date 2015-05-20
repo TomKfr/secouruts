@@ -87,6 +87,7 @@ class AjaxController implements ControllerProviderInterface
 		$controllers->match('/val_inscr/{login}/{id}', function($login, $id) use ($app) {
 
 			$creneau = $app['entity_manager']->getRepository('Secouruts\Creneau')->find($id);
+			$user = $app['entity_manager']->getRepository('Secouruts\Secouriste')->find($login);
 			$returntxt = "";
 
 			if($creneau->isSecVal($login)) {
@@ -95,7 +96,18 @@ class AjaxController implements ControllerProviderInterface
 			} 
 			else {
 				$creneau->addSecVal($login); //Si le secouriste n'est pas validé, on l'ajoute	
-				$returntxt = $login." est validé sur le créneau ".$creneau->getDateDeb()->format('H:i')." - ".$creneau->getDateFin()->format('H:i');	
+				$returntxt = $login." est validé sur le créneau ".$creneau->getDateDeb()->format('H:i')." - ".$creneau->getDateFin()->format('H:i');
+
+				$message = \Swift_Message::newInstance()
+		        ->setSubject('[Secouruts] Validation de ta participation au poste : '.$creneau->getPoste()->getTitre())
+		        ->setFrom('secouruts@assos.utc.fr')
+		        ->setTo($user->getEmail())
+		        ->setBody("Ton inscription au poste : '".$creneau->getPoste()->getTitre()."' a été validée.\n
+		        Ce poste se déroulera le ".$creneau->getPoste()->getDebut()->format('d/m/Y')." à ".$creneau->getPoste()->getLieu().".\n
+		        Créneau concerné : ".$creneau->getDateDeb()->format('H:i')." - ".$creneau->getDateFin()->format('H:i').".\n
+		        Plus d'infos sur assos.utc.fr/secouruts/membres !");
+
+		        $app['mailer']->send($message);
 			}
 
 			$app['entity_manager']->flush();
@@ -108,13 +120,21 @@ class AjaxController implements ControllerProviderInterface
 
 			$message = \Swift_Message::newInstance()
 		        ->setSubject('[Secouruts] Feedback')
-		        ->setFrom(array('secouruts@assos.utc.fr'))
+		        ->setFrom('secouruts@assos.utc.fr')
 		        ->setTo(array('tkieffer67@gmail.com'))
-		        ->setBody("yo!");
+		        ->setBody("yo!\n
+		        			Plus d'infos sur assos.utc.fr/secouruts/membres !");
 			
 		    $app['mailer']->send($message);
 
 			return "OK";
+		});
+
+		$controllers->get('/parts', function() use ($app) {
+			$dps = $app['entity_manager']->getRepository('Secouruts\DPS')->find('7');
+			$parts = $dps->getParticipantsMails();
+
+			return print_r($parts);
 		});
 
 		return $controllers;

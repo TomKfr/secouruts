@@ -255,6 +255,18 @@ class DPS
 			else return false;
 		}
 	}
+
+	public function getParticipantsMails(){ // Renvoie le tableau des mails des participants au poste
+		$participants = [];
+		foreach ($this->creneaux as $creneau) {
+			foreach ($creneau->getSecouristes() as $sec) {
+				if($creneau->isSecVal($sec->getLogin())){
+					if(!in_array($sec->getEmail(), $participants)) $participants[] = $sec->getEmail();
+				}
+			}
+		}
+		return $participants;
+	}
 }
 
 ?>
