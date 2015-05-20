@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "16f40f8fe98a6737128f57d0a6fc4d8a",
+    "hash": "0cd9572f9270c806e3f175d60e037c51",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1202,7 +1202,9 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "swiftmailer/swiftmailer": 0
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

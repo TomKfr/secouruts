@@ -9,17 +9,17 @@
 </div>
 
 
-<div class="col-md-6">
+<div class="col-md-5">
 	<?php echo "Lieu : ".$dps->getLieu()."\n"; ?>
 </div>
 <div class="col-md-4">
 	<?php echo "Type : ".$dps->getType() ?>
 </div>
-<div class="col-md-2">
-	<?php if($dps->isClosed()) echo "<h4 class='red'>Inscriptions clôturées</h4>" ?>
-	<?php if($dps->isCancelled()) echo "<h4 class='red'>Annulé</h4>" ?>
+<div class="col-md-3">
+	<?php if($dps->isClosed()) echo "<p class='red'>Inscriptions clôturées</p>" ?>
+	<?php if($dps->isCancelled()) echo "<p class='red'>Annulé</p>" ?>
 </div>
-<div class="col-md-6">
+<div class="col-md-5">
 	<?php echo "PSE1 requis : ".$dps->getPSE1() ?>
 </div>
 <div class="col-md-4">

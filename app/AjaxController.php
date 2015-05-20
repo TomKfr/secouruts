@@ -111,12 +111,8 @@ class AjaxController implements ControllerProviderInterface
 		        ->setFrom(array('secouruts@assos.utc.fr'))
 		        ->setTo(array('tkieffer67@gmail.com'))
 		        ->setBody("yo!");
-
-		        try{
-		        	$app['mailer']->send($message);
-		        }catch(\Swift_TransportException $e){
-		        	$response = $e->getMessage() ;
-		        }
+			
+		    $app['mailer']->send($message);
 
 			return "OK";
 		});
