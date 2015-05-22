@@ -82,16 +82,16 @@
 									echo "<h3> <b>".$dps->getTitre()." - ".$dps->getDebut()->format('d/m/Y \d\e H:i').$dps->getFin()->format(' \à H:i')."</b></h3>";
 									?>
 									<div class='min'>
-										<div class="col-md-6">
+										<div class="col-md-5">
 											<?php echo "Lieu : ".$dps->getLieu()."\n"; ?>
 										</div>
 										<div class="col-md-4">
 											<?php echo "Type : ".$dps->getType() ?>
 										</div>
-										<div class="col-md-2">
-											<?php if($dps->isClosed()) echo "<h4 class='red'>Inscriptions clôturées</h4>" ?>
+										<div class="col-md-3">
+											<?php if($dps->isClosed()) echo "<span class='red'>Inscriptions clôturées</span>" ?>
 										</div>
-											<div class="col-md-6">
+											<div class="col-md-5">
 											<?php echo "PSE1 requis : ".$dps->getPSE1() ?>
 										</div>
 										<div class="col-md-4">
@@ -153,7 +153,6 @@
 	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.js"></script>
 	<script type="text/javascript">
-	var triggered = false;
 
 	$(function(){
 		$('#accordion').accordion();
@@ -171,9 +170,12 @@
 					if(data[0] == "add"){
 						toastr.success("Inscription de l'utilisateur <?php echo $user?> au créneau "+$(event.target).text());
 					}
-					else {
+					else if(data[0] == "remove") {
 						toastr.warning("Désinscription de l'utilisateur <?php echo $user?> du créneau "+$(event.target).text());
-					}	
+					}
+					else{
+						toastr.error("Désincription impossible : tu as déja été validé sur ce créneau !");
+					}
 					var $target = $(event.target);
 					var cellIndex = $target.index();
 					$target.closest('tr').next().children().eq(cellIndex).html(result);

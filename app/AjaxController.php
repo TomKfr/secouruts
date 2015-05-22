@@ -12,7 +12,14 @@ class AjaxController implements ControllerProviderInterface
 		$controllers = $app['controllers_factory'];
 
 		$controllers->get('/users_content', function() use ($app) {
-			$users = $app['entity_manager']->getRepository('Secouruts\Secouriste')->findAll();
+			// $users = $app['entity_manager']->getRepository('Secouruts\Secouriste')->findAll();
+
+			$qb = $app['entity_manager']->createQueryBuilder();
+			$qb->select('sec')
+		   		->from('Secouruts\Secouriste', 'sec')
+		   		->orderBy('sec.nom', 'ASC');
+			$users = $qb->getQuery()->getResult();
+
 			ob_start();
 			require './views/users_content.php';
 			$view = ob_get_clean();
@@ -37,7 +44,12 @@ class AjaxController implements ControllerProviderInterface
 
 		$controllers->get('/postes_content', function() use ($app) {
 			
-			$postes = $app['entity_manager']->getRepository('Secouruts\DPS')->findAll();
+			// $postes = $app['entity_manager']->getRepository('Secouruts\DPS')->findAll();
+			$qb = $app['entity_manager']->createQueryBuilder();
+			$qb->select('dps')
+		   		->from('Secouruts\DPS', 'dps')
+		   		->orderBy('dps.debut', 'ASC');
+			$postes = $qb->getQuery()->getResult();
 
 			ob_start();
 			require './views/postes_content.php';
@@ -61,9 +73,12 @@ class AjaxController implements ControllerProviderInterface
 			$creneau = $app['entity_manager']->getRepository('Secouruts\Creneau')->find($id);
 			$poste = $creneau->getPoste();
 
-
 			$returnarray = array();
 
+			if($creneau->isSecVal($login)){						// Si l'utilisateur est validé sur ce créneau, on ne peut pas le désinscrire !
+				$returnarray[] = 'forbidden';
+			}
+			else{
 			if($creneau->secouristeInscrit($user)){				//Si on trouve l'utilisateur dans le créneau, il s'agit d'une suppression
 				$creneau->removeSecouriste($user);				//Exécution de la suppression
 				$creneau->removeSecVal($user->getLogin());
@@ -72,6 +87,7 @@ class AjaxController implements ControllerProviderInterface
 			else {												//Sinon, il s'agit d'un ajout
 				$creneau->addSecouriste($user); 				//On exécut l'ajout.
 				$returnarray[] = 'add';
+			}
 			}
 
 			$app['entity_manager']->flush();
@@ -131,10 +147,16 @@ class AjaxController implements ControllerProviderInterface
 		});
 
 		$controllers->get('/parts', function() use ($app) {
-			$dps = $app['entity_manager']->getRepository('Secouruts\DPS')->find('7');
-			$parts = $dps->getParticipantsMails();
-
-			return print_r($parts);
+			$qb = $app['entity_manager']->createQueryBuilder();
+			$qb->select('sec')
+		   		->from('Secouruts\Secouriste', 'sec')
+		   		->orderBy('sec.nom', 'ASC');
+		   	$result = $qb->getQuery()->getResult();
+		   	// $var = "";
+		   	// foreach ($result as $poste) {
+		   	// 	$var .= $poste->getTitre();
+		   	// }
+			return $result;
 		});
 
 		return $controllers;

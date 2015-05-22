@@ -1,3 +1,12 @@
+<style type="text/css">
+#titre,#typpost,#datedeb,#datefin,#lieu,#client,#nbpse1,#nbpse2,#limitdate{
+	width: 250px;
+}
+#desc{
+	width: 700px;
+}
+</style>
+
 <div id="formdiv" class="col-md-12" style="margin-top : 15px">
 	<form id="newpost" class="form-horizontal" method='post' action="../dps/new_post">
 		<div class="form-group col-md-12">

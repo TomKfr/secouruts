@@ -21,6 +21,9 @@
 	label ~ div {
 		margin-top: 10px;
 	}
+	#mail, #phone, #name, #surname, #ddn, #ldn{
+		width: 220px;
+	}
 	</style>
 
 </head>
@@ -197,14 +200,14 @@
 						<div class="form-group">
 							<label class="col-md-4 control-label" for="mail">Email</label>  
 							<div class="col-md-4">
-								<input id="mail" name="email"  type="text" placeholder="" class="form-control input-md" required="" value=<?php if($user2->getEmail() != null ) echo("'".$user2->getEmail()."'"); ?> >
+								<input id="mail" name="email"  type="text" placeholder="" class="form-control" required="" value=<?php if($user2->getEmail() != null ) echo("'".$user2->getEmail()."'"); ?> >
 
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-md-4 control-label" for="phone">Téléphone</label>  
 							<div class="col-md-4">
-								<input id="phone" name="tel" type="text" placeholder="" class="form-control input-md" required="" value=<?php if($user2->getTel() != null ) echo("'".$user2->getTel()."'"); ?> >
+								<input id="phone" name="tel" type="text" placeholder="" class="form-control" required="" value=<?php if($user2->getTel() != null ) echo("'".$user2->getTel()."'"); ?> >
 
 							</div>
 						</div>

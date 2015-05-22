@@ -38,7 +38,7 @@ function dps_action(action){
 					toastr.info(data);
 				}
 				retrn = data;
-				$('#info').load('../dps/get/'+dps_id);
+				if(action != "delete") $('#info').load('../dps/get/'+dps_id);
 			},
 			error: function(data){
 				alert(data);

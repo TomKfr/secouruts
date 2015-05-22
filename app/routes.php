@@ -38,7 +38,14 @@ $app->get('/', function () use ($app) {
     	return $view;
 	}
 	else {		// Sinon, l'utilisateur est autorisé et le profil est complet -> envoi sur la page principale
-		$postes = $app['entity_manager']->getRepository('Secouruts\DPS')->findAll();
+		// $postes = $app['entity_manager']->getRepository('Secouruts\DPS')->findAll();
+
+		$qb = $app['entity_manager']->createQueryBuilder();
+		$qb->select('dps')
+		   	->from('Secouruts\DPS', 'dps')
+		   	->orderBy('dps.debut', 'ASC');
+		$postes = $qb->getQuery()->getResult();
+
     	ob_start();
     	require './views/event_view.php';
     	$view = ob_get_clean();

@@ -53,7 +53,12 @@ class DPSController implements ControllerProviderInterface
 		$controllers->get('/get/{id}', function($id) use ($app)
 		{
 			if($id == "all"){
-				$postes = $app['entity_manager']->getRepository('Secouruts\DPS')->findAll();
+				// $postes = $app['entity_manager']->getRepository('Secouruts\DPS')->findAll();
+				$qb = $app['entity_manager']->createQueryBuilder();
+				$qb->select('dps')
+		   			->from('Secouruts\DPS', 'dps')
+		   			->orderBy('dps.debut', 'ASC');
+				$postes = $qb->getQuery()->getResult();
 				return $postes;
 			}
 			else {
@@ -108,8 +113,8 @@ class DPSController implements ControllerProviderInterface
 			        ->setFrom('secouruts@assos.utc.fr')
 			        ->setTo($dps->getParticipantsMails())
 			        ->setBody("Les inscriptions pour le poste ".$dps->getTitre()." ont été fermées.\n
-			        Tu es maintenant engagé à tenir le poste aux créneaux pour lesquels ton inscription a été validée.\n
-			        On compte sur toi !");
+			        	Tu es maintenant engagé à tenir le poste aux créneaux pour lesquels ton inscription a été validée.\n
+			        	On compte sur toi !");
 
 			        $app['mailer']->send($message);
 
