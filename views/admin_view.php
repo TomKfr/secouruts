@@ -4,7 +4,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="robots" content="INDEX,FOLLOW">
-	<title>	Accueil -     Secourut's
+	<title>	Administration
 
 	</title>
 	<link rel="stylesheet" href="../../src/css/reset.css" type="text/css" />
