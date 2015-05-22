@@ -142,7 +142,6 @@ $(function(){
 			//Si valide alors : 
 			if(valid){
 			// Envoi en ajax :
-			toastr.info("C'est valide, on envoie !");
 			$.ajax({
                 url: $('#newpost').attr('action'), // Le nom du fichier indiqué dans le formulaire
                 type: $('#newpost').attr('method'), // La méthode indiquée dans le formulaire (get ou post)
