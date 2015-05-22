@@ -1,30 +1,37 @@
-<div id="formdiv" class="col-md-12" style="margin-top : 15px">
+<div id="formdiv" class="col-md-offset-4 col-md-7" style="margin-top : 15px">
 	<form id="newuser" class="form-horizontal" method='post' action="../secouriste/new_user">
 		<div class="form-group">
 			<label class="col-md-2 control-label" for="login">Login</label>  
 			<div class="col-md-10">
-				<input id="login" name="login" type="text" class="form-control" value=<?php if(isset($user)) echo("'".$user->getLogin()."'"); ?>>
+				<input id="login" name="login" type="text" class="form-control">
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-md-2 control-label" for="nom">Nom</label>
 			<div class="col-md-10">
-				<input id="nom" type="text" name="nom" class="form-control" value=<?php if(isset($user)) echo("'".$user->getNom()."'"); ?>>
+				<input id="nom" type="text" name="nom" class="form-control">
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-md-2 control-label" for="prenom">Prénom</label>
 			<div class="col-md-10">
-				<input id="prenom" type="text" name="prenom" class="form-control" value=<?php if(isset($user)) echo("'".$user->getPrenom()."'"); ?>>
+				<input id="prenom" type="text" name="prenom" class="form-control">
 			</div>
 		</div>
-		<div class="form-group">
+<!-- 		<div class="form-group">
 			<label class="col-md-2 control-label" for="admin">Administrateur</label>
 			<div class="col-md-3">
-				<input id="admin" type="checkbox" name="admin" class="form-control" value=<?php if(isset($user)) echo("'".$user->isAdmin()."'"); ?>>
+				<input id="admin" type="checkbox" name="admin" class="form-control">
+			</div>
+		</div> -->
+		<div class="form-group">
+			<div class="col-md-offset-2 col-md-4">
+				<label class="btn btn-primary">
+					<input id="admin" type="checkbox" name="admin" > Administrateur
+				</label>
 			</div>
 		</div>
-		<div class="col-md-offset-3">
+		<div class="col-md-offset-2">
 			<button id="submit" class="btn btn-primary">Valider</button>
 			<button id="back" class="btn btn-info">Retour</button>
 		</div>
