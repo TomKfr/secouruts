@@ -25,13 +25,15 @@ td, th{
 
 	<div class="col-md-6 space">
 		<table>
-		<tr><td>Contact : </td><td><span class="glyphicon"><b>@</b></span> <?php echo $secouriste->getEmail() ?></td><td><span class="glyphicon glyphicon-earphone"></span> <?php echo $secouriste->getTel() ?></td></tr>
+		<tr><td>Contact  </td><td></td> </tr>
+		<tr><td> </td><td><span class="glyphicon"><b>@</b></span> <?php echo $secouriste->getEmail() ?></td></tr>
 		<tr><td></td><td colspan=2 ><span class="glyphicon glyphicon-envelope"></span> <?php echo $secouriste->getAdresse() ?></td></tr>
+		<tr> <td> </td> <td><span class="glyphicon glyphicon-earphone"></span> <?php echo $secouriste->getTel() ?></td> </tr>
 	</table>
 	</div>
 	<div class="col-md-6 space">
 		<table>
-		<tr><td>Diplômes : </td><th>Type</th><th>Date d'obtention</th></tr>
+		<tr><td>Diplômes  </td><th></th><th></th></tr>
 		<?php foreach ($secouriste->getDiplomes() as $dip) {
 			echo "<tr><td></td><td>".$dip->getType()."</td><td>".$dip->getDate()->format('d/m/Y')."</td></tr>";
 		}
@@ -40,7 +42,7 @@ td, th{
 	</div>
 
 	<div class="col-md-12 space">
-		<p>Vêtements : <?php echo $secouriste->getTaille() ?></p>
+		<p>Vêtements  <?php echo $secouriste->getTaille() ?></p>
 	</div>
 
 	<div class="col-md-4">

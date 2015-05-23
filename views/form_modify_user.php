@@ -130,7 +130,7 @@
 							
 							<div class=" col-md-offset-4 col-md-5">
 								<label class="btn btn-primary">
-								<input id="admin" type="checkbox" name="admin" <?php if($user2->isAdmin() != null ) echo "checked" ?> > Administrateur
+								<input id="admin" type="checkbox" name="admin" <?php if($user2->isAdmin() == 1 ) echo "checked" ?> > Administrateur
 								</label>
 							</div>
 						</div>
