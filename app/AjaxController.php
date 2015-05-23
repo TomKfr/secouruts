@@ -48,7 +48,7 @@ class AjaxController implements ControllerProviderInterface
 			$qb = $app['entity_manager']->createQueryBuilder();
 			$qb->select('dps')
 		   		->from('Secouruts\DPS', 'dps')
-		   		->orderBy('dps.debut', 'ASC');
+		   		->orderBy('dps.debut', 'DESC');
 			$postes = $qb->getQuery()->getResult();
 
 			ob_start();
