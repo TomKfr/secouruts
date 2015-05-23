@@ -6,10 +6,11 @@
 	label ~ div {
 		margin-top: 10px;
 	}
+
 </style>
 
 <div class="right-content">
-	<h3>Modification du Profil de <?php echo $user2->getLogin() ?></h3>
+	<h3>Modification du Profil de <?php echo $user2->getNom()." ". $user2->getPrenom() ?></h3>
 </div>
 <div id="formdiv" class="col-md-12" style="margin-top : 15px">
 	<form id="modifuser" class="form-horizontal" method='post' action="../secouriste/modify_user/<?php echo $user2->getLogin() ?>">
@@ -114,13 +115,22 @@
 						    </div><!-- /input-group -->
 						  </div><!-- /.col-md-6 -->
 						</div><!-- /.row -->
-
 						<br>
+						<h4>Informations complémentaires :</h4>
+						
 						<div class="form-group">
 							<!-- <label class="col-md-4 control5label" for="permis">Permis B</label>   -->
-							<div class="col-md-offset-5 col-md-4">
+							<div class=" col-md-offset-4 col-md-5">
 								<label class="btn btn-primary">
 								<input id="permis" type="checkbox" name="permis" <?php if($user2->isPermis() != null ) echo "checked" ?> > Permis B
+								</label>
+							</div>
+						</div>
+						<div class="form-group">
+							
+							<div class=" col-md-offset-4 col-md-5">
+								<label class="btn btn-primary">
+								<input id="admin" type="checkbox" name="admin" <?php if($user2->isAdmin() != null ) echo "checked" ?> > Administrateur
 								</label>
 							</div>
 						</div>

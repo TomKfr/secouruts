@@ -124,6 +124,8 @@ class UsersController implements ControllerProviderInterface
 			$modifuser->setSemestre($_POST['semestre']);
 			if(isset($_POST['permis'])) $modifuser->setPermis(true);
 			else $modifuser->setPermis(false);
+			if(isset($_POST['admin'])) $modifuser->setAdmin(true);
+			else $modifuser->setAdmin(false);
 
 			$app['entity_manager']->persist($modifuser);
 			$app['entity_manager']->flush();
