@@ -252,6 +252,7 @@
 							</div>
 						</div>
 					</fieldset>
+					<input type="hidden" name="admin" value=<?php echo $user2->isAdmin() ?> />
 					<input type="hidden" name="origin" value="profileview" />
 				</form>
 
