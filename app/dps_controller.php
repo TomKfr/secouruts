@@ -76,12 +76,12 @@ class DPSController implements ControllerProviderInterface
 					$crenos[$creneau->getId()] = $item;
 				}
 
-				return print_r($crenos);
+				// return print_r($crenos);
 
-				// ob_start();
-				// require './views/dps_info.php';
-				// $view = ob_get_clean();
-				// return $view;
+				ob_start();
+				require './views/dps_info.php';
+				$view = ob_get_clean();
+				return $view;
 			}
 		});
 
