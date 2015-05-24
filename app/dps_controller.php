@@ -67,7 +67,7 @@ class DPSController implements ControllerProviderInterface
 				$i = 0;
 				$crenos = array();
 
-				foreach ($dps->getCreneaux() as $creneau) { // COPIE des créneaux et des participants dans un tableaus pour passage à la page
+				foreach ($dps->getCreneaux() as $creneau) { // COPIE des créneaux et des participants dans un tableaux pour passage à la page
 					$item = array();
 					$item['time'] = $creneau->getDateDeb()->format('H:i')." - ".$creneau->getDateFin()->format('H:i');
 					foreach ($creneau->getSecouristes() as $user) {
@@ -76,12 +76,12 @@ class DPSController implements ControllerProviderInterface
 					$crenos[$creneau->getId()] = $item;
 				}
 
-				// return print_r($crenos);
+				return print_r($crenos);
 
-				ob_start();
-				require './views/dps_info.php';
-				$view = ob_get_clean();
-				return $view;
+				// ob_start();
+				// require './views/dps_info.php';
+				// $view = ob_get_clean();
+				// return $view;
 			}
 		});
 
