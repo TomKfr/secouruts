@@ -48,15 +48,19 @@
 		}
 
 		$empty = true;
-		do{
+		do{	
 			echo "</tr><tr>";
+			$empty = true;
 			foreach ($crenos as $key => &$cre) {
-				$login = key($cre);
-				$name = array_shift($cre);
-				$empty = !is_null($name) ? false : true;
-				echo "<td closed=".($closed ? 'true' : 'false')." cre=".$key." login=".$login.">".$name."  <span class='";
-				if($dps->getCreneau($key)->isSecVal($login)) echo "glyphicon glyphicon-ok";
-				echo "' ></span></td>";
+				if(empty($cre)) echo "<td></td>"; // Si tous les sec ont été affichés, on passe au suivant.
+				else {
+					$empty = false;
+					$login = key($cre);
+					$name = array_shift($cre);
+					echo "<td closed=".($closed ? 'true' : 'false')." cre='".$key."' login='".$login."'>".$name."  <span class='";
+					if($dps->getCreneau($key)->isSecVal($login)) echo "glyphicon glyphicon-ok";
+					echo "' ></span></td>";
+				}
 			}
 		} while (!$empty);
 	?>
@@ -70,7 +74,6 @@
 $(function(){
 	$('td[closed!="true"]').click(function(event){
 		var cell = $(event.target);
-		// toastr.success("Valider "+cell.text()+" (login : "+cell.attr('login')+") pour le créneau d'id : "+cell.attr('cre'));
 		if(cell.text() != ""){
 
 			$.ajax({
