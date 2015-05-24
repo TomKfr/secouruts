@@ -6,7 +6,9 @@
 	label ~ div {
 		margin-top: 10px;
 	}
-
+	#mail, #phone, #name, #surname, #ddn, #ldn{
+		width: 220px;
+	}
 </style>
 
 <div class="right-content">

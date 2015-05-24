@@ -312,15 +312,43 @@
 			event.preventDefault();
 
 			var valid = true;
+			$('input').focus(function(event){
+				$(event.target).removeClass("alert alert-danger");
+				valid = true;
+			});
+			$('textarea').focus(function(event){
+				$(event.target).removeClass("alert alert-danger");
+				valid = true;
+			});
 
+			// Validation du formulaire
 			if($('#pse2').prop('checked')){
 				if(!$('#pse1').prop('checked')){
 					toastr.warning('Tu dois également enregistrer ton PSE1 !');
 					valid = false;
 				}
 			}
-
-			// Valider le formulaire
+			if($('#ldn').val() == "") {
+				$('#ldn').addClass("alert alert-danger");
+				toastr.error("Ta date de naissance est requise");
+				valid = false;
+			}
+			if($('#address').val() == "") {
+				$('#address').addClass("alert alert-danger");
+				toastr.error("Ton adresse est requise");
+				valid = false;
+			}
+			if($('#mail').val() == "") {
+				$('#mail').addClass("alert alert-danger");
+				toastr.error("Ton adresse email est requise");
+				valid = false;
+			}
+			if($('#phone').val() == "") {
+				$('#phone').addClass("alert alert-danger");
+				toastr.error("Ton numéro de téléphone est requis");
+				valid = false;
+			}
+			
 			if(valid){ // Seulement si le formulaire est valide.
 				$.ajax({
 					type: "POST",
