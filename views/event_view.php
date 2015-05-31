@@ -116,7 +116,7 @@
 										<?php
 										echo "<div class='col-md-12'><table class='table'><tr>";
 										foreach ($dps->getCreneaux() as $creneau) {
-											echo "<th closed=".($closed ? 'true' : 'false')." cre=".$creneau->getId().">".$creneau->getDateDeb()->format('H:i')." - ".$creneau->getDateFin()->format('H:i')."</th>";
+											echo "<th closed=".($closed || ($dps->getLimitDate()->diff(new \DateTime())->invert == 0)? 'true' : 'false')." cre=".$creneau->getId().">".$creneau->getDateDeb()->format('H:i')." - ".$creneau->getDateFin()->format('H:i')."</th>";
 										}
 										echo "</tr><tr>";
 										foreach ($dps->getCreneaux() as $creneau) {
