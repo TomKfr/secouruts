@@ -109,6 +109,16 @@ class AjaxController implements ControllerProviderInterface
 			if($creneau->isSecVal($login)) {
 				$creneau->removeSecVal($login); //Si le secouriste est déja validé, on l'enlève	
 				$returntxt = $login." n'est plus validé sur le créneau ".$creneau->getDateDeb()->format('H:i')." - ".$creneau->getDateFin()->format('H:i');
+				
+				$message = \Swift_Message::newInstance()
+		        ->setSubject('[Secouruts] Dévalidation de ta participation au poste : '.$creneau->getPoste()->getTitre())
+		        ->setFrom('secouruts@assos.utc.fr')
+		        ->setTo($user->getEmail())
+		        ->setBody("Ton inscription au poste : '".$creneau->getPoste()->getTitre()."' a été annulée.\n
+		        
+		        Créneau concerné : ".$creneau->getDateDeb()->format('H:i')." - ".$creneau->getDateFin()->format('H:i').".\n
+		        Plus d'infos sur assos.utc.fr/secouruts/membres !");
+				$app['mailer']->send($message);
 			} 
 			else {
 				$creneau->addSecVal($login); //Si le secouriste n'est pas validé, on l'ajoute	

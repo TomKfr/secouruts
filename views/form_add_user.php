@@ -57,8 +57,7 @@ $(function(){
 			//Si valide alors : 
 
 			$this = $('#newuser');
-			//mail("'".$_POST['login']."'"+"@utc.fr", "Accès plateforme d'inscription de Secourut\'s", "Bonjour, \n Votre compte vient d\'être ajouté sur le site d'inscriptions aux postes de secours de Secourut's. \n Merci de vous connecter à l\'adresse suivante pour compléter votre profil : ");
-			//mail("morgane.becret@gmail.com", "Accès plateforme d'inscription de Secourut\'s", "Bonjour, \n Votre compte vient d\'être ajouté sur le site d'inscriptions aux postes de secours de Secourut's. \n Merci de vous connecter à l\'adresse suivante pour compléter votre profil : ");
+			
 			//Envoi en ajax :
 			$.ajax({
                 url: $this.attr('action'), // Le nom du fichier indiqué dans le formulaire
