@@ -182,13 +182,13 @@
 							<label class="col-md-4 control-label" for="taille">Taille de vêtements: </label>
 							<div class="col-md-3">
 								<select id="taille" name="taille" class="form-control">
-									<option value="XS / 34" <?php if($user2->getTaille() == 'XS') echo "selected" ?>>XS / 34</option>
-									<option value="S / 36" <?php if($user2->getTaille() == 'S') echo "selected" ?>>S / 36</option>
-									<option value="M / 38" <?php if($user2->getTaille() == 'M') echo "selected" ?>>M / 38</option>
-									<option value="L / 40" <?php if($user2->getTaille() == 'L') echo "selected" ?>>L / 40</option>
-									<option value="XL / 42" <?php if($user2->getTaille() == 'XL') echo "selected" ?>>XL / 42</option>
-									<option value="XXL / 44" <?php if($user2->getTaille() == 'XXl') echo "selected" ?>>XXL / 44</option>
-									<option value="XXXL / 46" <?php if($user2->getTaille() == 'XXXL') echo "selected" ?>>XXXL / 46</option>
+									<option value="XS / 34" <?php if($user2->getTaille() == 'XS / 34') echo "selected" ?>>XS / 34</option>
+									<option value="S / 36" <?php if($user2->getTaille() == 'S / 36') echo "selected" ?>>S / 36</option>
+									<option value="M / 38" <?php if($user2->getTaille() == 'M / 38') echo "selected" ?>>M / 38</option>
+									<option value="L / 40" <?php if($user2->getTaille() == 'L / 40') echo "selected" ?>>L / 40</option>
+									<option value="XL / 42" <?php if($user2->getTaille() == 'XL / 42') echo "selected" ?>>XL / 42</option>
+									<option value="XXL / 44" <?php if($user2->getTaille() == 'XXL / 44') echo "selected" ?>>XXL / 44</option>
+									<option value="XXXL / 46" <?php if($user2->getTaille() == 'XXXL / 46') echo "selected" ?>>XXXL / 46</option>
 								</select>
 							</div>
 						</div>
