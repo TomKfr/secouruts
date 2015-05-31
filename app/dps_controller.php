@@ -129,6 +129,14 @@ class DPSController implements ControllerProviderInterface
 				$dps = $app['entity_manager']->getRepository('Secouruts\DPS')->find($id);
 				$dps->setCancelled(true);
 				$app['entity_manager']->flush();
+				$message = \Swift_Message::newInstance()
+			        ->setSubject('[Secouruts] Le poste :'.$dps->getTitre()." à été annulé.")
+			        ->setFrom('secouruts@assos.utc.fr')
+			        ->setTo($dps->getParticipantsMails())
+			        ->setBody("Le poste ".$dps->getTitre()." a été annulé.\n
+			        	Tu n'es donc plus engagé sur cet événement.\n");
+
+			        $app['mailer']->send($message);
 				return "ok";	
 			}
 			else return "err";
